@@ -3,7 +3,7 @@ from typing import Optional
 import ConnectDB
 import uvicorn
 from pydantic import BaseModel
-import sv_model
+#import sv_model
 
 app = FastAPI()
 
@@ -38,7 +38,7 @@ async def GetAllTrip(
     is_return: Optional[bool] =  Query(False, alias = "isReturn", description="Indicates if the ticket is round-trip"),
     ticket_count: Optional[int] = Query(1,alias="ticketCount",  ge=1, description="Number of tickets to book")
 ):
-    return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time)
+    return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time, is_return)
 
 
 

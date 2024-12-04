@@ -2,11 +2,11 @@
 #Connect to DB
 
 import pyodbc
-from sqlalchemy.orm import Session
+#from sqlalchemy.orm import Session
 from datetime import datetime
 import json
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+#from sqlalchemy import Column, Integer, String
+#from sqlalchemy.ext.declarative import declarative_base
 
 '''
 Base = declarative_base()
@@ -73,16 +73,22 @@ class ConnectDB:
         return {"UserID": row[0], "Username": row[1], "Full Name": row[3], "Phone": row[4], "Email": row[5]}
     
     #@staticmethod
-    def GetTrip(self, depart: str, arrive: str, departdate: str, returndate: str) -> list:
+    def GetTrip(self, depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list:
         listTrips = []
         try:
             Cursor = self.Connector.cursor()
-            Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
-                                (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}'
-                                UNION
-                                SELECT * FROM Trips WHERE DepartLocation = '{arrive}' AND ArriveLocation = '{depart}' AND DepartTime = '{returndate}')
-                                AS AllTrips
-                                INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
+            if isreturn == True:
+                Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
+                                    (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}'
+                                    UNION
+                                    SELECT * FROM Trips WHERE DepartLocation = '{arrive}' AND ArriveLocation = '{depart}' AND DepartTime = '{returndate}')
+                                    AS AllTrips
+                                    INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
+            else:
+                Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
+                                    (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}')
+                                    AS AllTrips
+                                    INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
             #Might need to add ReturnDate as well           
             
             if Cursor.rowcount == 0:
