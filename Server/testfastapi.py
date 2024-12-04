@@ -35,8 +35,8 @@ async def GetAllTrip(
     to_location: str = Query(..., alias="to", description="Arrival location"),
     from_time: str = Query(..., alias="fromTime", description="Departure time"),
     to_time: Optional[str] = Query(None, alias="toTime", description="Return time"),
-    is_return: Optional[bool] =  Query(False, description="Indicates if the ticket is round-trip"),
-    ticket_count: Optional[int] = Query(..., ge=1, description="Number of tickets to book")
+    is_return: Optional[bool] =  Query(False, alias = "isReturn", description="Indicates if the ticket is round-trip"),
+    ticket_count: Optional[int] = Query(1,alias="ticketCount",  ge=1, description="Number of tickets to book")
 ):
     return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time)
 
