@@ -48,12 +48,13 @@ def JSONOutput(jsondata) -> str:
 
 class ConnectDB:
 
-    def __init__(self):
-        self.Connector = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
+    #def __init__(self):
+    Connector = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
                                 "Server=localhost;"
                                 "Database=bus_server_prod;"
                                 "Trusted_Connection=yes;")
     
+    @staticmethod
     def GetUserName(self, usr: str, pwd: str) -> dict:
         try:
             Cursor = self.Connector.cursor()
@@ -71,16 +72,19 @@ class ConnectDB:
 
         return {"UserID": row[0], "Username": row[1], "Full Name": row[3], "Phone": row[4], "Email": row[5]}
     
-    def GetTrip(self, depart: int, arrive: int, date: str) -> list:
+    #@staticmethod
+    def GetTrip(self, depart: str, arrive: str, departdate: str, returndate: str) -> list:
         listTrips = []
         try:
             Cursor = self.Connector.cursor()
-            Cursor.execute(f"""SELECT TripId, TripName, Depart.LocationName, Arrive.LocationName, DepartTime, TripStatusName, PlateNumber FROM Trips
-                            INNER JOIN Cars ON Trips.CarId = Cars.CarID
-                            INNER JOIN Locations AS Depart ON Trips.DepartLocation = Depart.LocationId
-                            INNER JOIN Locations AS Arrive ON Trips.ArriveLocation = Arrive.LocationId
-                            INNER JOIN TripStatus ON Trips.TripStatusId = TripStatus.TripStatusId
-                            WHERE DepartLocation = {depart} AND ArriveLocation = {arrive} AND DepartTime = '{date}'""")
+            Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
+                                (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}'
+                                UNION
+                                SELECT * FROM Trips WHERE DepartLocation = '{arrive}' AND ArriveLocation = '{depart}' AND DepartTime = '{returndate}')
+                                AS AllTrips
+                                INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
+            #Might need to add ReturnDate as well           
+            
             if Cursor.rowcount == 0:
                 print('Trip not found')
                 return []
@@ -95,6 +99,7 @@ class ConnectDB:
                 listTrips.append({"TripID": row[0], "TripName": row[1], "DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S'), "Status": row[5], "Plate": row[6]})
         return listTrips
     
+    #@staticmethod
     def GetTicket(self, username: str, ticketid: int) -> list:
         listTickets = []
         try:
@@ -117,8 +122,36 @@ class ConnectDB:
             for row in rows:
                 listTickets.append({"TicketID": row[0], "FullName": row[1], "TripName": row[2], "DepartTime": row[3].strftime('%d/%m/%Y %H:%M:%S'), "SeatNumber": row[4], "TicketType": row[5], "TotalPrice": int(row[6])})
         return listTickets
-        pass
+        
+
+    def GetFeedBack(self, fbid: int):
+        try:
+            Cursor = self.Connector.cursor()
+            Cursor.execute(f"SELECT FeedbackId, UserName, Description_ FROM UserFeedback INNER JOIN Users ON UserFeedback.UserId = Users.UserId WHERE FeedbackId = {fbid}")
+            if Cursor.rowcount == 0:
+                print('Feedback not found')
+                return ()
+            else:
+                print('Success')
+        except Exception as e:
+            print(str(e))
+            return ()
+        
+        row = Cursor.fetchone()
+
+        return {"FeedbackID": row[0], "UserName": row[1], "Content": row[2]}
     
 
 
-connector = ConnectDB()
+    
+
+
+#connector = ConnectDB()
+
+#print(connector.GetUserName('abc','123'))
+
+
+
+
+#y = JSONOutput(connector.GetTrip('B', 'A', '2024-06-20', '2024-01-10'))
+#print(y)
