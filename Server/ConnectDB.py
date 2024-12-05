@@ -1,8 +1,8 @@
 import pyodbc
 
-con = pyodbc.connect("Driver={SQL Server};"
-                      "Server=HackerLord;"
-                      "Database=Test;"
-                      "Trusted_Connection=yes;")
+con = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
+                      'SERVER=DESKTOP-R273SF4;'
+                      'DATABASE=bus_server_prod;'
+                      'Trusted_Connection=yes;')
     
 print(con)

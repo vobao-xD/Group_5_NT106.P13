@@ -33,7 +33,7 @@
             label1 = new Label();
             txtLoginName = new TextBox();
             label2 = new Label();
-            txtPhoneNumber = new TextBox();
+            txtFullName = new TextBox();
             label3 = new Label();
             txtEmail = new TextBox();
             label4 = new Label();
@@ -82,21 +82,21 @@
             label2.TabIndex = 4;
             label2.Text = "Đăng kí";
             // 
-            // txtPhoneNumber
+            // txtFullName
             // 
-            txtPhoneNumber.Location = new Point(304, 244);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(356, 27);
-            txtPhoneNumber.TabIndex = 6;
+            txtFullName.Location = new Point(304, 244);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(356, 27);
+            txtFullName.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(147, 247);
             label3.Name = "label3";
-            label3.Size = new Size(39, 20);
+            label3.Size = new Size(116, 20);
             label3.TabIndex = 5;
-            label3.Text = "SĐT:";
+            label3.Text = "Tên người dùng:";
             // 
             // txtEmail
             // 
@@ -154,6 +154,7 @@
             btnSignUp.TabIndex = 13;
             btnSignUp.Text = "Đăng kí";
             btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
             // 
             // SignUp
             // 
@@ -168,7 +169,7 @@
             Controls.Add(label5);
             Controls.Add(txtEmail);
             Controls.Add(label4);
-            Controls.Add(txtPhoneNumber);
+            Controls.Add(txtFullName);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(txtLoginName);
@@ -187,7 +188,7 @@
         private Label label1;
         private TextBox txtLoginName;
         private Label label2;
-        private TextBox txtPhoneNumber;
+        private TextBox txtFullName;
         private Label label3;
         private TextBox txtEmail;
         private Label label4;
