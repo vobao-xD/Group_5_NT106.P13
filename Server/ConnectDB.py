@@ -2,44 +2,13 @@
 #Connect to DB
 
 import pyodbc
-#from sqlalchemy.orm import Session
+
 from datetime import datetime
 import json
-#from sqlalchemy import Column, Integer, String
-#from sqlalchemy.ext.declarative import declarative_base
-
-'''
-Base = declarative_base()
-
-# Đăng nhập và đăng ký
-class UserDB(Base):
-    __tablename__ = "Users"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
-
-'''
+from urllib.parse import unquote
 
 
-'''
-class UserController:
-    @staticmethod
-    def get_user_by_id(user_id: int):
-        db: Session = Session()
-        user = db.query(UserDB).filter(UserDB.id == user_id).first()
-        db.close()
-        return user
 
-    @staticmethod
-    def get_all_users():
-        db: Session = Session()
-        users = db.query(UserDB).all()
-        db.close()
-        return users
-
-'''
 
 
 def JSONOutput(jsondata) -> str:
@@ -55,50 +24,46 @@ class ConnectDB:
                                 "Trusted_Connection=yes;")
     
     @staticmethod
-    def GetUserName(self, usr: str, pwd: str) -> dict:
+    def GetUserInfo(self, usr: str, pwd: str) -> dict | None:
         try:
             Cursor = self.Connector.cursor()
-            Cursor.execute(f"SELECT * FROM Users WHERE UserName = '{usr}' AND UserPwd = '{pwd}'")
-            if Cursor.rowcount == 0:
-                print('Username not found or wrong password')
-                return ()
-            else:
-                print('Success')
+            Cursor.execute("Exec GetUserInfo @usr = ?, @pwd = ?", (usr, pwd))
+            row = Cursor.fetchone()
+            if not row:
+                return None
+            return {
+                "UserID": row[0],
+                "Username": row[1],
+                "Full Name": row[3],
+                "Email": row[4],
+                "User Type": row[5]
+            }
         except Exception as e:
             print(str(e))
-            return ()
-        
-        row = Cursor.fetchone()
-
-        return {"UserID": row[0], "Username": row[1], "Full Name": row[3], "Phone": row[4], "Email": row[5]}
+            return None
+        finally:
+            if Cursor: 
+                Cursor.close()
     
     #@staticmethod
-    def GetTrip(self, depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list:
+    def GetTrip(self, depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
         listTrips = []
         try:
             Cursor = self.Connector.cursor()
-            if isreturn == True:
-                Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
-                                    (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}'
-                                    UNION
-                                    SELECT * FROM Trips WHERE DepartLocation = '{arrive}' AND ArriveLocation = '{depart}' AND DepartTime = '{returndate}')
-                                    AS AllTrips
-                                    INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
+            if isreturn == True:               
+                Cursor.execute("EXEC GetTripR @depart = ?, @arrive = ?, @departdate = ?, @returndate = ?", (unquote(depart), unquote(arrive), unquote(departdate), unquote(returndate)))
             else:
-                Cursor.execute(f"""SELECT TripId, TripName, DepartLocation, ArriveLocation, DepartTime,TripStatusId,PlateNumber FROM 
-                                    (SELECT * FROM Trips WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartTime = '{departdate}')
-                                    AS AllTrips
-                                    INNER JOIN Cars ON AllTrips.CarId = Cars.CarId""")
-            #Might need to add ReturnDate as well           
+                Cursor.execute("EXEC GetTrip @depart = ?, @arrive = ?, @departdate = ?", (unquote(depart), unquote(arrive), unquote(departdate)))         
             
             if Cursor.rowcount == 0:
                 print('Trip not found')
-                return []
+                return None
             else:
                 print('Success')
+
         except Exception as e:
             print(str(e))
-            return []
+            return None
         rows = Cursor.fetchall()
         if rows:
             for row in rows:
