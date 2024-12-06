@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LTMCB\\UI\\Client\\Client\\Client.csproj": {}
+    "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Client.csproj": {}
   },
   "projects": {
-    "D:\\LTMCB\\UI\\Client\\Client\\Client.csproj": {
+    "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LTMCB\\UI\\Client\\Client\\Client.csproj",
+        "projectUniqueName": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "D:\\LTMCB\\UI\\Client\\Client\\Client.csproj",
+        "projectPath": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\LTMCB\\UI\\Client\\Client\\obj\\",
+        "outputPath": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -30,14 +30,17 @@ namespace Client
         public static string? response;
         private async void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
             string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
             string fromtime = $"&fromTime={DepartDate.Text}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
             string totime = $"&toTime={ReturnDate.Text}%20{HttpUtility.UrlEncode(ReturnTime.Text)}";
-            string param = "&isReturn=false&ticketCount=1";
-            string encode = "/trips?" + request + fromtime + totime + param;
+            string param = $"&isReturn={chkboxRoundtrip.Checked}&ticketCount={int.Parse(NumOfTicket.Text)}";
+                string encode;
+                if (chkboxRoundtrip.Checked == true) encode = "/trips?" + request + fromtime + totime + param;
+                else encode = "/trips?" + request + fromtime + param;
             MessageBox.Show(encode);
-            try
-            {
+            
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8000");
                 //Báo cáo giữa kỳ nói dùng HTTPS
