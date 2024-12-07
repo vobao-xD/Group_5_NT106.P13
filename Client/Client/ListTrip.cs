@@ -20,51 +20,48 @@ namespace Client
 
         private void ListTrip_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(response);
+            //MessageBox.Show(response);
             ProcessResponse(response);
         }
         public string? response = Home.response;
         public void ProcessResponse(string response)
         {
-            MessageBox.Show(response);
+            ///MessageBox.Show(response);
             if (response == null) { return; }
             try
             {
                 List<Trips>? list = JsonConvert.DeserializeObject<List<Trips>>(response);
                 if (list == null) { return; }
-                foreach (var trip in list) 
+                
+                foreach (var trip in list)
                 {
                     string[] tripinfo = { trip.TripId.ToString(), trip.TripName, trip.DepartLocation, trip.ArrivalLocation, trip.DepartureDate, trip.Status.ToString(), trip.Plate.ToString() };
                     ListViewItem item = new ListViewItem(tripinfo);
                     ListViewItem a = listView1.Items.Add(item);
-                    
+
                 }
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-    }
 
-    
-
-    public class Trips
-    {
-        public int TripId { get; set; }
-        public string? TripName { get; set; }
-        public string? DepartLocation { get; set; }
-        public string? ArrivalLocation { get; set; }
-        public string? DepartureDate { get; set; }
-        public int? Status { get; set; }
-        public string? Plate { get; set; }
-        public Trips(int tripId, string? tripName, string? departLocation, string? arrivalLocation, string? departureDate, int? status, string? plate)
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            TripId = tripId;
-            TripName = tripName;
-            DepartLocation = departLocation;
-            ArrivalLocation = arrivalLocation;
-            DepartureDate = departureDate;
-            Status = status;
-            this.Plate = plate;
+            MessageBox.Show("ok");
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(listView1.SelectedItems.Count.ToString());
+        }
+
+        private void btnReserve_Click(object sender, EventArgs e)
+        {
+            ReserveTicket ins = new();
         }
     }
+
+
+
+    
 }

@@ -46,8 +46,6 @@
             label4 = new Label();
             ReturnDate = new DateTimePicker();
             btnSearch = new Button();
-            label5 = new Label();
-            NumOfTicket = new DomainUpDown();
             label6 = new Label();
             DepartDate = new DateTimePicker();
             ReturnTime = new ComboBox();
@@ -238,45 +236,6 @@
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(1053, 316);
-            label5.Name = "label5";
-            label5.Size = new Size(51, 23);
-            label5.TabIndex = 19;
-            label5.Text = "Số vé";
-            // 
-            // NumOfTicket
-            // 
-            NumOfTicket.Items.Add("1");
-            NumOfTicket.Items.Add("2");
-            NumOfTicket.Items.Add("3");
-            NumOfTicket.Items.Add("4");
-            NumOfTicket.Items.Add("5");
-            NumOfTicket.Items.Add("6");
-            NumOfTicket.Items.Add("7");
-            NumOfTicket.Items.Add("8");
-            NumOfTicket.Items.Add("9");
-            NumOfTicket.Items.Add("10");
-            NumOfTicket.Items.Add("11");
-            NumOfTicket.Items.Add("12");
-            NumOfTicket.Items.Add("13");
-            NumOfTicket.Items.Add("14");
-            NumOfTicket.Items.Add("15");
-            NumOfTicket.Items.Add("16");
-            NumOfTicket.Items.Add("17");
-            NumOfTicket.Items.Add("18");
-            NumOfTicket.Items.Add("19");
-            NumOfTicket.Items.Add("20");
-            NumOfTicket.Location = new Point(1053, 350);
-            NumOfTicket.Name = "NumOfTicket";
-            NumOfTicket.Size = new Size(150, 27);
-            NumOfTicket.TabIndex = 20;
-            NumOfTicket.Text = "0";
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -324,8 +283,6 @@
             ClientSize = new Size(1440, 723);
             Controls.Add(DepartTime);
             Controls.Add(ReturnTime);
-            Controls.Add(NumOfTicket);
-            Controls.Add(label5);
             Controls.Add(btnSearch);
             Controls.Add(DepartDate);
             Controls.Add(ReturnDate);
@@ -377,8 +334,6 @@
         private Label label4;
         private DateTimePicker ReturnDate;
         private Button btnSearch;
-        private Label label5;
-        private DomainUpDown NumOfTicket;
         private Label label6;
         private DateTimePicker DepartDate;
         private ComboBox ReturnTime;

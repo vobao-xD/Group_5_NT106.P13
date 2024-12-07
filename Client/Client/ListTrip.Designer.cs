@@ -29,24 +29,35 @@
         private void InitializeComponent()
         {
             listView1 = new ListView();
+            id = new ColumnHeader();
             name = new ColumnHeader();
             depart = new ColumnHeader();
             arrive = new ColumnHeader();
             time = new ColumnHeader();
             status = new ColumnHeader();
             plate = new ColumnHeader();
-            id = new ColumnHeader();
+            btnReserve = new Button();
             SuspendLayout();
             // 
             // listView1
             // 
+            listView1.CheckBoxes = true;
             listView1.Columns.AddRange(new ColumnHeader[] { id, name, depart, arrive, time, status, plate });
+            listView1.FullRowSelect = true;
             listView1.Location = new Point(12, 12);
+            listView1.MultiSelect = false;
             listView1.Name = "listView1";
-            listView1.Size = new Size(1108, 426);
+            listView1.Size = new Size(1108, 379);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            // 
+            // id
+            // 
+            id.Text = "Mã Chuyến Đi";
+            id.TextAlign = HorizontalAlignment.Center;
+            id.Width = 150;
             // 
             // name
             // 
@@ -79,17 +90,23 @@
             plate.Text = "Biển Số Xe";
             plate.Width = 150;
             // 
-            // id
+            // btnReserve
             // 
-            id.Text = "Mã Chuyến Đi";
-            id.TextAlign = HorizontalAlignment.Center;
-            id.Width = 150;
+            btnReserve.Enabled = false;
+            btnReserve.Location = new Point(973, 409);
+            btnReserve.Name = "btnReserve";
+            btnReserve.Size = new Size(147, 29);
+            btnReserve.TabIndex = 1;
+            btnReserve.Text = "Đặt vé";
+            btnReserve.UseVisualStyleBackColor = true;
+            btnReserve.Click += btnReserve_Click;
             // 
             // ListTrip
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1133, 450);
+            Controls.Add(btnReserve);
             Controls.Add(listView1);
             Name = "ListTrip";
             Text = "ListTrip";
@@ -107,5 +124,6 @@
         private ColumnHeader status;
         private ColumnHeader plate;
         private ColumnHeader id;
+        private Button btnReserve;
     }
 }

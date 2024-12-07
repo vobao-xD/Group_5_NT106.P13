@@ -72,3 +72,4 @@ D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windo
 D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.pdb
 D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ReserveTicket.resources

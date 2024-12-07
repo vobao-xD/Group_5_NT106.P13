@@ -67,7 +67,7 @@ class ConnectDB:
         rows = Cursor.fetchall()
         if rows:
             for row in rows:
-                listTrips.append({"TripID": row[0], "TripName": row[1], "DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S'), "Status": row[5], "Plate": row[6]})
+                listTrips.append({"TripID": row[0], "TripName": row[1], "DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S'), "Status": row[5], "Plate": row[6], "Price":row[7]})
         return listTrips
     
     #@staticmethod
@@ -113,7 +113,8 @@ class ConnectDB:
         return {"FeedbackID": row[0], "UserName": row[1], "Content": row[2]}
     
 
-
+    def GetAvailableTicket(self):
+        pass
     
 
 

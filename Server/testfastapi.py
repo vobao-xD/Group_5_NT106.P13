@@ -1,8 +1,7 @@
 from fastapi import FastAPI, Query, HTTPException
 from typing import Optional
 import ConnectDB
-import uvicorn
-from pydantic import BaseModel
+
 
 app = FastAPI()
 
@@ -24,3 +23,8 @@ async def GetAllTrip(
 async def GetTicket(usr: str, tick: int):
     return ConnectDB.ConnectDB.GetTicket(ConnectDB.ConnectDB, usr, tick)
 
+
+
+@app.post("/tickets")
+async def GetAvailableTicket():
+    return ConnectDB.ConnectDB.GetAvailableTicket()
