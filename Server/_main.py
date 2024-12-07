@@ -1,24 +1,11 @@
 import logging
 from fastapi import FastAPI, HTTPException
 import pyodbc
+from ConnectDB import connect_to_sql_server
+from models_for_server import *
 from pydantic import BaseModel
 
 app = FastAPI()
-
-def connect_to_sql_server():
-    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
-                          'SERVER=DESKTOP-R273SF4;'
-                          'DATABASE=bus_server_prod;'
-                          'Trusted_Connection=yes;')
-    return conn
-
-class User(BaseModel):
-    username: str
-    password: str
-    fullname: str
-    email: str
-    userroleid: int
-
 @app.post("/create_user/")
 def create_user(user: User):
     try:
@@ -43,6 +30,8 @@ def create_user(user: User):
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+
 
 
 if __name__ == "__main__":

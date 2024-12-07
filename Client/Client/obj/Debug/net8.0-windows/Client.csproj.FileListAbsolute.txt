@@ -41,3 +41,9 @@ D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\refint\C
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.pdb
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MailKit.dll
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MimeKit.dll
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Authentication.resources
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
