@@ -37,8 +37,8 @@ BEGIN
 END;
 
 CREATE PROCEDURE prod_check_login
-    @username NVARCHAR(50),
-    @password NVARCHAR(50)
+    @username NVARCHAR(100),
+    @password NVARCHAR(100)
 AS
 BEGIN
     SELECT Id, FullName
