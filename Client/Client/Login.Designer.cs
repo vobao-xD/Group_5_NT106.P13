@@ -121,6 +121,7 @@
             btnSignUp.TabIndex = 7;
             btnSignUp.Text = "Đăng kí";
             btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
             // 
             // Login
             // 

@@ -47,10 +47,15 @@
             label4 = new Label();
             dateTimePicker1 = new DateTimePicker();
             btnSearch = new Button();
+            statusStrip1 = new StatusStrip();
+            labelUsername = new ToolStripStatusLabel();
+            labelUserEmail = new ToolStripStatusLabel();
+            labelLogout = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -240,12 +245,45 @@
             btnSearch.Text = "Tìm chuyến xe";
             btnSearch.UseVisualStyleBackColor = false;
             // 
+            // statusStrip1
+            // 
+            statusStrip1.ImageScalingSize = new Size(20, 20);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { labelUsername, labelUserEmail, labelLogout });
+            statusStrip1.Location = new Point(0, 697);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(1440, 26);
+            statusStrip1.TabIndex = 19;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // labelUsername
+            // 
+            labelUsername.Name = "labelUsername";
+            labelUsername.Size = new Size(78, 20);
+            labelUsername.Text = "UserName";
+            // 
+            // labelUserEmail
+            // 
+            labelUserEmail.ForeColor = Color.Pink;
+            labelUserEmail.Name = "labelUserEmail";
+            labelUserEmail.Size = new Size(46, 20);
+            labelUserEmail.Text = "Email";
+            // 
+            // labelLogout
+            // 
+            labelLogout.ForeColor = Color.Red;
+            labelLogout.LinkColor = Color.Red;
+            labelLogout.Name = "labelLogout";
+            labelLogout.Size = new Size(56, 20);
+            labelLogout.Text = "Logout";
+            labelLogout.Click += labelLogout_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1440, 723);
+            Controls.Add(statusStrip1);
             Controls.Add(btnSearch);
             Controls.Add(dateTimePicker1);
             Controls.Add(label4);
@@ -273,6 +311,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -297,5 +337,9 @@
         private Label label4;
         private DateTimePicker dateTimePicker1;
         private Button btnSearch;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel labelUsername;
+        private ToolStripStatusLabel labelUserEmail;
+        private ToolStripStatusLabel labelLogout;
     }
 }

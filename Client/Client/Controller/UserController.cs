@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,28 @@ namespace Client.Controller
 
             var responseContent = await response.Content.ReadAsStringAsync();
             return responseContent;
+        }
+        public async Task<UserInfo> UserInfoAsync(string username, string password)
+        {
+            var loginURL = "http://127.0.0.1:8002/userinfo/";
+            var loginData = new
+            {
+                username = username,
+                password = password
+            };
+
+            var content = new StringContent(JsonSerializer.Serialize(loginData), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(loginURL, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var userinfo = JsonSerializer.Deserialize<UserInfo>(responseContent);
+            return userinfo;
         }
     }
 }

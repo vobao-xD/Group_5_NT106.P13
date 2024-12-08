@@ -16,3 +16,6 @@ class User(BaseModel):
     fullname: str
     email: str
     userroleid: int
+
+class TicketInfoReq(BaseModel):
+    customerid: int

@@ -54,6 +54,7 @@ namespace Client
             }
 
             var loginResult = await _userController.LoginAsync(username, password);
+            var userInfo = await _userController.UserInfoAsync(username, password);
 
             if (loginResult.Contains("Error"))
             {
@@ -64,10 +65,16 @@ namespace Client
                 MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Xử lý logic tiếp theo, ví dụ: chuyển sang form chính
-                Home home = new Home();
+                Home home = new Home(userInfo);
                 home.ShowDialog();
                 this.Hide();
             }
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            SignUp signUp = new SignUp();
+            signUp.ShowDialog();
         }
     }
 }

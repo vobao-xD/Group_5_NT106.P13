@@ -22,7 +22,9 @@ namespace Client
         {
             if (txtOTP.Text == _otp)
             {
-                MessageBox.Show($"User Authenticated. Welcome to our platform!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"User Authenticated. Please Sign in to continue.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Login login = new Login();
+                login.ShowDialog();
             }
             else
             {

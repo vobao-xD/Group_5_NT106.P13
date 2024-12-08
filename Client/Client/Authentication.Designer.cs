@@ -59,6 +59,7 @@
             // 
             // txtOTP
             // 
+            txtOTP.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtOTP.Location = new Point(210, 110);
             txtOTP.Multiline = true;
             txtOTP.Name = "txtOTP";
