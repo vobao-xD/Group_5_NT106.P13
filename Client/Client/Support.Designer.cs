@@ -275,6 +275,7 @@
             btnSend.TabIndex = 37;
             btnSend.Text = "Gửi";
             btnSend.UseVisualStyleBackColor = false;
+            btnSend.Click += btnSend_Click;
             // 
             // Support
             // 

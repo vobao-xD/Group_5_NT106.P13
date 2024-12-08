@@ -31,7 +31,41 @@ def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
 
+@app.post("/login/")
+def login_user(login: LoginRequest):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_check_login ?, ?", login.username, login.password)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            user_id = row[0]
+            fullname = row[1]
+            logging.info(f"User {login.username} authenticated successfully.")
+            return {
+                "UserId": user_id,
+                "FullName": fullname,
+                "Message": "Login successful"
+            }
+        else:
+            logging.warning(f"Invalid login attempt for user: {login.username}")
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
 
 if __name__ == "__main__":

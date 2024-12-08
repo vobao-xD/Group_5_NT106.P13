@@ -35,3 +35,14 @@ BEGIN
 
     SELECT Id, Message FROM @Result; -- Kết quả trả về từ bảng tạm.
 END;
+
+CREATE PROCEDURE prod_check_login
+    @username NVARCHAR(50),
+    @password NVARCHAR(50)
+AS
+BEGIN
+    SELECT Id, FullName
+    FROM Users
+    WHERE Username = @username AND Password = @password;
+
+END;

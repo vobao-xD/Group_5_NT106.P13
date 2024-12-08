@@ -12,6 +12,7 @@ create table _User_
 	Phone varchar(100),
 	IsActive BIT
 )
+select * from _User_
 ---------------------------------------------
 -- UserRole
 create table UserRole

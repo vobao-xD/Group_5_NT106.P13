@@ -36,5 +36,26 @@ namespace Client.Controller
             var responseContent = await response.Content.ReadAsStringAsync();
             return $"Sign Up Successfully";
         }
+        public async Task<string> LoginAsync(string username, string password)
+        {
+            var loginURL = "http://127.0.0.1:8002/login/";
+            var loginData = new
+            {
+                username = username,
+                password = password
+            };
+
+            var content = new StringContent(JsonSerializer.Serialize(loginData), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(loginURL, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                return $"Error: {response.StatusCode}: {errorContent}";
+            }
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            return responseContent;
+        }
     }
 }
