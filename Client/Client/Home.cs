@@ -41,7 +41,7 @@ namespace Client
                 string encode;
                 if (chkboxRoundtrip.Checked == true) encode = "/trips?" + request + fromtime + totime + param;
                 else encode = "/trips?" + request + fromtime + param;
-            MessageBox.Show(encode);
+            //MessageBox.Show(encode);
             
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8000");

@@ -1,6 +1,13 @@
 from fastapi import FastAPI, Query, HTTPException
-from typing import Optional
+from typing import Optional, List
+from pydantic import BaseModel
 import ConnectDB
+
+class Reserve(BaseModel):
+    UserId: int
+    TripId: int
+    Plate: str
+    SeatId: List[str]
 
 
 app = FastAPI()
@@ -16,7 +23,11 @@ async def GetAllTrip(
 ):
     return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time, is_return)
 
-
+@app.get("/seats")
+async def GetUnavailableSeat(
+    plate: str = Query(..., alias="plate")
+):
+    return ConnectDB.ConnectDB.GetUnavailableSeat(ConnectDB.ConnectDB,plate)
 
 
 @app.get("/tickets/{usr}")
@@ -25,6 +36,9 @@ async def GetTicket(usr: str, tick: int):
 
 
 
-@app.post("/tickets")
-async def GetAvailableTicket():
-    return ConnectDB.ConnectDB.GetAvailableTicket()
+
+@app.post("/reserve")
+async def PostReserve(reserve: Reserve):
+    reserve_dict = reserve.model_dump()
+    print(reserve_dict)
+

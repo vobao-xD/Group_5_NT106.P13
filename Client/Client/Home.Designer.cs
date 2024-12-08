@@ -191,6 +191,7 @@
             cmbBoxDeparture.Name = "cmbBoxDeparture";
             cmbBoxDeparture.Size = new Size(251, 36);
             cmbBoxDeparture.TabIndex = 14;
+            cmbBoxDeparture.Text = "Hà Nội";
             // 
             // cmbBoxDestination
             // 
@@ -201,6 +202,7 @@
             cmbBoxDestination.Name = "cmbBoxDestination";
             cmbBoxDestination.Size = new Size(251, 36);
             cmbBoxDestination.TabIndex = 15;
+            cmbBoxDestination.Text = "TP.HCM";
             // 
             // label4
             // 
@@ -274,6 +276,7 @@
             DepartTime.Name = "DepartTime";
             DepartTime.Size = new Size(133, 28);
             DepartTime.TabIndex = 22;
+            DepartTime.Text = "17:00";
             // 
             // Home
             // 

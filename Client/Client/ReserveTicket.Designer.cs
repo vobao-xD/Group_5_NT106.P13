@@ -63,7 +63,6 @@
             // 
             checkedListBox1.ColumnWidth = 60;
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10" });
             checkedListBox1.Location = new Point(110, 119);
             checkedListBox1.MultiColumn = true;
             checkedListBox1.Name = "checkedListBox1";
@@ -89,6 +88,7 @@
             btnPay.TabIndex = 16;
             btnPay.Text = "Thanh toán";
             btnPay.UseVisualStyleBackColor = true;
+            btnPay.Click += btnPay_Click;
             // 
             // ReserveTicket
             // 
@@ -103,6 +103,7 @@
             Controls.Add(pictureBox1);
             Name = "ReserveTicket";
             Text = "ReserveTicket";
+            Load += ReserveTicket_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);

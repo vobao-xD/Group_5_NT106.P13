@@ -5,6 +5,7 @@ import pyodbc
 
 from datetime import datetime
 import json
+from typing import Optional, List
 from urllib.parse import unquote
 
 
@@ -116,8 +117,42 @@ class ConnectDB:
     def GetAvailableTicket(self):
         pass
     
+    def GetUnavailableSeat(self,plate: str) -> list | None:
+        listSeat: list = []
+        try:
+            Cursor = self.Connector.cursor()
+            Cursor.execute(f"EXEC GetUnavailableSeat @plate = ?", unquote(plate))
+            if Cursor.rowcount == 0:
+                print('Plate number not found')
+                return listSeat
+            else:
+                print('Success')
+        except Exception as e:
+            print(str(e))
+            return
+        seats = Cursor.fetchall()
+        for seat in seats:
+            listSeat.append(seat[0])
+        return listSeat
+    
+    def PostReserve(self, userid: int, tripid: int, plate: str, seatid: List):
+        try:
+            Cursor = self.Connector.cursor()
+            Cursor.execute(f"EXEC AddSeats @userid = ?,@tripid = ? , @plate = ?,@seatid=?", unquote(userid), tripid, plate, seatid)
+            if Cursor.rowcount == 0:
+                print('Unable to execute command')
+                return 
+            else:
+                print('Execute complete')
+        except pyodbc.Error as e:
+            print(str(e))
+        except Exception as e:
+            print(str(e))
+            return
+        
 
 
+    
 #connector = ConnectDB()
 
 #print(connector.GetUserName('abc','123'))
@@ -125,5 +160,5 @@ class ConnectDB:
 
 
 
-#y = JSONOutput(connector.GetTrip('B', 'A', '2024-06-20', '2024-01-10'))
+#y = JSONOutput(connector.GetUnavailableSeat('ABC-123'))
 #print(y)
