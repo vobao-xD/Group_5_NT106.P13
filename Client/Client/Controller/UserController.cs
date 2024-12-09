@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace Client.Controller
             var responseContent = await response.Content.ReadAsStringAsync();
             return $"Sign Up Successfully";
         }
-        public async Task<string> LoginAsync(string username, string password)
+        public async Task<AuthToken> LoginAsync(string username, string password)
         {
             var loginURL = "http://127.0.0.1:8002/login/";
             var loginData = new
@@ -52,13 +53,14 @@ namespace Client.Controller
             if (!response.IsSuccessStatusCode)
             {
                 var errorContent = await response.Content.ReadAsStringAsync();
-                return $"Error: {response.StatusCode}: {errorContent}";
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
             }
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            return responseContent;
+            var authToken = JsonSerializer.Deserialize<AuthToken>(responseContent);
+            return authToken;
         }
-        public async Task<UserInfo> UserInfoAsync(string username, string password)
+        public async Task<UserInfo> UserInfoAsync(string username, string password, AuthToken authToken)
         {
             var loginURL = "http://127.0.0.1:8002/userinfo/";
             var loginData = new
@@ -68,6 +70,8 @@ namespace Client.Controller
             };
 
             var content = new StringContent(JsonSerializer.Serialize(loginData), Encoding.UTF8, "application/json");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authToken.TokenType, authToken.AccessToken);
+
             var response = await _httpClient.PostAsync(loginURL, content);
 
             if (!response.IsSuccessStatusCode)

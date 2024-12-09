@@ -44,30 +44,38 @@ namespace Client
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtLoginName.Text;
-            string password = HashPassword(txtPassword.Text);
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            try
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                string username = txtLoginName.Text;
+                string password = HashPassword(txtPassword.Text);
+
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var loginResult = await _userController.LoginAsync(username, password);
+                var userInfo = await _userController.UserInfoAsync(username, password, loginResult);
+
+                if (loginResult == null || loginResult.Message.Contains("Error"))
+                {
+                    MessageBox.Show($"Đăng nhập thất bại: {loginResult?.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                {
+                    MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Xử lý logic tiếp theo, ví dụ: chuyển sang form chính
+                    Home home = new Home(userInfo);
+                    home.ShowDialog();
+                    this.Hide();
+                }
             }
-
-            var loginResult = await _userController.LoginAsync(username, password);
-            var userInfo = await _userController.UserInfoAsync(username, password);
-
-            if (loginResult.Contains("Error"))
+            catch (Exception ex)
             {
-                MessageBox.Show($"Đăng nhập thất bại: {loginResult}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Xử lý logic tiếp theo, ví dụ: chuyển sang form chính
-                Home home = new Home(userInfo);
-                home.ShowDialog();
-                this.Hide();
+                MessageBox.Show($"Đăng nhập thất bại: Sai thông tin username hoặc password", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

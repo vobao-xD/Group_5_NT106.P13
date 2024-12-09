@@ -81,7 +81,8 @@ def login_user(login: LoginRequest):
                 "UserId": user_id,
                 "FullName": fullname,
                 "Message": "Login successful",
-                "Token": token
+                "TokenType": "Bearer",
+                "AccessToken": token
             }
         else:
             logging.warning(f"Invalid login attempt for user: {login.username}")
