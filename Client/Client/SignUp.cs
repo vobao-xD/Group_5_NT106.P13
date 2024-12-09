@@ -212,6 +212,8 @@ SendEmail(string toEmail, string otp)
                 Authentication authentication = new Authentication(otp);
                 authentication.ShowDialog();
                 MessageBox.Show(signUpResult, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Login login = new Login();
+                login.ShowDialog();
             }
             catch (Exception ex)
             {
