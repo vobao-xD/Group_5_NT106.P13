@@ -107,7 +107,7 @@ def user_info(ticketinfo: TicketInfoReq):
         conn = connect_to_sql_server()
         cursor = conn.cursor()
 
-        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticket_id)
+        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.customerid)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
@@ -125,6 +125,7 @@ def user_info(ticketinfo: TicketInfoReq):
                 "TicketId": ticket_id,
                 "NumberOfTicket": number_of_ticket,
                 "TimeTicketAvailable": time_ticket_avai,
+                "TypeOfTicket": type_of_ticket,
                 "SeasonId": season_id,
                 "IsActive": is_active,
                 "CustomerId": customer_id
