@@ -1,9 +1,29 @@
 import logging
-from fastapi import FastAPI, HTTPException
+from datetime import datetime, timedelta
+from fastapi import FastAPI, HTTPException, Depends
+from fastapi.security import OAuth2PasswordBearer, HTTPAuthorizationCredentials, HTTPBearer
 import pyodbc
+import jwt
 from ConnectDB import connect_to_sql_server
 from models_for_server import *
 from pydantic import BaseModel
+import secrets
+
+def generate_secret_key():
+    return secrets.token_hex(32)
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+secret_key = generate_secret_key()
+print(secret_key)
+
+def verify_token(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
+    try:
+        payload = jwt.decode(credentials.credentials, secret_key, algorithms=["HS256"])
+        return payload
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
 
 app = FastAPI()
 
@@ -52,10 +72,16 @@ def login_user(login: LoginRequest):
             user_id = row[0]
             fullname = row[1]
             logging.info(f"User {login.username} authenticated successfully.")
+            token = jwt.encode({
+                'user_id': user_id,
+                'username': login.username,
+                'exp': datetime.utcnow() + timedelta(hours=1)
+            }, secret_key, algorithm="HS256")
             return {
                 "UserId": user_id,
                 "FullName": fullname,
-                "Message": "Login successful"
+                "Message": "Login successful",
+                "Token": token
             }
         else:
             logging.warning(f"Invalid login attempt for user: {login.username}")
@@ -68,9 +94,24 @@ def login_user(login: LoginRequest):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/userinfo/")
-def user_info(login: LoginRequest):
+@app.get("/protected")
+def protected_route(token: str = Depends(oauth2_scheme)):
     try:
+        payload = jwt.decode(token, secret_key, algorithms=["HS256"])
+        username = payload.get("username")
+        return {"message": f"Hello {username}, you are authorized!"}
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+@app.post("/userinfo/")
+def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
+    try:
+        token_username = token.get("username")
+        if token_username != login.username:
+            raise HTTPException(status_code=403, detail="Token does not match username")
+
         conn = connect_to_sql_server()
         cursor = conn.cursor()
 
