@@ -6,7 +6,6 @@ import pyodbc
 import jwt
 from ConnectDB import connect_to_sql_server
 from models_for_server import *
-from pydantic import BaseModel
 import secrets
 
 def generate_secret_key():
@@ -51,10 +50,6 @@ def create_user(user: User):
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
 
 @app.post("/login/")
 def login_user(login: LoginRequest):

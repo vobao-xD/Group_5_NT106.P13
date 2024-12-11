@@ -3,78 +3,99 @@
   "WorkspaceRootPath": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\authentication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\model\\authtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\model\\authtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\model\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\model\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\ticketinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\ticketinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 204,
+      "VerticalTabListWidth": 163,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Home.cs",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
+              "RelativeDocumentMoniker": "Client\\Home.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
+              "RelativeToolTip": "Client\\Home.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAhwC8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T12:15:12.13Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
+              "RelativeDocumentMoniker": "Client\\Login.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
+              "RelativeToolTip": "Client\\Login.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T04:03:09.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "Client\\Controller\\UserController.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
+              "RelativeToolTip": "Client\\Controller\\UserController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:38:45.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Schedule.cs [Design]",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs",
+              "RelativeDocumentMoniker": "Client\\Schedule.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs [Design]",
+              "RelativeToolTip": "Client\\Schedule.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:34:43.848Z",
+              "EditorCaption": " [Design]"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -101,112 +122,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SignUp.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\SignUp.cs",
-              "RelativeDocumentMoniker": "Client\\SignUp.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\SignUp.cs",
-              "RelativeToolTip": "Client\\SignUp.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAIwNcAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T11:41:00.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AuthToken.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Model\\AuthToken.cs",
-              "RelativeDocumentMoniker": "Client\\Model\\AuthToken.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Model\\AuthToken.cs",
-              "RelativeToolTip": "Client\\Model\\AuthToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T02:54:29.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Authentication.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Authentication.cs",
-              "RelativeDocumentMoniker": "Client\\Authentication.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Authentication.cs",
-              "RelativeToolTip": "Client\\Authentication.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:42:55.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAALQUAAAAAAAAAAAAwMkUAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-12-08T11:32:55.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Home.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeDocumentMoniker": "Client\\Home.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeToolTip": "Client\\Home.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAD4vyoAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:20:25.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
-              "RelativeDocumentMoniker": "Client\\Login.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
-              "RelativeToolTip": "Client\\Login.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAUwDQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:19:06.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UserInfo.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Model\\UserInfo.cs",
-              "RelativeDocumentMoniker": "Client\\Model\\UserInfo.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Model\\UserInfo.cs",
-              "RelativeToolTip": "Client\\Model\\UserInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:15:38.266Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
-              "RelativeDocumentMoniker": "Client\\Controller\\UserController.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
-              "RelativeToolTip": "Client\\Controller\\UserController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAEwDcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:11:17.769Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
               "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Program.cs",
               "RelativeToolTip": "Client\\Program.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAEwA0AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:24.574Z"
+              "WhenOpened": "2024-12-07T11:27:54.886Z"
             },
             {
               "$type": "Bookmark",
@@ -217,84 +141,42 @@
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Authentication.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Authentication.cs",
-              "RelativeDocumentMoniker": "Client\\Authentication.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Authentication.cs [Design]",
-              "RelativeToolTip": "Client\\Authentication.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:34:24.766Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Home.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeDocumentMoniker": "Client\\Home.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
-              "RelativeToolTip": "Client\\Home.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T11:26:32.86Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Support.cs [Design]",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
+              "RelativeDocumentMoniker": "Client\\Support.cs",
+              "ToolTip": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Support.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Support.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T07:08:03.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
+              "RelativeDocumentMoniker": "Client\\Home.cs",
+              "ToolTip": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:07:13.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Login.cs [Design]",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
               "RelativeDocumentMoniker": "Client\\Login.cs",
               "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs [Design]",
               "RelativeToolTip": "Client\\Login.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:28.504Z",
+              "WhenOpened": "2024-12-01T08:50:08.911Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "TicketInfor.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\TicketInfor.cs",
-              "RelativeDocumentMoniker": "Client\\TicketInfor.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\TicketInfor.cs [Design]",
-              "RelativeToolTip": "Client\\TicketInfor.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:21.481Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Support.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
-              "RelativeDocumentMoniker": "Client\\Support.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Support.cs [Design]",
-              "RelativeToolTip": "Client\\Support.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:20.096Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SignUp.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\SignUp.cs",
-              "RelativeDocumentMoniker": "Client\\SignUp.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\SignUp.cs [Design]",
-              "RelativeToolTip": "Client\\SignUp.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:19.023Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Schedule.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs",
-              "RelativeDocumentMoniker": "Client\\Schedule.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs [Design]",
-              "RelativeToolTip": "Client\\Schedule.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-08T10:23:06.85Z"
             }
           ]
         }
