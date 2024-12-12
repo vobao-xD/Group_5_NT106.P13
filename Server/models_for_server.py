@@ -13,7 +13,7 @@ class User(BaseModel):
     userroleid: int
 
 class TicketInfoReq(BaseModel):
-    customerid: int
+    ticketId: str
 
 class LoginRequest(BaseModel):
     username: str

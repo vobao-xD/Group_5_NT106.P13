@@ -144,28 +144,23 @@ def user_info(ticketinfo: TicketInfoReq):
         conn = connect_to_sql_server()
         cursor = conn.cursor()
 
-        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.customerid)
+        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticketId)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
         conn.close()
 
         if row:
-            ticket_id = row[0]
-            number_of_ticket = row[1]
-            time_ticket_avai = row[2]
-            type_of_ticket = row[3]
-            season_id = row[4]
-            is_active = row[5]
-            customer_id = row[6]
+            if row[0] == -1:
+                return {"Status": -1, "Message": row[1]}
+
+            trip_id = row[0]
+            trip_name = row[1]
+            plate_number = row[2]
             return {
-                "TicketId": ticket_id,
-                "NumberOfTicket": number_of_ticket,
-                "TimeTicketAvailable": time_ticket_avai,
-                "TypeOfTicket": type_of_ticket,
-                "SeasonId": season_id,
-                "IsActive": is_active,
-                "CustomerId": customer_id
+                "TripId": trip_id,
+                "TripName": trip_name,
+                "PlateNumber": plate_number
             }
         else:
             raise HTTPException(status_code=401, detail="Invalid username or password")
