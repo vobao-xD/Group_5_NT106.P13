@@ -15,10 +15,12 @@ namespace Client
 {
     public partial class Home : Form
     {
-        public Home(UserInfo userInfo)
+        private AuthToken _authToken;
+        public Home(UserInfo userInfo, AuthToken authToken)
         {
             InitializeComponent();
             DisplayUserInfo(userInfo);
+            _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
         }
         private void DisplayUserInfo(UserInfo userInfo)
         {

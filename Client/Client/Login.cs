@@ -68,7 +68,7 @@ namespace Client
                     MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Xử lý logic tiếp theo, ví dụ: chuyển sang form chính
-                    Home home = new Home(userInfo);
+                    Home home = new Home(userInfo, loginResult);
                     home.ShowDialog();
                     this.Hide();
                 }

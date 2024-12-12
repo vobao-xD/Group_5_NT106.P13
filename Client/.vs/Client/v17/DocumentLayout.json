@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +23,12 @@
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\Code GitHub\\Group_5_NT106.P13\\Client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\code github\\group_5_nt106.p13\\client\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,59 +42,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Home.cs",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeDocumentMoniker": "Client\\Home.cs",
               "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeToolTip": "Client\\Home.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAhwC8AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-04T12:15:12.13Z",
               "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
-              "RelativeDocumentMoniker": "Client\\Login.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
-              "RelativeToolTip": "Client\\Login.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAwCsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T04:03:09.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
-              "RelativeDocumentMoniker": "Client\\Controller\\UserController.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
-              "RelativeToolTip": "Client\\Controller\\UserController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T03:38:45.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Schedule.cs [Design]",
-              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs",
-              "RelativeDocumentMoniker": "Client\\Schedule.cs",
-              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs [Design]",
-              "RelativeToolTip": "Client\\Schedule.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T03:34:43.848Z",
-              "EditorCaption": " [Design]"
             },
             {
               "$type": "Bookmark",
@@ -121,6 +83,35 @@
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
+              "RelativeDocumentMoniker": "Client\\Login.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
+              "RelativeToolTip": "Client\\Login.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwEYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T04:03:09.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "Client\\Controller\\UserController.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Controller\\UserController.cs",
+              "RelativeToolTip": "Client\\Controller\\UserController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:38:45.949Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Program.cs",
@@ -133,6 +124,17 @@
               "WhenOpened": "2024-12-07T11:27:54.886Z"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Schedule.cs [Design]",
+              "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs",
+              "RelativeDocumentMoniker": "Client\\Schedule.cs",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Schedule.cs [Design]",
+              "RelativeToolTip": "Client\\Schedule.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:34:43.848Z"
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
@@ -141,12 +143,8 @@
               "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Support.cs [Design]",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
               "RelativeDocumentMoniker": "Client\\Support.cs",
@@ -157,18 +155,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Home.cs [Design]",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeDocumentMoniker": "Client\\Home.cs",
-              "ToolTip": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
+              "ToolTip": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
+              "RelativeToolTip": "Client\\Home.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T16:07:13.836Z"
+              "WhenOpened": "2024-12-05T16:07:13.836Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Login.cs [Design]",
               "DocumentMoniker": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
               "RelativeDocumentMoniker": "Client\\Login.cs",
