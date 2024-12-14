@@ -1,144 +1,84 @@
-﻿create database bus_server_prod
+-- Table: User
+
+CREATE DATABASE Bus_server_prod
+GO
+USE Bus_server_prod
 GO
 
-use bus_server_prod
-GO
-------------------------------------------------
--- table user
-create table _User_
-(
-	UserId INT NOT NULL PRIMARY KEY,
-	UserName varchar(100),
-	Phone varchar(100),
-	IsActive BIT
-)
----------------------------------------------
--- UserRole
-create table UserRole
-(
-	UserId INT NOT NULL PRIMARY KEY,
-	UserTitleId INT NOT NULL
-)
----------------------------------------------
--- UserTitle
-create table UserTitle
-(
-	UserTitleId INT NOT NULL PRIMARY KEY,
-	UserTitleName VARCHAR(100)
-)
+CREATE TABLE [User] (
+    UserId INT PRIMARY KEY IDENTITY(1,1),
+    UserName NVARCHAR(100) NOT NULL,
+	[Password] VARCHAR(65) NOT NULL,
+    UserFullName NVARCHAR(200) NOT NULL,
+    Mail NVARCHAR(255) NOT NULL UNIQUE,
+    UserRoleId INT NOT NULL,
+    FOREIGN KEY (UserRoleId) REFERENCES UserRole(UserRoleId)
+);
 
----------------------------------------------
--- Customer
-create table Customer
-(
-	CustomerId int not null primary key,
-	CustomerName varchar(100),
-	CustomerTypeId int,
-	Phone varchar(100),
-	IsActive bit,
-	IsDeleted bit
-)
+-- Table: UserRole
+CREATE TABLE UserRole (
+    UserRoleId INT PRIMARY KEY IDENTITY(1,1),
+    UserRoleName NVARCHAR(100) NOT NULL UNIQUE
+);
 
----------------------------------------------
--- CustomerType
-create table CustomerType
-(
-	CustomerTypeId int not null primary key,
-	CustomerTypeName varchar(100),
-	IsActive bit
-)
+-- Table: Ticket
+CREATE TABLE Ticket (
+    TicketId INT PRIMARY KEY IDENTITY(1,1),
+    NumOfSeat INT NOT NULL,
+    TripId INT NOT NULL,
+    UserId INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    TicketDetailId INT NULL,
+    FOREIGN KEY (TripId) REFERENCES Trip(TripId),
+    FOREIGN KEY (UserId) REFERENCES [User](UserId)
+);
 
----------------------------------------------
--- Driver
-create table Driver
-(
-	DriverId int not null primary key,
-	DriverName varchar(100),
-	Phone varchar(100),
-	IsActive bit,
-	IsDeleted bit
-)
+-- Table: TicketDetail
+CREATE TABLE TicketDetail (
+    TicketDetailId INT PRIMARY KEY IDENTITY(1,1),
+    TicketId INT NOT NULL,
+    SeatId INT NOT NULL,
+    FOREIGN KEY (TicketId) REFERENCES Ticket(TicketId)
+);
 
----------------------------------------------
--- Staff
-create table Staff
-(
-	StaffId int not null primary key,
-	StaffName varchar(100),
-	Phone varchar(100),
-	IsActive bit,
-	IsDeleted bit
-)
+CREATE TABLE TripStatus (
+    TripStatusId INT PRIMARY KEY IDENTITY(1,1),
+    TripStatusName NVARCHAR(50) NOT NULL
+);
 
----------------------------------------------
--- Car
-create table Car
-(
-	CarId int not null primary key,
-	PlateNumber varchar(100), -- bien so xe
-	NumberOfSeat int,
-	DriverId int,
-	IsActive bit
-)
+-- Table: Trip
+CREATE TABLE Trip (
+    TripId INT PRIMARY KEY IDENTITY(1,1),
+    Plate NVARCHAR(50) NOT NULL,
+    DepartLocation NVARCHAR(255) NOT NULL,
+    ArriveLocation NVARCHAR(255) NOT NULL,
+    DepartTime DATETIME NOT NULL,
+	TripStatusId INT,
+    FOREIGN KEY (Plate) REFERENCES Bus(LicensePlate),
+	FOREIGN KEY (TripStatusId) REFERENCES TripStatus(TripStatusId)
+);
 
----------------------------------------------
--- Trip -- hanh trinh cua chuyen xe
-create table Trip
-(
-	TripId int not null primary key,
-	TripName varchar(100), 
-	DepartLocation varchar(100),
-	ArriveLocation varchar(100),
-	Route_ varchar(100), -- route co the la mang JSON mang diem dau va diem cuoi
-	TripStatusId int,
-	CarId int
-)
+-- Table: Bus
+CREATE TABLE Bus (
+    BusId INT PRIMARY KEY IDENTITY(1,1),
+    LicensePlate NVARCHAR(50) NOT NULL UNIQUE,
+    SeatNum INT NOT NULL CHECK (SeatNum > 0),
+	BusStatusId INT,
+	FOREIGN KEY (BusStatusId) REFERENCES BusStatus(BusStatusId)
+);
 
----------------------------------------------
--- TripStatus -- hoan thanh hay chua hoan thanh chuyen
-create table TripStatus
-(
-	TripStatusId int not null primary key,
-	TripStatusName varchar(100)
-)
+-- Table: Seat
+CREATE TABLE Seat (
+    LicensePlate NVARCHAR(50) NOT NULL,
+    SeatId INT NOT NULL,
+    SeatName NVARCHAR(50) NOT NULL,
+    IsBook BIT NOT NULL DEFAULT 0,
+    PRIMARY KEY (LicensePlate, SeatId),
+    FOREIGN KEY (LicensePlate) REFERENCES Bus(LicensePlate)
+);
 
----------------------------------------------
--- Ticket -- mỗi một người sẽ mua một lượt vé (có thể mua nhiều) thì sẽ thêm 1 bộ ở bảng này
-		  -- NumberOfTicket thể hiện số lượng vé mà người đó mua 
-create table Ticket
-(
-	TicketId int not null primary key,
-	NumberOfTicket int,
-	TimeTicketAvailabel varchar(100), -- thoi gian ma ve co the thay doi (24h,48h,...)
-	TypeOfTicket int, -- loai ve (first class, business, economic,...)
-	SeasonId int,
-	IsActive bit,
-	CustomerId int
-)
+CREATE TABLE BusStatus (
+    BusStatusId INT PRIMARY KEY IDENTITY(1,1),
+    BusStatusName NVARCHAR(50) NOT NULL
+);
 
----------------------------------------------
--- TicketType
-create table TicketType
-(
-	TicketTypeId int not null primary key,
-	TicketTypeName varchar(100), -- firstclass, business, economic
-	StandardTicketPrice money
-)
-
----------------------------------------------
--- Season
-create table Season
-(
-	SeasonId int not null primary key,
-	SeasonName varchar(100), -- firstclass, business, economic
-	BaseTicketPrice money
-)
-
----------------------------------------------
--- Feedback
-create table Feedback
-(
-	FeedbackId int not null primary key,
-	CustomerId int,
-	Description_ varchar(100)
-)
