@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|d:\\school\\nt106\\exercise3\\group_5_nt106.p13\\client\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Home.cs",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeDocumentMoniker": "Client\\Home.cs",
               "ToolTip": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeToolTip": "Client\\Home.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAhwC8AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAC8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-04T12:15:12.13Z",
               "IsPinned": true,
@@ -84,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Payment.cs [Design]",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Payment.cs",
               "RelativeDocumentMoniker": "Client\\Payment.cs",
@@ -96,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Home.cs [Design]",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
               "RelativeDocumentMoniker": "Client\\Home.cs",
@@ -108,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ReserveTicket.cs",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\ReserveTicket.cs",
               "RelativeDocumentMoniker": "Client\\ReserveTicket.cs",
@@ -121,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ReserveTicket.cs [Design]",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\ReserveTicket.cs",
               "RelativeDocumentMoniker": "Client\\ReserveTicket.cs",
@@ -133,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
@@ -141,18 +137,8 @@
               "RelativeToolTip": "Client\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T11:27:54.886Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Login.cs",
-              "RelativeDocumentMoniker": "Client\\Login.cs",
-              "ToolTip": "D:\\School\\NT106\\exercise3\\Group_5_NT106.P13\\Client\\Client\\Login.cs [Design]",
-              "RelativeToolTip": "Client\\Login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T08:50:08.911Z"
+              "WhenOpened": "2024-12-07T11:27:54.886Z",
+              "EditorCaption": ""
             }
           ]
         }

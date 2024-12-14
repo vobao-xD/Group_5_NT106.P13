@@ -45,7 +45,7 @@ namespace Client
             
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8000");
-                
+                    
 
                 HttpResponseMessage res = await client.GetAsync(encode);
 
