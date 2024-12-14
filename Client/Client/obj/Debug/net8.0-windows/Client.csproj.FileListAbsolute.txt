@@ -18,41 +18,59 @@ D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.g
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Home.resources
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.exe
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.deps.json
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.runtimeconfig.json
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.pdb
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Home.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Login.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.GeneratedMSBuildEditorConfig.editorconfig
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfoInputs.cache
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfo.cs
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.CoreCompileInputs.cache
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.sourcelink.json
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\refint\Client.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.pdb
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MailKit.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MimeKit.dll
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Authentication.resources
-D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MailKit.dll
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MimeKit.dll
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Authentication.resources
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
-D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Client.exe
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Client.deps.json
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Client.runtimeconfig.json
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Client.dll
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Client.pdb
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.Home.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.Login.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfoInputs.cache
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfo.cs
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.csproj.CoreCompileInputs.cache
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.sourcelink.json
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.dll
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\refint\Client.dll
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.pdb
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.ListTrip.resources
+D:\LTMCB\UI\Client\Client\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
+D:\LTMCB\UI\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.exe
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.deps.json
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.runtimeconfig.json
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Client.pdb
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Home.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ListTrip.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Login.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfoInputs.cache
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AssemblyInfo.cs
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.CoreCompileInputs.cache
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.sourcelink.json
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\refint\Client.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.pdb
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ReserveTicket.resources
+D:\School\NT106\exercise3\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Payment.resources
