@@ -1,7 +1,7 @@
 ﻿/*
 	DROP PROCEDURE  prod_create_user
-	EXEC prod_create_user 'testuser', 'sss', '111', 's', 1;
-	SELECT * FROM Users
+	EXEC prod_create_user 'sssss', 'sssss', 'sssss', 'sssss', 1;
+	SELECT * FROM [User]
 */
 CREATE PROCEDURE prod_create_user 
 (
@@ -22,8 +22,8 @@ BEGIN
     );
 
     BEGIN TRY
-        INSERT INTO Users (UserName, UserPassword, UserFullName , UserEmail, UserRoleId, IsActive)
-        VALUES (@userName, @passWord, @fullname, @email, @userroleid, 1);
+        INSERT INTO [User] (UserName, [Password], UserFullName , Mail, UserRoleId)
+        VALUES (@userName, @passWord, @fullname, @email, @userroleid);
 
         INSERT INTO @Result (Id, Message)
         VALUES (1, 'User created successfully');

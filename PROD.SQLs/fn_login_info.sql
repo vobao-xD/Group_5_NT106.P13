@@ -1,5 +1,5 @@
 /*
-	EXEC prod_check_login @username = 's', @password = '12345678a';
+	EXEC prod_check_login @username = 's', @password = 's';
 */
 CREATE PROCEDURE prod_check_login
     @username NVARCHAR(100),
@@ -7,6 +7,6 @@ CREATE PROCEDURE prod_check_login
 AS
 BEGIN
     SELECT UserId, UserFullName
-    FROM Users
-    WHERE UserName = @username AND UserPassword = @password;
+    FROM [User]
+    WHERE UserName = @username AND [Password] = @password;
 END;

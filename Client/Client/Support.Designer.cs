@@ -43,13 +43,11 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            txtDestEmail = new TextBox();
             txtFullName = new TextBox();
-            txtDepartureEmail = new TextBox();
-            txtPhoneNumber = new TextBox();
             txtSubject = new TextBox();
             txtContent = new TextBox();
             btnSend = new Button();
+            progressBarEmail = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -146,7 +144,7 @@
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(558, 249);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(786, 414);
+            pictureBox4.Size = new Size(786, 376);
             pictureBox4.TabIndex = 25;
             pictureBox4.TabStop = false;
             // 
@@ -205,71 +203,42 @@
             label6.TabIndex = 30;
             label6.Text = "Email: G5BUS@gmail.com";
             // 
-            // txtDestEmail
-            // 
-            txtDestEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDestEmail.Location = new Point(637, 265);
-            txtDestEmail.Name = "txtDestEmail";
-            txtDestEmail.Size = new Size(255, 34);
-            txtDestEmail.TabIndex = 31;
-            txtDestEmail.Text = "G5BUS@gmail.com";
-            // 
             // txtFullName
             // 
             txtFullName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFullName.ForeColor = Color.LightGray;
-            txtFullName.Location = new Point(1004, 265);
+            txtFullName.Location = new Point(637, 265);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(255, 34);
+            txtFullName.PlaceholderText = "Nhập họ và tên";
+            txtFullName.Size = new Size(622, 34);
             txtFullName.TabIndex = 32;
-            txtFullName.Text = "Nhập họ và tên";
-            // 
-            // txtDepartureEmail
-            // 
-            txtDepartureEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDepartureEmail.ForeColor = Color.LightGray;
-            txtDepartureEmail.Location = new Point(637, 342);
-            txtDepartureEmail.Name = "txtDepartureEmail";
-            txtDepartureEmail.Size = new Size(255, 34);
-            txtDepartureEmail.TabIndex = 33;
-            txtDepartureEmail.Text = "Nhập email";
-            // 
-            // txtPhoneNumber
-            // 
-            txtPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPhoneNumber.ForeColor = Color.LightGray;
-            txtPhoneNumber.Location = new Point(1004, 342);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(255, 34);
-            txtPhoneNumber.TabIndex = 34;
-            txtPhoneNumber.Text = "Nhập số điện thoại";
             // 
             // txtSubject
             // 
             txtSubject.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSubject.ForeColor = Color.LightGray;
-            txtSubject.Location = new Point(637, 405);
+            txtSubject.Location = new Point(637, 342);
             txtSubject.Name = "txtSubject";
+            txtSubject.PlaceholderText = "Nhập tiêu đề";
             txtSubject.Size = new Size(622, 34);
             txtSubject.TabIndex = 35;
-            txtSubject.Text = "Nhập tiêu đề";
             // 
             // txtContent
             // 
             txtContent.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtContent.ForeColor = Color.LightGray;
-            txtContent.Location = new Point(637, 476);
+            txtContent.Location = new Point(637, 402);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(622, 129);
+            txtContent.PlaceholderText = "Nhập nội dung";
+            txtContent.Size = new Size(622, 177);
             txtContent.TabIndex = 36;
-            txtContent.Text = "Nhập nội dung";
             // 
             // btnSend
             // 
             btnSend.BackColor = Color.Chocolate;
             btnSend.ForeColor = Color.White;
-            btnSend.Location = new Point(901, 622);
+            btnSend.Location = new Point(901, 585);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(94, 29);
             btnSend.TabIndex = 37;
@@ -277,19 +246,24 @@
             btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += btnSend_Click;
             // 
+            // progressBarEmail
+            // 
+            progressBarEmail.Location = new Point(558, 634);
+            progressBarEmail.Name = "progressBarEmail";
+            progressBarEmail.Size = new Size(786, 29);
+            progressBarEmail.TabIndex = 38;
+            // 
             // Support
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1437, 675);
+            Controls.Add(progressBarEmail);
             Controls.Add(btnSend);
             Controls.Add(txtContent);
             Controls.Add(txtSubject);
-            Controls.Add(txtPhoneNumber);
-            Controls.Add(txtDepartureEmail);
             Controls.Add(txtFullName);
-            Controls.Add(txtDestEmail);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -330,12 +304,10 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox txtDestEmail;
         private TextBox txtFullName;
-        private TextBox txtDepartureEmail;
-        private TextBox txtPhoneNumber;
         private TextBox txtSubject;
         private TextBox txtContent;
         private Button btnSend;
+        private ProgressBar progressBarEmail;
     }
 }

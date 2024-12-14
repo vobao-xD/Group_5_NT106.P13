@@ -128,6 +128,7 @@
             btnContact.TabIndex = 7;
             btnContact.Text = "Hỗ trợ";
             btnContact.UseVisualStyleBackColor = true;
+            btnContact.Click += btnContact_Click;
             // 
             // pictureBox3
             // 

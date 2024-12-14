@@ -16,11 +16,13 @@ namespace Client
     public partial class Home : Form
     {
         private AuthToken _authToken;
+        private UserInfo _userInfo;
         public Home(UserInfo userInfo, AuthToken authToken)
         {
             InitializeComponent();
             DisplayUserInfo(userInfo);
             _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
+            _userInfo = userInfo;
         }
         private void DisplayUserInfo(UserInfo userInfo)
         {
@@ -43,6 +45,12 @@ namespace Client
             this.Close();
             Login login = new Login();
             login.ShowDialog();
+        }
+
+        private void btnContact_Click(object sender, EventArgs e)
+        {
+            Support support = new Support(_userInfo);
+            support.ShowDialog();
         }
     }
 }

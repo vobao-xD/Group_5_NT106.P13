@@ -51,7 +51,7 @@ def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/login/")
+@app.post("/login")
 def login_user(login: LoginRequest):
     try:
         conn = connect_to_sql_server()
@@ -118,6 +118,9 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
         conn.close()
 
         if row:
+            if row[0] == -1:
+                return {"UserId": row[0], "Message": row[1]}
+
             user_id = row[0]
             fullname = row[1]
             user_email = row[2]
@@ -127,6 +130,7 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
                 "UserEmail": user_email,
                 "Message": "Login successful"
             }
+
         else:
             logging.warning(f"Invalid login attempt for user: {login.username}")
             raise HTTPException(status_code=401, detail="Invalid username or password")
@@ -138,13 +142,13 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/ticketinfo/")
-def user_info(ticketinfo: TicketInfoReq):
+@app.get("/ticketinfo/")
+def ticket_info(ticketinfo: TicketInfoReq):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
 
-        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticketId)
+        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.userId)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
@@ -155,12 +159,16 @@ def user_info(ticketinfo: TicketInfoReq):
                 return {"Status": -1, "Message": row[1]}
 
             trip_id = row[0]
-            trip_name = row[1]
-            plate_number = row[2]
+            plate_number = row[1]
+            depart_location = row[2],
+            arrive_location = row[3],
+            depart_time = row[4]
             return {
                 "TripId": trip_id,
-                "TripName": trip_name,
-                "PlateNumber": plate_number
+                "PlateNumber": plate_number,
+                "DepartLocation": depart_location,
+                "ArriveLocation": arrive_location,
+                "DepartTime": depart_time
             }
         else:
             raise HTTPException(status_code=401, detail="Invalid username or password")
