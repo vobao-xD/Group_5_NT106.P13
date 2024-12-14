@@ -33,7 +33,7 @@
             label1 = new Label();
             txtLoginName = new TextBox();
             label2 = new Label();
-            txtPhoneNumber = new TextBox();
+            txtFullName = new TextBox();
             label3 = new Label();
             txtEmail = new TextBox();
             label4 = new Label();
@@ -42,6 +42,7 @@
             txtConfirmPassword = new TextBox();
             label6 = new Label();
             btnSignUp = new Button();
+            checkBoxRevealPass = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -82,21 +83,21 @@
             label2.TabIndex = 4;
             label2.Text = "Đăng kí";
             // 
-            // txtPhoneNumber
+            // txtFullName
             // 
-            txtPhoneNumber.Location = new Point(304, 244);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(356, 27);
-            txtPhoneNumber.TabIndex = 6;
+            txtFullName.Location = new Point(304, 244);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(356, 27);
+            txtFullName.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(147, 247);
             label3.Name = "label3";
-            label3.Size = new Size(39, 20);
+            label3.Size = new Size(116, 20);
             label3.TabIndex = 5;
-            label3.Text = "SĐT:";
+            label3.Text = "Tên người dùng:";
             // 
             // txtEmail
             // 
@@ -154,6 +155,18 @@
             btnSignUp.TabIndex = 13;
             btnSignUp.Text = "Đăng kí";
             btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
+            // 
+            // checkBoxRevealPass
+            // 
+            checkBoxRevealPass.AutoSize = true;
+            checkBoxRevealPass.Location = new Point(666, 370);
+            checkBoxRevealPass.Name = "checkBoxRevealPass";
+            checkBoxRevealPass.Size = new Size(127, 24);
+            checkBoxRevealPass.TabIndex = 14;
+            checkBoxRevealPass.Text = "Hiện mật khẩu";
+            checkBoxRevealPass.UseVisualStyleBackColor = true;
+            checkBoxRevealPass.CheckedChanged += checkBoxRevealPass_CheckedChanged;
             // 
             // SignUp
             // 
@@ -161,6 +174,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(849, 541);
+            Controls.Add(checkBoxRevealPass);
             Controls.Add(btnSignUp);
             Controls.Add(txtConfirmPassword);
             Controls.Add(label6);
@@ -168,7 +182,7 @@
             Controls.Add(label5);
             Controls.Add(txtEmail);
             Controls.Add(label4);
-            Controls.Add(txtPhoneNumber);
+            Controls.Add(txtFullName);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(txtLoginName);
@@ -187,7 +201,7 @@
         private Label label1;
         private TextBox txtLoginName;
         private Label label2;
-        private TextBox txtPhoneNumber;
+        private TextBox txtFullName;
         private Label label3;
         private TextBox txtEmail;
         private Label label4;
@@ -196,5 +210,6 @@
         private TextBox txtConfirmPassword;
         private Label label6;
         private Button btnSignUp;
+        private CheckBox checkBoxRevealPass;
     }
 }

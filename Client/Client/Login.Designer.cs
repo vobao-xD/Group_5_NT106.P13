@@ -100,6 +100,7 @@
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // label3
             // 
@@ -120,6 +121,7 @@
             btnSignUp.TabIndex = 7;
             btnSignUp.Text = "Đăng kí";
             btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
             // 
             // Login
             // 
