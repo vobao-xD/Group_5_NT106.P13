@@ -1,7 +1,7 @@
 /*
 	DROP PROCEDURE prod_get_user_by_pass
 	select * from [User]
-	EXEC prod_get_user_by_pass @username = 'a', @password = 'a';
+	EXEC prod_get_user_by_pass @username = 's', @password = 's';
 */
 
 CREATE PROCEDURE prod_get_user_by_pass
@@ -11,7 +11,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM [User] WHERE UserName = @username AND [Password] = @password)
     BEGIN
-        SELECT TOP 1 UserId, UserName, Mail 
+        SELECT TOP 1 UserId, UserName, Mail, UserRoleId 
         FROM [User]
         WHERE UserName = @username AND [Password] = @password;
     END

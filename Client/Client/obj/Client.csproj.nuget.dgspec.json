@@ -53,11 +53,15 @@
           "dependencies": {
             "MailKit": {
               "target": "Package",
-              "version": "[4.8.0, )"
+              "version": "[4.9.0, )"
             },
             "MimeKit": {
               "target": "Package",
-              "version": "[4.8.0, )"
+              "version": "[4.9.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

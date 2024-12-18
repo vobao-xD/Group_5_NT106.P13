@@ -66,11 +66,28 @@ namespace Client
 
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (userInfo.UserRoleId == 1)
+                    {
+                        // change to admin
+                        AdminForm adminForm = new AdminForm(userInfo, loginResult);
+                        adminForm.ShowDialog();
+                        this.Hide();
+                    }
+                    if (userInfo.UserRoleId == 2)
+                    {
+                        // change to staff
+                        StaffForm staffForm = new StaffForm(userInfo, loginResult);
+                        staffForm.ShowDialog();
+                        this.Hide();
+                    }
+                    if (userInfo.UserRoleId == 3)
+                    {
+                        // change to customer
+                        Home home = new Home(userInfo, loginResult);
+                        home.ShowDialog();
+                        this.Hide();
+                    }
 
-                    // Xử lý logic tiếp theo, ví dụ: chuyển sang form chính
-                    Home home = new Home(userInfo, loginResult);
-                    home.ShowDialog();
-                    this.Hide();
                 }
             }
             catch (Exception ex)

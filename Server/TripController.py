@@ -9,9 +9,6 @@ from typing import Optional, List
 from urllib.parse import unquote
 
 
-
-
-
 def JSONOutput(jsondata) -> str:
     output: str = json.dumps(jsondata, indent=3)
     return output
@@ -21,7 +18,7 @@ class ConnectDB:
     #def __init__(self):
     Connector = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
                                 "Server=localhost;"
-                                "Database=bus_server_prod;"
+                                "Database=Bus_server_prod;"
                                 "Trusted_Connection=yes;")
     
     @staticmethod

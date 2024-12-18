@@ -50,10 +50,14 @@
             DepartDate = new DateTimePicker();
             ReturnTime = new ComboBox();
             DepartTime = new ComboBox();
+            statusStrip1 = new StatusStrip();
+            labelUsername = new ToolStripStatusLabel();
+            labelUserEmail = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -278,12 +282,35 @@
             DepartTime.TabIndex = 22;
             DepartTime.Text = "17:00";
             // 
+            // statusStrip1
+            // 
+            statusStrip1.ImageScalingSize = new Size(20, 20);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { labelUsername, labelUserEmail });
+            statusStrip1.Location = new Point(0, 697);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(1440, 26);
+            statusStrip1.TabIndex = 23;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // labelUsername
+            // 
+            labelUsername.Name = "labelUsername";
+            labelUsername.Size = new Size(108, 20);
+            labelUsername.Text = "labelUsername";
+            // 
+            // labelUserEmail
+            // 
+            labelUserEmail.Name = "labelUserEmail";
+            labelUserEmail.Size = new Size(108, 20);
+            labelUserEmail.Text = "labelUserEmail";
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1440, 723);
+            Controls.Add(statusStrip1);
             Controls.Add(DepartTime);
             Controls.Add(ReturnTime);
             Controls.Add(btnSearch);
@@ -310,10 +337,13 @@
             Name = "Home";
             Text = "Home";
             TransparencyKey = Color.PapayaWhip;
+            Load += Home_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -341,5 +371,8 @@
         private DateTimePicker DepartDate;
         private ComboBox ReturnTime;
         private ComboBox DepartTime;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel labelUsername;
+        private ToolStripStatusLabel labelUserEmail;
     }
 }

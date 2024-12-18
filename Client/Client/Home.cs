@@ -35,7 +35,7 @@ namespace Client
                 var username = userInfo.FullName;
                 var email = userInfo.UserEmail;
                 labelUsername.Text = $"Welcome, {username}";
-                labelUserEmail.Text = $"Your Email:, {email}";
+                labelUserEmail.Text = $"Your Email: {email}";
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace Client
             support.ShowDialog();
         }
 
-        
+
 
         private void chkboxRoundtrip_CheckedChanged(object sender, EventArgs e)
         {
@@ -70,23 +70,23 @@ namespace Client
         {
             try
             {
-            string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
-            string fromtime = $"&fromTime={DepartDate.Text}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
-            string totime = $"&toTime={ReturnDate.Text}%20{HttpUtility.UrlEncode(ReturnTime.Text)}";
-            string param = $"&isReturn={chkboxRoundtrip.Checked}&ticketCount=1";
+                string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
+                string fromtime = $"&fromTime={DepartDate.Text}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
+                string totime = $"&toTime={ReturnDate.Text}%20{HttpUtility.UrlEncode(ReturnTime.Text)}";
+                string param = $"&isReturn={chkboxRoundtrip.Checked}&ticketCount=1";
                 string encode;
                 if (chkboxRoundtrip.Checked == true) encode = "/trips?" + request + fromtime + totime + param;
                 else encode = "/trips?" + request + fromtime + param;
-            //MessageBox.Show(encode);
-            
+                //MessageBox.Show(encode);
+
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8000");
-                    
+
 
                 HttpResponseMessage res = await client.GetAsync(encode);
 
                 response = await res.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-                
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
@@ -100,7 +100,7 @@ namespace Client
                     MessageBox.Show("Không tìm thấy chuyến xe phù hợp");
                     return;
                 }
-                
+
                 if (chkboxRoundtrip.Checked == true)
                 {
                     if (list.Count == 1)
@@ -122,13 +122,13 @@ namespace Client
                         MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                         int ListId1 = list[0].TripId;
                         decimal Price = list[0].Price;
-                        ReserveTicket ins1 = new(list[0],1);
+                        ReserveTicket ins1 = new(list[0], 1);
                         ins1.ShowDialog();
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến về:");
                         int ListId2 = list[1].TripId;
 
-                        ReserveTicket ins2 = new(list[1],1);
+                        ReserveTicket ins2 = new(list[1], 1);
                         ins2.ShowDialog();
 
                     }
@@ -139,12 +139,17 @@ namespace Client
                     MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                     int ListId = list[0].TripId;
                     decimal Price = list[0].Price;
-                    ReserveTicket ins1 = new(list[0],1);
+                    ReserveTicket ins1 = new(list[0], 1);
                     ins1.ShowDialog();
                 }
-                
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
 
         }
     }

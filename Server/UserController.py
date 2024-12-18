@@ -142,10 +142,12 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
             user_id = row[0]
             fullname = row[1]
             user_email = row[2]
+            user_role_id = row[3]
             return {
                 "UserId": user_id,
                 "FullName": fullname,
                 "UserEmail": user_email,
+                "UserRoleId": user_role_id,
                 "Message": "Login successful"
             }
         else:
