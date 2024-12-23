@@ -18,3 +18,6 @@ class TicketInfoReq(BaseModel):
 class LoginRequest(BaseModel):
     username: str
     password: str
+
+class UpdateVIPReq(BaseModel):
+    userid: int

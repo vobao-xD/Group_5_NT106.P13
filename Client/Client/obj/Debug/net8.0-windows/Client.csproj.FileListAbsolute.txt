@@ -111,3 +111,4 @@ D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.g
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AdminForm.resources
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.StaffForm.resources
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_ListCustomer.resources

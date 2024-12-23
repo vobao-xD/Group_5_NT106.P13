@@ -34,7 +34,7 @@ namespace Client
             btnContact = new Button();
             btnAddTrip = new Button();
             btnSchedule = new Button();
-            btnHome = new Button();
+            btnListCustomer = new Button();
             pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -69,7 +69,7 @@ namespace Client
             btnAddTrip.TabIndex = 11;
             btnAddTrip.Text = "Thêm chuyến xe";
             btnAddTrip.UseVisualStyleBackColor = true;
-            btnAddTrip.Click += this.btnAddTrip_Click;
+            btnAddTrip.Click += btnAddTrip_Click;
             // 
             // btnSchedule
             // 
@@ -81,15 +81,16 @@ namespace Client
             btnSchedule.Text = "Thống kê";
             btnSchedule.UseVisualStyleBackColor = true;
             // 
-            // btnHome
+            // btnListCustomer
             // 
-            btnHome.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHome.Location = new Point(129, 107);
-            btnHome.Name = "btnHome";
-            btnHome.Size = new Size(199, 52);
-            btnHome.TabIndex = 9;
-            btnHome.Text = "Trang chủ";
-            btnHome.UseVisualStyleBackColor = true;
+            btnListCustomer.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnListCustomer.Location = new Point(129, 107);
+            btnListCustomer.Name = "btnListCustomer";
+            btnListCustomer.Size = new Size(199, 52);
+            btnListCustomer.TabIndex = 9;
+            btnListCustomer.Text = "Xem thông tin KH";
+            btnListCustomer.UseVisualStyleBackColor = true;
+            btnListCustomer.Click += btnListCustomer_Click;
             // 
             // pictureBox3
             // 
@@ -109,7 +110,7 @@ namespace Client
             Controls.Add(btnContact);
             Controls.Add(btnAddTrip);
             Controls.Add(btnSchedule);
-            Controls.Add(btnHome);
+            Controls.Add(btnListCustomer);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
             Name = "AdminForm";
@@ -125,7 +126,7 @@ namespace Client
         private Button btnContact;
         private Button btnAddTrip;
         private Button btnSchedule;
-        private Button btnHome;
+        private Button btnListCustomer;
         private PictureBox pictureBox3;
     }
 }

@@ -52,7 +52,7 @@ def create_user(user: User):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, user.userroleid)
+        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 3)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
@@ -111,16 +111,36 @@ def login_user(login: LoginRequest):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.get("/protected", tags=['users'])
-def protected_route(token: str = Depends(oauth2_scheme)):
+@app.get("/getlistcustomer", tags=['users'])
+def get_list_customer(userroleid: int = Query(..., description="ID of the user role")):
     try:
-        payload = jwt.decode(token, secret_key, algorithms=["HS256"])
-        username = payload.get("username")
-        return {"message": f"Hello {username}, you are authorized!"}
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token has expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_customer ?", userroleid)
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        customers = []
+        for row in rows:
+            customer = {
+                "UserId": row[0],
+                "FullName": row[2],
+                "UserName": row[1],
+                "UserRoleId": row[4],
+                "UserEmail": row[3]
+            }
+            customers.append(customer)
+        return customers
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
 @app.post("/userinfo/", tags=['users'])
 def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
@@ -153,6 +173,62 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
         else:
             logging.warning(f"Invalid login attempt for user: {login.username}")
             raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")@app.post("/userinfo/", tags=['users'])
+
+@app.post("/updateVipCustomer", tags=['users'])
+def user_info(req: UpdateVIPReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_customer_vip ?", req.userid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid UserId" }
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/updateRegularCustomer", tags=['users'])
+def user_info(req: UpdateVIPReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_customer_regular ?", req.userid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid UserId" }
 
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")
@@ -194,12 +270,6 @@ def user_info(ticketinfo: TicketInfoReq):
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-
-
-
-
-
-
 
 
 

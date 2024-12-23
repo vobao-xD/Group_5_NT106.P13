@@ -26,5 +26,10 @@ namespace Client
         {
 
         }
+
+        private void btnListCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

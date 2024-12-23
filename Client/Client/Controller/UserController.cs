@@ -84,5 +84,54 @@ namespace Client.Controller
             var userinfo = JsonSerializer.Deserialize<UserInfo>(responseContent);
             return userinfo;
         }
+        public async Task<List<CustomerInfo>> CustomerInfoAsync(int userRoleId)
+        {
+            var customerURL = $"http://127.0.0.1:8002/getlistcustomer?userroleid={userRoleId}";
+            var response = await _httpClient.GetAsync(customerURL);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var customerInfo = JsonSerializer.Deserialize<List<CustomerInfo>>(responseContent);
+            return customerInfo;
+        }
+        public async Task<ReturnMessage> UpdateCustomerVIPAsync(int userId)
+        {
+            var updateURL = "http://127.0.0.1:8002/updateVipCustomer";
+            var updateData = new
+            {
+                userid = userId
+            };
+            var content = new StringContent(JsonSerializer.Serialize(updateData), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(updateURL, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
+            return result;
+        }
+        public async Task<ReturnMessage> UpdateCustomerRegularAsync(int userId)
+        {
+            var updateURL = "http://127.0.0.1:8002/updateRegularCustomer";
+            var updateData = new
+            {
+                userid = userId
+            };
+            var content = new StringContent(JsonSerializer.Serialize(updateData), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(updateURL, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
+            return result;
+        }
     }
 }
