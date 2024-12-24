@@ -1,6 +1,13 @@
 ﻿/*
 	DROP PROCEDURE  prod_create_user
 	EXEC prod_create_user 'Khoi5', 'Khoi', 'Khoi5', 'minhkhoitanhung@gmail.com', 1;
+	
+ALTER TABLE dbo.[User]
+DROP CONSTRAINT IF EXISTS UQ__User__2724B2D1B76D48CE;
+
+ALTER TABLE dbo.[User]
+ADD CONSTRAINT UQ_UserName UNIQUE (UserName);
+
 	SELECT * FROM [User]
 */
 CREATE PROCEDURE prod_create_user 
