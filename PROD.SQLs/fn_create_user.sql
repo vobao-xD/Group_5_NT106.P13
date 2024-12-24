@@ -1,6 +1,6 @@
 ﻿/*
 	DROP PROCEDURE  prod_create_user
-	EXEC prod_create_user 'sssss', 'sssss', 'sssss', 'sssss', 1;
+	EXEC prod_create_user 'Khoi5', 'Khoi', 'Khoi5', 'minhkhoitanhung@gmail.com', 1;
 	SELECT * FROM [User]
 */
 CREATE PROCEDURE prod_create_user 
@@ -18,7 +18,7 @@ BEGIN
     DECLARE @Result TABLE 
     (
         Id INT,
-        Message NVARCHAR(100)
+        Message NVARCHAR(255)
     );
 
     BEGIN TRY
@@ -26,7 +26,7 @@ BEGIN
         VALUES (@userName, @passWord, @fullname, @email, @userroleid);
 
         INSERT INTO @Result (Id, Message)
-        VALUES (1, 'User created successfully');
+        VALUES (1, 'User Created successfully');
     END TRY
     BEGIN CATCH
         INSERT INTO @Result (Id, Message)

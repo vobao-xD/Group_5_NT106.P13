@@ -205,15 +205,21 @@ SendEmail(string toEmail, string otp)
                 string email = txtEmail.Text;
                 int userroleid = 1; // need change afterward
                 var signUpResult = await _userController.SignUpAsync(username, password, fullname, email, userroleid);
-                // xac thuc OTP
-                MessageBox.Show("You need to authenticate your Email first.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string otp = GenerateOtp();
-                await SendEmail(email, otp);
-                Authentication authentication = new Authentication(otp);
-                authentication.Show();
-                MessageBox.Show(signUpResult, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Login login = new Login();
-                login.Show();
+                if (signUpResult.Id == 1)
+                {
+                    MessageBox.Show("You need to authenticate your Email first.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string otp = GenerateOtp();
+                    await SendEmail(email, otp);
+                    Authentication authentication = new Authentication(otp);
+                    authentication.ShowDialog();
+                    MessageBox.Show(signUpResult.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Login login = new Login();
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show(signUpResult.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

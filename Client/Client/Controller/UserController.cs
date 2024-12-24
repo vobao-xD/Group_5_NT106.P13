@@ -17,7 +17,7 @@ namespace Client.Controller
         {
             _httpClient = httpClient;
         }
-        public async Task<string> SignUpAsync(string username, string password, string fullname, string email, int userrole)
+        public async Task<ReturnMessage> SignUpAsync(string username, string password, string fullname, string email, int userrole)
         {
             var signUpURL = baseURL + "/create_user/";
             var userdata = new
@@ -33,11 +33,11 @@ namespace Client.Controller
             if (!response.IsSuccessStatusCode)
             {
                 var errorContent = await response.Content.ReadAsStringAsync();
-                return $"Error: {response.StatusCode}: {errorContent}";
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
             }
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            return $"Sign Up Successfully";
+            return JsonSerializer.Deserialize<ReturnMessage>(responseContent);
         }
         public async Task<AuthToken> LoginAsync(string username, string password)
         {
