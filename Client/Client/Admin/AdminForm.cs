@@ -33,5 +33,11 @@ namespace Client
             Admin_ListCustomer admin_ListCustomer = new Admin_ListCustomer();
             admin_ListCustomer.Show();
         }
+
+        private void btnAnalyse_Click(object sender, EventArgs e)
+        {
+            Admin_BusAnalyse admin_BusAnalyse = new Admin_BusAnalyse();
+            admin_BusAnalyse.Show();
+        }
     }
 }

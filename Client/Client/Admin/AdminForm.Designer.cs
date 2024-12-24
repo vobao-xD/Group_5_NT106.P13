@@ -33,7 +33,7 @@ namespace Client
             pictureBox1 = new PictureBox();
             btnContact = new Button();
             btnAddTrip = new Button();
-            btnSchedule = new Button();
+            btnAnalyse = new Button();
             btnListCustomer = new Button();
             pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -71,15 +71,16 @@ namespace Client
             btnAddTrip.UseVisualStyleBackColor = true;
             btnAddTrip.Click += btnAddTrip_Click;
             // 
-            // btnSchedule
+            // btnAnalyse
             // 
-            btnSchedule.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSchedule.Location = new Point(334, 107);
-            btnSchedule.Name = "btnSchedule";
-            btnSchedule.Size = new Size(199, 52);
-            btnSchedule.TabIndex = 10;
-            btnSchedule.Text = "Thống kê";
-            btnSchedule.UseVisualStyleBackColor = true;
+            btnAnalyse.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAnalyse.Location = new Point(334, 107);
+            btnAnalyse.Name = "btnAnalyse";
+            btnAnalyse.Size = new Size(199, 52);
+            btnAnalyse.TabIndex = 10;
+            btnAnalyse.Text = "Thống kê";
+            btnAnalyse.UseVisualStyleBackColor = true;
+            btnAnalyse.Click += btnAnalyse_Click;
             // 
             // btnListCustomer
             // 
@@ -109,7 +110,7 @@ namespace Client
             ClientSize = new Size(1101, 548);
             Controls.Add(btnContact);
             Controls.Add(btnAddTrip);
-            Controls.Add(btnSchedule);
+            Controls.Add(btnAnalyse);
             Controls.Add(btnListCustomer);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
@@ -125,7 +126,7 @@ namespace Client
         private PictureBox pictureBox1;
         private Button btnContact;
         private Button btnAddTrip;
-        private Button btnSchedule;
+        private Button btnAnalyse;
         private Button btnListCustomer;
         private PictureBox pictureBox3;
     }
