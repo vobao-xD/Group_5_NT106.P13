@@ -112,3 +112,5 @@ D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Clie
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AdminForm.resources
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.StaffForm.resources
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_ListCustomer.resources
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_BusAnalyse.resources
+D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_SeeSeatBooked.resources

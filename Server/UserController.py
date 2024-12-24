@@ -142,6 +142,68 @@ def get_list_customer(userroleid: int = Query(..., description="ID of the user r
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+@app.get("/getSeatBooked", tags=['bus'])
+def get_list_bus(busid: int = Query(..., description="BusId of that Bus"),
+                isbook: int = Query(..., description="Booked status of that seat")):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_seat_booked ?, ?", busid, isbook)
+
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        buses = []
+        for row in rows:
+            bus = {
+                "LicensePlate": row[0],
+                "SeatName": row[1],
+                "IsBook": row[2],
+                "SeatId": row[3]
+            }
+            buses.append(bus)
+        return buses
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.get("/getAllBus", tags=['bus'])
+def get_list_customer():
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_bus")
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        customers = []
+        for row in rows:
+            customer = {
+                "BusId": row[0],
+                "LicensePlate": row[1],
+                "SeatNum": row[2],
+                "BusStatusId": row[3]
+            }
+            customers.append(customer)
+        return customers
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
 @app.post("/userinfo/", tags=['users'])
 def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
     try:
@@ -201,6 +263,34 @@ def user_info(req: UpdateVIPReq):
             return { "Id": row[0], "Message": row[1] }
         else:
             return { "Id": -1, "Message": "Invalid UserId" }
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/updateSeatToBooked", tags=['Bus'])
+def update_seat_to_booked(req: UpdateSeatToBookedReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_seat_to_booked ?", req.seatid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid SeatId" }
 
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")

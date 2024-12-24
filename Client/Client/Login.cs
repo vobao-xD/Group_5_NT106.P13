@@ -70,21 +70,21 @@ namespace Client
                     {
                         // change to admin
                         AdminForm adminForm = new AdminForm(userInfo, loginResult);
-                        adminForm.ShowDialog();
+                        adminForm.Show();
                         this.Hide();
                     }
                     if (userInfo.UserRoleId == 2)
                     {
                         // change to staff
                         StaffForm staffForm = new StaffForm(userInfo, loginResult);
-                        staffForm.ShowDialog();
+                        staffForm.Show();
                         this.Hide();
                     }
                     if (userInfo.UserRoleId == 3)
                     {
                         // change to customer
                         Home home = new Home(userInfo, loginResult);
-                        home.ShowDialog();
+                        home.Show();
                         this.Hide();
                     }
 

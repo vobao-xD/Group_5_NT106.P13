@@ -21,3 +21,6 @@ class LoginRequest(BaseModel):
 
 class UpdateVIPReq(BaseModel):
     userid: int
+
+class UpdateSeatToBookedReq(BaseModel):
+    seatid: int

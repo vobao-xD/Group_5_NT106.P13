@@ -210,10 +210,10 @@ SendEmail(string toEmail, string otp)
                 string otp = GenerateOtp();
                 await SendEmail(email, otp);
                 Authentication authentication = new Authentication(otp);
-                authentication.ShowDialog();
+                authentication.Show();
                 MessageBox.Show(signUpResult, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Login login = new Login();
-                login.ShowDialog();
+                login.Show();
             }
             catch (Exception ex)
             {

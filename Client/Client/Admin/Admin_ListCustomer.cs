@@ -31,7 +31,6 @@ namespace Client.Admin
             {
                 if (_customerRegularList != null && _customerRegularList.Count > 0) { _customerRegularList.Clear(); }
                 if (_customerVIPList != null && _customerVIPList.Count > 0) { _customerVIPList.Clear(); }
-                /*if (_monAnMineList != null && _monAnMineList.Count > 0) { _monAnMineList.Clear(); }*/
 
                 var resultRegular = _userController.CustomerInfoAsync(3);
                 _customerRegularList = await resultRegular;
@@ -56,7 +55,7 @@ namespace Client.Admin
             panel.Cursor = Cursors.Hand;
             panel.Click += (sender, e) =>
             {
-                var result = MessageBox.Show($"Bạn có muốn nâng cấp khách hàng: {customerInfo.FullName} trở thành Regular hay không?", "Upgrade to VIP", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show($"Bạn có muốn thay đổi khách hàng: {customerInfo.FullName} trở thành Regular hay không?", "Upgrade to VIP", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     // Code to upgrade customer to regular

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Client;
+using Client.Admin;
 using Client.Model;
 
 namespace Client
@@ -29,7 +30,8 @@ namespace Client
 
         private void btnListCustomer_Click(object sender, EventArgs e)
         {
-
+            Admin_ListCustomer admin_ListCustomer = new Admin_ListCustomer();
+            admin_ListCustomer.Show();
         }
     }
 }

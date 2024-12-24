@@ -12,13 +12,14 @@ namespace Client.Controller
     public class UserController
     {
         private readonly HttpClient _httpClient;
+        private string baseURL = "http://127.0.0.1:8002";
         public UserController(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
         public async Task<string> SignUpAsync(string username, string password, string fullname, string email, int userrole)
         {
-            var signUpURL = "http://127.0.0.1:8002/create_user/";
+            var signUpURL = baseURL + "/create_user/";
             var userdata = new
             {
                 username = username,
@@ -40,7 +41,7 @@ namespace Client.Controller
         }
         public async Task<AuthToken> LoginAsync(string username, string password)
         {
-            var loginURL = "http://127.0.0.1:8002/login/";
+            var loginURL = baseURL + "/login/";
             var loginData = new
             {
                 username = username,
@@ -62,7 +63,7 @@ namespace Client.Controller
         }
         public async Task<UserInfo> UserInfoAsync(string username, string password, AuthToken authToken)
         {
-            var loginURL = "http://127.0.0.1:8002/userinfo/";
+            var loginURL = baseURL + "/userinfo/";
             var loginData = new
             {
                 username = username,
@@ -86,7 +87,7 @@ namespace Client.Controller
         }
         public async Task<List<CustomerInfo>> CustomerInfoAsync(int userRoleId)
         {
-            var customerURL = $"http://127.0.0.1:8002/getlistcustomer?userroleid={userRoleId}";
+            var customerURL = baseURL + $"/getlistcustomer?userroleid={userRoleId}";
             var response = await _httpClient.GetAsync(customerURL);
             if (!response.IsSuccessStatusCode)
             {
@@ -99,7 +100,7 @@ namespace Client.Controller
         }
         public async Task<ReturnMessage> UpdateCustomerVIPAsync(int userId)
         {
-            var updateURL = "http://127.0.0.1:8002/updateVipCustomer";
+            var updateURL = baseURL + "/updateVipCustomer";
             var updateData = new
             {
                 userid = userId
@@ -117,7 +118,7 @@ namespace Client.Controller
         }
         public async Task<ReturnMessage> UpdateCustomerRegularAsync(int userId)
         {
-            var updateURL = "http://127.0.0.1:8002/updateRegularCustomer";
+            var updateURL = baseURL + "/updateRegularCustomer";
             var updateData = new
             {
                 userid = userId
