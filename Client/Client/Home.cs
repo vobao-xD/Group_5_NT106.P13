@@ -80,7 +80,7 @@ namespace Client
                 //MessageBox.Show(encode);
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://127.0.0.1:8000");
+                client.BaseAddress = new Uri("http://127.0.0.1:8002");
 
 
                 HttpResponseMessage res = await client.GetAsync(encode);
@@ -161,7 +161,7 @@ namespace Client
     public class Trips
     {
         public int TripId { get; set; }
-        public int? BusId { get; set; }
+        public int BusId { get; set; }
         public string? Plate { get; set; }
         public string? DepartLocation { get; set; }
         public string? ArrivalLocation { get; set; }

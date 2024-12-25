@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer, HTTPAuthorizationCredentials,
 from typing import Optional, List
 from pydantic import BaseModel
 from Models import *
-from jwt import *
+import jwt
 from Ultilities import *
 import logging
 import pyodbc
@@ -88,7 +88,7 @@ def create_user(user: User):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 2)
+        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 3)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
@@ -124,11 +124,11 @@ def login_user(login: LoginRequest):
             user_id = row[0]
             fullname = row[1]
             logging.info(f"User {login.username} authenticated successfully.")
-            token = jwt.JWT.encode({
+            token = jwt.encode({
                 'user_id': user_id,
                 'username': login.username,
                 'exp': datetime.utcnow() + timedelta(hours=1)
-            }, secret_key, alg="HS256")
+            }, secret_key, algorithm="HS256")
             return {
                 "UserId": user_id,
                 "FullName": fullname,

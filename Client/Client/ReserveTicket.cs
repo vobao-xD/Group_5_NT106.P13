@@ -17,6 +17,7 @@ namespace Client
     {
         public int TripID = -1;
         public int UserID = -1;
+        public int BusID = -1;
         private UserInfo _userInfo;
         private AuthToken _authToken;
         public ReserveTicket(Trips trip, UserInfo userInfo, AuthToken authToken)
@@ -24,13 +25,14 @@ namespace Client
             InitializeComponent();
             //GET /seats?tripid={trip.TripID.ToString}
             TripID = trip.TripId;
+            BusID = trip.BusId;
 
             this.plate = trip.Plate;
             _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
             _userInfo = userInfo;
 
         }
-        List<string>? seatsList;
+        List<Seat>? seatsList;
         List<string> items = new List<string>
         {
             "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
@@ -41,14 +43,22 @@ namespace Client
         public async Task GetUnavailableSeat(string? plate)
         {
             HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
-            HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            MessageBox.Show($"http://127.0.0.1:8002/seats?busid={BusID}&isbook=1");
+            HttpResponseMessage response = await client.GetAsync($"seats?busid={BusID}&isbook=1");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             MessageBox.Show(seats);
-            seatsList = JsonConvert.DeserializeObject<List<string>>(seats);
+            seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
             if (seatsList == null) { return; }
-            items.RemoveAll(seats => seatsList.Contains(seats));
+            List<string> unseat = [];
+            foreach (Seat seat in seatsList)
+            {
+                unseat.Add(seat.GetSeatName());
+            }
+            foreach (string seat in unseat)
+            {
+                items.RemoveAll(seat => unseat.Contains(seat));
+            }
             checkedListBox1.Items.AddRange(items.ToArray());
 
         }
@@ -60,16 +70,50 @@ namespace Client
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
         {
-            HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
-            HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
-            string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-            MessageBox.Show(seats);
-            seatsList = JsonConvert.DeserializeObject<List<string>>(seats);
-            if (seatsList == null) { return; }
-            items.RemoveAll(seats => seatsList.Contains(seats));
-            checkedListBox1.Items.AddRange(items.ToArray());
+            try
+            {
+                HttpClient client = new();
+                client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+                MessageBox.Show($"http://127.0.0.1:8002/seats?busid={BusID}&isbook=1");
+                HttpResponseMessage response = await client.GetAsync($"seats?busid={BusID}&isbook=1");
+                string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+                MessageBox.Show(seats);
+                seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
+                if (seatsList == null) { return; }
+                List<string> unseat = [];
+                foreach (Seat seat in seatsList) {
+                    unseat.Add(seat.GetSeatName());
+                }
+                foreach (string seat in unseat) {
+                    items.Remove(seat);
+                }
+                checkedListBox1.BeginUpdate();
+                checkedListBox1.Items.AddRange(items.ToArray());
+                foreach (string u in unseat)
+                {
+                    checkedListBox1.Items.Remove(u);
+                }
+                checkedListBox1.EndUpdate();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Undefined Error: {ex.Message}");
+            }
         }
+    }
+    class Seat
+    {
+        string? Plate;
+        string? SeatName;
+        bool IsBook;
+        int SeatID;
+        public string? GetSeatName()
+        {
+            if (SeatName != null) return SeatName;
+            else return "";
+        }
+        
+
     }
 }
