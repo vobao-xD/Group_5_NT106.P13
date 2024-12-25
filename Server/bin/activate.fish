@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /mnt/c/Users/vobao/source/repos/vobao-xD/Group_5_NT106.P13/Server
+set -gx VIRTUAL_ENV /home/hackerlord/5.Github/Group_5_NT106.P13/Server
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

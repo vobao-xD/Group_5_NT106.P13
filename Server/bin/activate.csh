@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV /mnt/c/Users/vobao/source/repos/vobao-xD/Group_5_NT106.P13/Server
+setenv VIRTUAL_ENV /home/hackerlord/5.Github/Group_5_NT106.P13/Server
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"

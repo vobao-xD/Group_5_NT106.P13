@@ -44,7 +44,6 @@ def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn
                 listTrips.append({"TripID": row[0], "BusId": row[1],"Plate": row[5] ,"DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S') })
         return listTrips
 
-
 def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
         listSeat: list = []
         try:
@@ -67,8 +66,6 @@ def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
             listSeat.append({"Plate": seat[0], "SeatName": seat[1], "IsBook": seat[2], "SeatId": seat[3]})
         return listSeat
 
-
-
 @app.get("/trips", tags=['items'])
 async def GetAllTrip(
     from_location: str = Query(..., alias="from", description="Departure location"),
@@ -76,16 +73,15 @@ async def GetAllTrip(
     from_time: str = Query(..., alias="fromTime", description="Departure time"),
     to_time: Optional[str] = Query(None, alias="toTime", description="Return time"),
     is_return: Optional[bool] =  Query(False, alias="isReturn", description="Indicates if the ticket is round-trip"),
-):
+    ): 
     return GetTrip(from_location, to_location, from_time, to_time, is_return)
 
 @app.get("/seats", tags=['items'])
 async def GetUnavailSeat(
     busid: int = Query(..., alias="busid"),
     isbook: int = Query(..., alias="isbook")
-):
+    ):
     return GetUnavailableSeat(busid,isbook)
-
 
 @app.post("/create_user/", tags=['users'])
 def create_user(user: User):
@@ -401,4 +397,4 @@ def user_info(ticketinfo: TicketInfoReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-
+        
