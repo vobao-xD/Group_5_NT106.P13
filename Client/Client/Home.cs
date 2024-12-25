@@ -80,7 +80,7 @@ namespace Client
                 //MessageBox.Show(encode);
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://127.0.0.1:8000");
+                client.BaseAddress = new Uri("http://127.0.0.1:8002");
 
 
                 HttpResponseMessage res = await client.GetAsync(encode);
@@ -149,6 +149,11 @@ namespace Client
         }
 
         private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DepartDate_ValueChanged(object sender, EventArgs e)
         {
 
         }

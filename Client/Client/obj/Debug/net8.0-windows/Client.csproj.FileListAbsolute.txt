@@ -114,3 +114,24 @@ D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.S
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_ListCustomer.resources
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_BusAnalyse.resources
 D:\Code GitHub\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_SeeSeatBooked.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MailKit.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\MimeKit.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AdminForm.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_BusAnalyse.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_ListCustomer.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_SeeSeatBooked.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Authentication.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ListTrip.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Payment.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ReserveTicket.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.StaffForm.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_Add_Trip_Bus.resources

@@ -72,6 +72,45 @@ def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+@app.post("/create_trip/", tags=['trips'])
+def create_trip(trip: Trip):
+    try:
+        # Kết nối tới SQL Server
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        # Gọi stored procedure với tham số từ đối tượng trip
+        cursor.execute(
+            "EXEC prod_create_trip ?, ?, ?, ?, ?, ?, ?",
+            trip.plate,
+            trip.seat_num,
+            1,
+            trip.depart_location,
+            trip.arrive_location,
+            trip.depart_time,
+            1,
+        )
+
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        logging.info(f"Stored procedure executed successfully: {row}")
+        if row:
+            return {"Id": row[0], "Message": row[1]}
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(
+                status_code=400, detail="No result returned from the stored procedure."
+            )
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
 @app.post("/login/", tags=['users'])
 def login_user(login: LoginRequest):
     try:
@@ -196,6 +235,39 @@ def get_list_customer():
             }
             customers.append(customer)
         return customers
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.get("/getAllTrip", tags=['trip'])
+def get_all_trip():
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_trip")
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        trips = []
+        for row in rows:
+            trip = {
+                "TripId": row[0],
+                "Plate": row[1],
+                "DepartLocation": row[2],
+                "ArriveLocation": row[3],
+                "DepartTime": row[4],
+                "TripStatusId": row[5],
+                "TripStatusName": row[6]
+            }
+            trips.append(trip)
+        return trips
 
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")
@@ -533,3 +605,4 @@ async def GetUnavailableSeat(
 @app.get("/tickets/{usr}", tags=['items'])
 async def GetTicket(usr: str, tick: int):
     return ConnectDB.ConnectDB.GetTicket(ConnectDB.ConnectDB, usr, tick)
+

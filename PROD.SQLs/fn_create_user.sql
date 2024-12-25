@@ -1,9 +1,14 @@
 ﻿/*
 	DROP PROCEDURE  prod_create_user
-	EXEC prod_create_user 'Khoi5', 'Khoi', 'Khoi5', 'minhkhoitanhung@gmail.com', 1;
+	EXEC prod_create_user 'user2', '6cf615d5bcaac778352a8f1f3360d23f02f34ec182e259897fd6ce485d7870d4', 'Chien', 'minhkhoitanhung@gmail.com', 1;
+
 	
 ALTER TABLE dbo.[User]
 DROP CONSTRAINT IF EXISTS UQ__User__2724B2D1B76D48CE;
+
+SELECT * FROM UserRole
+
+INSERT INTO UserRole (UserRoleName) VALUES ('VIP Customer')
 
 ALTER TABLE dbo.[User]
 ADD CONSTRAINT UQ_UserName UNIQUE (UserName);

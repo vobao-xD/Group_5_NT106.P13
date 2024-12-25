@@ -41,6 +41,7 @@ CREATE TABLE TicketDetail (
     FOREIGN KEY (TicketId) REFERENCES Ticket(TicketId)
 );
 
+
 CREATE TABLE TripStatus (
     TripStatusId INT PRIMARY KEY IDENTITY(1,1),
     TripStatusName NVARCHAR(50) NOT NULL
@@ -81,4 +82,5 @@ CREATE TABLE BusStatus (
     BusStatusId INT PRIMARY KEY IDENTITY(1,1),
     BusStatusName NVARCHAR(50) NOT NULL
 );
+
 

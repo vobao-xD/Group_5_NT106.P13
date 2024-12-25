@@ -24,3 +24,13 @@ class UpdateVIPReq(BaseModel):
 
 class UpdateSeatToBookedReq(BaseModel):
     seatid: int
+
+class Trip(BaseModel):
+    plate: str
+    seat_num: int
+    bus_status_id: int
+    depart_location: str
+    arrive_location: str
+    depart_time: str  # ISO 8601 format (e.g., "2024-12-25T15:00:00")
+    trip_status_id: int
+

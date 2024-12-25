@@ -261,6 +261,7 @@
             DepartDate.Name = "DepartDate";
             DepartDate.Size = new Size(111, 27);
             DepartDate.TabIndex = 17;
+            DepartDate.ValueChanged += DepartDate_ValueChanged;
             // 
             // ReturnTime
             // 
