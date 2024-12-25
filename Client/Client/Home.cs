@@ -80,7 +80,7 @@ namespace Client
                 //MessageBox.Show(encode);
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://127.0.0.1:8000");
+                client.BaseAddress = new Uri("http://127.0.0.1:8002");
 
 
                 HttpResponseMessage res = await client.GetAsync(encode);
@@ -121,7 +121,6 @@ namespace Client
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                         int ListId1 = list[0].TripId;
-                        decimal Price = list[0].Price;
                         ReserveTicket ins1 = new(list[0], 1);
                         ins1.ShowDialog();
 
@@ -132,14 +131,13 @@ namespace Client
                         ins2.ShowDialog();
 
                     }
-                    else { MessageBox.Show("WTF???"); }
+                    else { MessageBox.Show("How???"); }
                 }
                 else
                 {
                     MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                     int ListId = list[0].TripId;
-                    decimal Price = list[0].Price;
-                    ReserveTicket ins1 = new(list[0], 1);
+                    ReserveTicket ins1 = new(list[0], _userInfo.UserId);
                     ins1.ShowDialog();
                 }
 
@@ -157,23 +155,20 @@ namespace Client
     public class Trips
     {
         public int TripId { get; set; }
-        public string? TripName { get; set; }
+        public int? BusId { get; set; }
+        public string? Plate { get; set; }
         public string? DepartLocation { get; set; }
         public string? ArrivalLocation { get; set; }
         public string? DepartureDate { get; set; }
-        public int? Status { get; set; }
-        public string? Plate { get; set; }
-        public decimal Price { get; set; }
-        public Trips(int tripId, string? tripName, string? departLocation, string? arrivalLocation, string? departureDate, int? status, string? plate, decimal price)
+
+        public Trips(int tripId, int busId, string? departLocation, string? arrivalLocation, string? departureDate, int? status, string? plate)
         {
             TripId = tripId;
-            TripName = tripName;
+            BusId = busId;
             DepartLocation = departLocation;
             ArrivalLocation = arrivalLocation;
             DepartureDate = departureDate;
-            Status = status;
-            this.Plate = plate;
-            this.Price = price;
+            Plate = plate;
         }
     }
 

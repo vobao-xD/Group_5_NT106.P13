@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Client.Model;
 
 namespace Client
 {
@@ -16,22 +17,17 @@ namespace Client
     {
         public int TripID = -1;
         public int UserID = -1;
-        public ReserveTicket()
+        private UserInfo _userInfo;
+        private AuthToken _authToken;
+        public ReserveTicket(Trips trip, UserInfo userInfo, AuthToken authToken)
         {
-            InitializeComponent();
-        }
-        public ReserveTicket(Trips trip, int UserID)
-        {
-            //Task.Run(() => GetUnavailableSeat(trip.Plate));
             InitializeComponent();
             //GET /seats?tripid={trip.TripID.ToString}
             TripID = trip.TripId;
-            this.UserID = UserID;
-            //this.Enabled = false;
+            
             this.plate = trip.Plate;
-
-
-
+            _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
+            _userInfo = userInfo;
 
         }
         List<string>? seatsList;
@@ -59,7 +55,8 @@ namespace Client
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            
+            Payment ins = new();
+            ins.ShowDialog();
         }
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
