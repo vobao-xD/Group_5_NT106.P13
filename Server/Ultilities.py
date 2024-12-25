@@ -33,3 +33,6 @@ def print_secret_key():
     secret_key = generate_secret_key()
     print(secret_key)
     return
+
+def hello():
+    pass
