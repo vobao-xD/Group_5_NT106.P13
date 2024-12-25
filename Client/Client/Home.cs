@@ -121,13 +121,13 @@ namespace Client
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                         int ListId1 = list[0].TripId;
-                        ReserveTicket ins1 = new(list[0], 1);
+                        ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
                         ins1.ShowDialog();
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến về:");
                         int ListId2 = list[1].TripId;
 
-                        ReserveTicket ins2 = new(list[1], 1);
+                        ReserveTicket ins2 = new(list[1], _userInfo, _authToken);
                         ins2.ShowDialog();
 
                     }
@@ -137,7 +137,7 @@ namespace Client
                 {
                     MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                     int ListId = list[0].TripId;
-                    ReserveTicket ins1 = new(list[0], _userInfo.UserId);
+                    ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
                     ins1.ShowDialog();
                 }
 

@@ -41,8 +41,8 @@ namespace Client
         public async Task GetUnavailableSeat(string? plate)
         {
             HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            MessageBox.Show($"http://127.0.0.1:8002/seats?plate={plate}");
             HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             MessageBox.Show(seats);
@@ -62,8 +62,8 @@ namespace Client
         private async void ReserveTicket_Load(object sender, EventArgs e)
         {
             HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            MessageBox.Show($"http://127.0.0.1:8002/seats?plate={plate}");
             HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             MessageBox.Show(seats);
