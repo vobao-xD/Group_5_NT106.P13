@@ -1,6 +1,4 @@
-from UserController import *
-
-
+from Controllers import *
 
 if __name__ == "__main__":
     import uvicorn

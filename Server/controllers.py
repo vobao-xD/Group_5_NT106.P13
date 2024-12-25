@@ -1,63 +1,354 @@
 from sqlalchemy.orm import Session
-import models_for_database
-import models_for_server
+from urllib.parse import unquote
+from datetime import datetime, timedelta
+from fastapi import FastAPI, HTTPException, Depends, Query
+from fastapi.security import OAuth2PasswordBearer, HTTPAuthorizationCredentials, HTTPBearer
+from typing import Optional, List
+from pydantic import BaseModel
+from Models import *
+from jwt import *
+from Ultilities import *
+import logging
+import pyodbc
+import secrets
+import json
 
-class UserController:
-    @staticmethod
-    def get_user_by_id(user_id: int):
-        db: Session = SessionLocal()
-        user = db.query(UserDB).filter(UserDB.id == user_id).first()
-        db.close()
-        return user
+app = FastAPI()
 
-    @staticmethod
-    def get_all_users():
-        db: Session = SessionLocal()
-        users = db.query(UserDB).all()
-        db.close()
-        return users
-    
+@app.get("/trips")
+async def GetAllTrip(
+    from_location: str = Query(..., alias="from", description="Departure location"),
+    to_location: str = Query(..., alias="to", description="Arrival location"),
+    from_time: str = Query(..., alias="fromTime", description="Departure time"),
+    to_time: Optional[str] = Query(None, alias="toTime", description="Return time"),
+    is_return: Optional[bool] =  Query(False, alias="isReturn", description="Indicates if the ticket is round-trip"),
+    ticket_count: Optional[int] = Query(1, alias="ticketCount", ge=1, description="Number of tickets to book") 
+    ):
+    return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time, is_return)
 
-def Test(self):
-        Cursor = self.Connector.cursor()
-        Cursor.execute(f"SELECT * FROM _User_ WHERE UserName = 'abc' AND UserPwd = '123'")
-        print(Cursor.fetchall())
+@app.get("/seats")
+async def GetUnavailableSeat(
+    plate: str = Query(..., alias="plate")
+    ):
+    return ConnectDB.ConnectDB.GetUnavailableSeat(ConnectDB.ConnectDB,plate)
+
+@app.get("/tickets/{usr}")
+async def GetTicket(
+    usr: str, tick: int):
+    return ConnectDB.ConnectDB.GetTicket(ConnectDB.ConnectDB, usr, tick)
+
+@app.post("/create_user/", tags=['users'])
+def create_user(user: User):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 3)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+        logging.info(f"Stored procedure executed successfully: {row}")
+
+        if row:
+            logging.info(f"Result: {row[0]}")
+            return {"Id": row[0], "Message": row[1]}  # JSON string returned by SQL Server
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(status_code=400, detail="No result returned from the stored procedure.")
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/login/", tags=['users'])
+def login_user(login: LoginRequest):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_check_login ?, ?", login.username, login.password)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            user_id = row[0]
+            fullname = row[1]
+            logging.info(f"User {login.username} authenticated successfully.")
+            token = jwt.encode({
+                'user_id': user_id,
+                'username': login.username,
+                'exp': datetime.utcnow() + timedelta(hours=1)
+            }, secret_key, algorithm="HS256")
+            return {
+                "UserId": user_id,
+                "FullName": fullname,
+                "Message": "Login successful",
+                "TokenType": "Bearer",
+                "AccessToken": token
+            }
+        else:
+            logging.warning(f"Invalid login attempt for user: {login.username}")
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.get("/getlistcustomer", tags=['users'])
+def get_list_customer(userroleid: int = Query(..., description="ID of the user role")):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_customer ?", userroleid)
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        customers = []
+        for row in rows:
+            customer = {
+                "UserId": row[0],
+                "FullName": row[2],
+                "UserName": row[1],
+                "UserRoleId": row[4],
+                "UserEmail": row[3]
+            }
+            customers.append(customer)
+        return customers
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.get("/getSeatBooked", tags=['bus'])
+def get_list_bus(busid: int = Query(..., description="BusId of that Bus"),
+                isbook: int = Query(..., description="Booked status of that seat")):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_seat_booked ?, ?", busid, isbook)
+
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        buses = []
+        for row in rows:
+            bus = {
+                "LicensePlate": row[0],
+                "SeatName": row[1],
+                "IsBook": row[2],
+                "SeatId": row[3]
+            }
+            buses.append(bus)
+        return buses
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.get("/getAllBus", tags=['bus'])
+def get_list_customer():
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_bus")
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        customers = []
+        for row in rows:
+            customer = {
+                "BusId": row[0],
+                "LicensePlate": row[1],
+                "SeatNum": row[2],
+                "BusStatusId": row[3]
+            }
+            customers.append(customer)
+        return customers
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/userinfo/", tags=['users'])
+def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
+    try:
+        token_username = token.get("username")
+        if token_username != login.username:
+            raise HTTPException(status_code=403, detail="Token does not match username")
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_user_by_pass ?, ?", login.username, login.password)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            user_id = row[0]
+            fullname = row[1]
+            user_email = row[2]
+            user_role_id = row[3]
+            return {
+                "UserId": user_id,
+                "FullName": fullname,
+                "UserEmail": user_email,
+                "UserRoleId": user_role_id,
+                "Message": "Login successful"
+            }
+        else:
+            logging.warning(f"Invalid login attempt for user: {login.username}")
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")@app.post("/userinfo/", tags=['users'])
+
+@app.post("/updateVipCustomer", tags=['users'])
+def user_info(req: UpdateVIPReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_customer_vip ?", req.userid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid UserId" }
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/updateSeatToBooked", tags=['Bus'])
+def update_seat_to_booked(req: UpdateSeatToBookedReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_seat_to_booked ?", req.seatid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid SeatId" }
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/updateRegularCustomer", tags=['users'])
+def user_info(req: UpdateVIPReq):
+    try:
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_update_customer_regular ?", req.userid)
+        cursor.nextset()
+
+        row = cursor.fetchone()
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            return { "Id": row[0], "Message": row[1] }
+        else:
+            return { "Id": -1, "Message": "Invalid UserId" }
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+@app.post("/ticketinfo/", tags=['users'])
+def user_info(ticketinfo: TicketInfoReq):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticketId)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        if row:
+            if row[0] == -1:
+                return {"Status": -1, "Message": row[1]}
+
+            trip_id = row[0]
+            trip_name = row[1]
+            plate_number = row[2]
+            return {
+                "TripId": trip_id,
+                "TripName": trip_name,
+                "PlateNumber": plate_number
+            }
+        else:
+            raise HTTPException(status_code=401, detail="Invalid username or password")
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
 
-    def GetUserName(self, usr: str, pwd: str) -> dict:
-        try:
-            Cursor = self.Connector.cursor()
-            Cursor.execute(f"SELECT * FROM _User_ WHERE UserName = '{usr}' AND UserPwd = '{pwd}'")
-            if Cursor.rowcount == 0:
-                print('Username not found or wrong password')
-                return ()
-            else:
-                print('Success')
-        except Exception as e:
-            print(str(e))
-            return ()
-        
-        row = Cursor.fetchone()
-
-        return {"UserID": row[0], "UserName": row[1], "Phone": row[3]}
-    
-
-
-    def GetTrip(self, depart: str, arrive: str, date: str) -> list:
-        listTrips = []
-        try:
-            Cursor = self.Connector.cursor()
-            Cursor.execute(f"SELECT * FROM Trip WHERE DepartLocation = '{depart}' AND ArriveLocation = '{arrive}' AND DepartDate = '{date}'")
-            if Cursor.rowcount == 0:
-                print('Trip not found')
-                return []
-            else:
-                print('Success')
-        except Exception as e:
-            print(str(e))
-            return []
-        rows = Cursor.fetchall()
-        if rows:
-            for row in rows:
-                listTrips.append({"TripID": row[0], "TripName": row[1], "DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S'), "Status": row[6], "CarID": row[7]})
-        return listTrips

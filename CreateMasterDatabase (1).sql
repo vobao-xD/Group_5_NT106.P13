@@ -1,9 +1,13 @@
--- Table: User
-
 CREATE DATABASE Bus_server_prod
 GO
+
 USE Bus_server_prod
 GO
+
+CREATE TABLE UserRole (
+    UserRoleId INT PRIMARY KEY IDENTITY(1,1),
+    UserRoleName NVARCHAR(100) NOT NULL UNIQUE
+);
 
 CREATE TABLE [User] (
     UserId INT PRIMARY KEY IDENTITY(1,1),
@@ -15,30 +19,26 @@ CREATE TABLE [User] (
     FOREIGN KEY (UserRoleId) REFERENCES UserRole(UserRoleId)
 );
 
--- Table: UserRole
-CREATE TABLE UserRole (
-    UserRoleId INT PRIMARY KEY IDENTITY(1,1),
-    UserRoleName NVARCHAR(100) NOT NULL UNIQUE
+CREATE TABLE BusStatus (
+    BusStatusId INT PRIMARY KEY IDENTITY(1,1),
+    BusStatusName NVARCHAR(50) NOT NULL
 );
 
--- Table: Ticket
-CREATE TABLE Ticket (
-    TicketId INT PRIMARY KEY IDENTITY(1,1),
-    NumOfSeat INT NOT NULL,
-    TripId INT NOT NULL,
-    UserId INT NOT NULL,
-    Price DECIMAL(10,2) NOT NULL,
-    TicketDetailId INT NULL,
-    FOREIGN KEY (TripId) REFERENCES Trip(TripId),
-    FOREIGN KEY (UserId) REFERENCES [User](UserId)
+CREATE TABLE Bus (
+    BusId INT PRIMARY KEY IDENTITY(1,1),
+    LicensePlate NVARCHAR(50) NOT NULL UNIQUE,
+    SeatNum INT NOT NULL CHECK (SeatNum > 0),
+	BusStatusId INT,
+	FOREIGN KEY (BusStatusId) REFERENCES BusStatus(BusStatusId)
 );
 
--- Table: TicketDetail
-CREATE TABLE TicketDetail (
-    TicketDetailId INT PRIMARY KEY IDENTITY(1,1),
-    TicketId INT NOT NULL,
+CREATE TABLE Seat (
+    LicensePlate NVARCHAR(50) NOT NULL,
     SeatId INT NOT NULL,
-    FOREIGN KEY (TicketId) REFERENCES Ticket(TicketId)
+    SeatName NVARCHAR(50) NOT NULL,
+    IsBook BIT NOT NULL DEFAULT 0,
+    PRIMARY KEY (LicensePlate, SeatId),
+    FOREIGN KEY (LicensePlate) REFERENCES Bus(LicensePlate)
 );
 
 CREATE TABLE TripStatus (
@@ -46,7 +46,6 @@ CREATE TABLE TripStatus (
     TripStatusName NVARCHAR(50) NOT NULL
 );
 
--- Table: Trip
 CREATE TABLE Trip (
     TripId INT PRIMARY KEY IDENTITY(1,1),
     Plate NVARCHAR(50) NOT NULL,
@@ -58,27 +57,20 @@ CREATE TABLE Trip (
 	FOREIGN KEY (TripStatusId) REFERENCES TripStatus(TripStatusId)
 );
 
--- Table: Bus
-CREATE TABLE Bus (
-    BusId INT PRIMARY KEY IDENTITY(1,1),
-    LicensePlate NVARCHAR(50) NOT NULL UNIQUE,
-    SeatNum INT NOT NULL CHECK (SeatNum > 0),
-	BusStatusId INT,
-	FOREIGN KEY (BusStatusId) REFERENCES BusStatus(BusStatusId)
+CREATE TABLE Ticket (
+    TicketId INT PRIMARY KEY IDENTITY(1,1),
+    NumOfSeat INT NOT NULL,
+    TripId INT NOT NULL,
+    UserId INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    TicketDetailId INT NULL,
+    FOREIGN KEY (TripId) REFERENCES Trip(TripId),
+    FOREIGN KEY (UserId) REFERENCES [User](UserId)
 );
 
--- Table: Seat
-CREATE TABLE Seat (
-    LicensePlate NVARCHAR(50) NOT NULL,
+CREATE TABLE TicketDetail (
+    TicketDetailId INT PRIMARY KEY IDENTITY(1,1),
+    TicketId INT NOT NULL,
     SeatId INT NOT NULL,
-    SeatName NVARCHAR(50) NOT NULL,
-    IsBook BIT NOT NULL DEFAULT 0,
-    PRIMARY KEY (LicensePlate, SeatId),
-    FOREIGN KEY (LicensePlate) REFERENCES Bus(LicensePlate)
+    FOREIGN KEY (TicketId) REFERENCES Ticket(TicketId)
 );
-
-CREATE TABLE BusStatus (
-    BusStatusId INT PRIMARY KEY IDENTITY(1,1),
-    BusStatusName NVARCHAR(50) NOT NULL
-);
-

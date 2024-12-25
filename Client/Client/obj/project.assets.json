@@ -304,23 +304,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\": {},
+    "C:\\Users\\vobao\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
-      "packagesPath": "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Code GitHub\\Group_5_NT106.P13\\Client\\Client\\obj\\",
+      "projectPath": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Client.csproj",
+      "packagesPath": "C:\\Users\\vobao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Khoi Nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vobao\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -329,7 +329,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
