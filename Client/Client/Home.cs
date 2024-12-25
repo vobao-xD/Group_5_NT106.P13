@@ -101,6 +101,7 @@ namespace Client
                     return;
                 }
 
+
                 if (chkboxRoundtrip.Checked == true)
                 {
                     if (list.Count == 1)
@@ -121,25 +122,23 @@ namespace Client
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                         int ListId1 = list[0].TripId;
-                        decimal Price = list[0].Price;
-                        ReserveTicket ins1 = new(list[0], 1);
+                        ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
                         ins1.ShowDialog();
 
                         MessageBox.Show("Mời bạn đặt vé cho chuyến về:");
                         int ListId2 = list[1].TripId;
 
-                        ReserveTicket ins2 = new(list[1], 1);
+                        ReserveTicket ins2 = new(list[1], _userInfo, _authToken);
                         ins2.ShowDialog();
 
                     }
-                    else { MessageBox.Show("WTF???"); }
+                    else { MessageBox.Show("How???"); }
                 }
                 else
                 {
                     MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
                     int ListId = list[0].TripId;
-                    decimal Price = list[0].Price;
-                    ReserveTicket ins1 = new(list[0], 1);
+                    ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
                     ins1.ShowDialog();
                 }
 
@@ -152,32 +151,31 @@ namespace Client
         {
 
         }
+
+        private void DepartDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class Trips
     {
         public int TripId { get; set; }
-        public string? TripName { get; set; }
+        public int? BusId { get; set; }
+        public string? Plate { get; set; }
         public string? DepartLocation { get; set; }
         public string? ArrivalLocation { get; set; }
         public string? DepartureDate { get; set; }
-        public int? Status { get; set; }
-        public string? Plate { get; set; }
-        public decimal Price { get; set; }
-        public Trips(int tripId, string? tripName, string? departLocation, string? arrivalLocation, string? departureDate, int? status, string? plate, decimal price)
+
+        public Trips(int tripId, int busId, string? departLocation, string? arrivalLocation, string? departureDate, int? status, string? plate)
         {
             TripId = tripId;
-            TripName = tripName;
+            BusId = busId;
             DepartLocation = departLocation;
             ArrivalLocation = arrivalLocation;
             DepartureDate = departureDate;
-            Status = status;
-            this.Plate = plate;
-            this.Price = price;
+            Plate = plate;
         }
     }
-
-
-
 
 }

@@ -15,34 +15,84 @@ import json
 
 app = FastAPI()
 
-@app.get("/trips")
+def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
+        listTrips = []
+        try:
+            Cursor = connect_to_sql_server().cursor()
+            if isreturn == True:               
+                Cursor.execute("EXEC prod_get_trip_return @depart = ?, @arrive = ?, @departtime = ?, @returntime = ?", (unquote(depart), unquote(arrive), unquote(departdate), unquote(returndate)))
+            else:
+                Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
+            
+            if Cursor.rowcount == 0:
+                print('Trip not found')
+                return None
+            else:
+                print('Success')
+        except pyodbc.Error as e:
+            logging.error(f"Database error: {e}")
+            raise HTTPException(status_code=500, detail=f"Database error: {e}")
+        except Exception as e:
+            logging.error(f"Unexpected error: {e}")
+            raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+        except Exception as e:
+            print(str(e))
+            return None
+        rows = Cursor.fetchall()
+        if rows:
+            for row in rows:
+                listTrips.append({"TripID": row[0], "BusId": row[1],"Plate": row[5] ,"DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S') })
+        return listTrips
+
+
+def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
+        listSeat: list = []
+        try:
+            Cursor = connect_to_sql_server().cursor()
+            Cursor.execute(f"EXEC prod_get_seat_booked @busid = ?, @isbook = ?", busid, isbook)
+            if Cursor.rowcount == 0:
+                print('BusID not found')
+                return listSeat
+            else:
+                print('Success')
+        except pyodbc.Error as e:
+            logging.error(f"Database error: {e}")
+            raise HTTPException(status_code=500, detail=f"Database error: {e}")
+        except Exception as e:
+            logging.error(f"Unexpected error: {e}")
+            raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+        seats = Cursor.fetchall()
+        if len(seats) == 0: print('No seat available.'); return listSeat
+        for seat in seats:
+            listSeat.append({"Plate": seat[0], "SeatName": seat[1], "IsBook": seat[2], "SeatId": seat[3]})
+        return listSeat
+
+
+
+@app.get("/trips", tags=['items'])
 async def GetAllTrip(
     from_location: str = Query(..., alias="from", description="Departure location"),
     to_location: str = Query(..., alias="to", description="Arrival location"),
     from_time: str = Query(..., alias="fromTime", description="Departure time"),
     to_time: Optional[str] = Query(None, alias="toTime", description="Return time"),
     is_return: Optional[bool] =  Query(False, alias="isReturn", description="Indicates if the ticket is round-trip"),
-    ticket_count: Optional[int] = Query(1, alias="ticketCount", ge=1, description="Number of tickets to book") 
-    ):
-    return ConnectDB.ConnectDB.GetTrip(ConnectDB.ConnectDB, from_location, to_location, from_time, to_time, is_return)
+):
+    return GetTrip(from_location, to_location, from_time, to_time, is_return)
 
-@app.get("/seats")
-async def GetUnavailableSeat(
-    plate: str = Query(..., alias="plate")
-    ):
-    return ConnectDB.ConnectDB.GetUnavailableSeat(ConnectDB.ConnectDB,plate)
+@app.get("/seats", tags=['items'])
+async def GetUnavailSeat(
+    busid: int = Query(..., alias="busid"),
+    isbook: int = Query(..., alias="isbook")
+):
+    return GetUnavailableSeat(busid,isbook)
 
-@app.get("/tickets/{usr}")
-async def GetTicket(
-    usr: str, tick: int):
-    return ConnectDB.ConnectDB.GetTicket(ConnectDB.ConnectDB, usr, tick)
 
 @app.post("/create_user/", tags=['users'])
 def create_user(user: User):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 3)
+        cursor.execute("EXEC prod_create_user ?, ?, ?, ?, ?", user.username, user.password, user.fullname, user.email, 2)
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
@@ -78,11 +128,11 @@ def login_user(login: LoginRequest):
             user_id = row[0]
             fullname = row[1]
             logging.info(f"User {login.username} authenticated successfully.")
-            token = jwt.encode({
+            token = jwt.JWT.encode({
                 'user_id': user_id,
                 'username': login.username,
                 'exp': datetime.utcnow() + timedelta(hours=1)
-            }, secret_key, algorithm="HS256")
+            }, secret_key, alg="HS256")
             return {
                 "UserId": user_id,
                 "FullName": fullname,

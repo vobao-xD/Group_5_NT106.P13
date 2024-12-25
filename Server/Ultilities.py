@@ -5,8 +5,13 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials, OAuth2PasswordBearer
 import jwt
 
+
+
 def generate_secret_key():
     return secrets.token_hex(32)
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+secret_key = generate_secret_key()
 
 def connect_to_sql_server():
     conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'

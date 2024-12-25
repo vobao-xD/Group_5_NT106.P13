@@ -19,9 +19,6 @@
     <Compile Update="Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ListTrip.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
