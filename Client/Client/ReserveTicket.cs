@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Client.Model;
 
 namespace Client
 {
@@ -16,22 +17,17 @@ namespace Client
     {
         public int TripID = -1;
         public int UserID = -1;
-        public ReserveTicket()
+        private UserInfo _userInfo;
+        private AuthToken _authToken;
+        public ReserveTicket(Trips trip, UserInfo userInfo, AuthToken authToken)
         {
-            InitializeComponent();
-        }
-        public ReserveTicket(Trips trip, int UserID)
-        {
-            //Task.Run(() => GetUnavailableSeat(trip.Plate));
             InitializeComponent();
             //GET /seats?tripid={trip.TripID.ToString}
             TripID = trip.TripId;
-            this.UserID = UserID;
-            //this.Enabled = false;
+            
             this.plate = trip.Plate;
-
-
-
+            _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
+            _userInfo = userInfo;
 
         }
         List<string>? seatsList;
@@ -45,8 +41,8 @@ namespace Client
         public async Task GetUnavailableSeat(string? plate)
         {
             HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            MessageBox.Show($"http://127.0.0.1:8002/seats?plate={plate}");
             HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             MessageBox.Show(seats);
@@ -59,14 +55,15 @@ namespace Client
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            
+            Payment ins = new();
+            ins.ShowDialog();
         }
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
         {
             HttpClient client = new();
-            client.BaseAddress = new Uri($"http://127.0.0.1:8000/");
-            MessageBox.Show($"http://127.0.0.1:8000/seats?plate={plate}");
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            MessageBox.Show($"http://127.0.0.1:8002/seats?plate={plate}");
             HttpResponseMessage response = await client.GetAsync($"seats?plate={plate}");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             MessageBox.Show(seats);

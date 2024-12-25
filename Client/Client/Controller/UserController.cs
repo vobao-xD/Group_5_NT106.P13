@@ -134,5 +134,44 @@ namespace Client.Controller
             var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
             return result;
         }
+        public async Task<ReturnMessage> ForgetPasswordAsync(string email, string password)
+        {
+            var updateURL = baseURL + "/forget_password";
+            var updateData = new
+            {
+                email = email,
+                password = password
+            };
+            var content = new StringContent(JsonSerializer.Serialize(updateData), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(updateURL, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
+            return result;
+        }
+        public async Task<ReturnMessage> UpdatePasswordAsync(string username, string password, AuthToken authToken)
+        {
+            var updateURL = baseURL + "/update_password";
+            var updateData = new
+            {
+                username = username,
+                password = password
+            };
+            var content = new StringContent(JsonSerializer.Serialize(updateData), Encoding.UTF8, "application/json");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authToken.TokenType, authToken.AccessToken);
+            var response = await _httpClient.PostAsync(updateURL, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
+            return result;
+        }
     }
 }

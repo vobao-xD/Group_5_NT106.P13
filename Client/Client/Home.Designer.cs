@@ -53,6 +53,8 @@
             statusStrip1 = new StatusStrip();
             labelUsername = new ToolStripStatusLabel();
             labelUserEmail = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            lblChangePassword = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -261,6 +263,7 @@
             DepartDate.Name = "DepartDate";
             DepartDate.Size = new Size(111, 27);
             DepartDate.TabIndex = 17;
+            DepartDate.ValueChanged += DepartDate_ValueChanged;
             // 
             // ReturnTime
             // 
@@ -285,7 +288,7 @@
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { labelUsername, labelUserEmail });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { labelUsername, labelUserEmail, toolStripStatusLabel1, lblChangePassword });
             statusStrip1.Location = new Point(0, 697);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(1440, 26);
@@ -303,6 +306,23 @@
             labelUserEmail.Name = "labelUserEmail";
             labelUserEmail.Size = new Size(108, 20);
             labelUserEmail.Text = "labelUserEmail";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            toolStripStatusLabel1.ForeColor = Color.Black;
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(59, 20);
+            toolStripStatusLabel1.Text = "Logout";
+            toolStripStatusLabel1.VisitedLinkColor = Color.FromArgb(255, 192, 192);
+            // 
+            // lblChangePassword
+            // 
+            lblChangePassword.ForeColor = Color.Red;
+            lblChangePassword.Name = "lblChangePassword";
+            lblChangePassword.Size = new Size(124, 20);
+            lblChangePassword.Text = "Change Password";
+            lblChangePassword.Click += lblChangePassword_Click;
             // 
             // Home
             // 
@@ -374,5 +394,7 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel labelUsername;
         private ToolStripStatusLabel labelUserEmail;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel lblChangePassword;
     }
 }

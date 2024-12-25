@@ -37,6 +37,7 @@
             btnLogin = new Button();
             label3 = new Label();
             btnSignUp = new Button();
+            lblForgetPassword = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -123,12 +124,24 @@
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
             // 
+            // lblForgetPassword
+            // 
+            lblForgetPassword.AutoSize = true;
+            lblForgetPassword.Location = new Point(310, 281);
+            lblForgetPassword.Name = "lblForgetPassword";
+            lblForgetPassword.Size = new Size(116, 20);
+            lblForgetPassword.TabIndex = 8;
+            lblForgetPassword.TabStop = true;
+            lblForgetPassword.Text = "Quên mật khẩu?";
+            lblForgetPassword.LinkClicked += lblForgetPassword_LinkClicked;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(862, 482);
+            Controls.Add(lblForgetPassword);
             Controls.Add(btnSignUp);
             Controls.Add(label3);
             Controls.Add(btnLogin);
@@ -155,5 +168,6 @@
         private Button btnLogin;
         private Label label3;
         private Button btnSignUp;
+        private LinkLabel lblForgetPassword;
     }
 }

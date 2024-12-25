@@ -403,3 +403,12 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+Client/Client/obj/Client.csproj.nuget.dgspec.json
+Client/Client/obj/Client.csproj.nuget.g.props
+Client/Client/obj/Debug/net8.0-windows/Client.AssemblyInfo.cs
+Client/Client/obj/Debug/net8.0-windows/Client.AssemblyInfoInputs.cache
+Client/Client/obj/Debug/net8.0-windows/Client.assets.cache
+*.cache
+Client/Client/obj/Debug/net8.0-windows/Client.designer.runtimeconfig.json
+Client/Client/obj/Debug/net8.0-windows/Client.GeneratedMSBuildEditorConfig.editorconfig
+Client/Client/obj/project.assets.json

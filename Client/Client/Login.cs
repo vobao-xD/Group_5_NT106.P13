@@ -80,10 +80,10 @@ namespace Client
                         staffForm.Show();
                         this.Hide();
                     }
-                    if (userInfo.UserRoleId == 3)
+                    if (userInfo.UserRoleId == 3 || userInfo.UserRoleId == 4)
                     {
                         // change to customer
-                        Home home = new Home(userInfo, loginResult);
+                        Home home = new Home(txtLoginName.Text, userInfo, loginResult);
                         home.Show();
                         this.Hide();
                     }
@@ -100,6 +100,12 @@ namespace Client
         {
             SignUp signUp = new SignUp();
             signUp.ShowDialog();
+        }
+
+        private void lblForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
+            forgetPasswordForm.ShowDialog();
         }
     }
 }

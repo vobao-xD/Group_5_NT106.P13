@@ -30,6 +30,22 @@ namespace Client.Controller
             var busInfo = JsonSerializer.Deserialize<List<BusInfo>>(responseContent);
             return busInfo;
         }
+        public async Task<List<TripInfo>> GetAllTripsAsync()
+        {
+            var getAllTripsURL = baseURL + "/getAllTrip";
+
+            var response = await _httpClient.GetAsync(getAllTripsURL);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var tripInfo = JsonSerializer.Deserialize<List<TripInfo>>(responseContent);
+            return tripInfo;
+        }
+
         public async Task<List<GetSeatBookedModel>> GetSeatBookedsAsync(int busId, int isBooked)
         {
             var getSeatBookedURL = baseURL + $"/getSeatBooked?busid={busId}&isbook={isBooked}";
@@ -62,5 +78,34 @@ namespace Client.Controller
             var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
             return result;
         }
+        public async Task<ReturnMessage> CreateTripAsync(string plate, int seatNum, int busStatusId, string departLocation, string arriveLocation, DateTime departTime, int tripStatusId)
+        {
+            var createTripURL = baseURL + "/create_trip/";
+
+            var tripData = new
+            {
+                plate = plate,
+                seat_num = seatNum,
+                bus_status_id = busStatusId,
+                depart_location = departLocation,
+                arrive_location = arriveLocation,
+                depart_time = departTime,
+                trip_status_id = tripStatusId
+            };
+
+            var content = new StringContent(JsonSerializer.Serialize(tripData), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync(createTripURL, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error: {response.StatusCode}: {errorContent}");
+            }
+            var responseContent = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
+            return result;
+        }
+
     }
 }

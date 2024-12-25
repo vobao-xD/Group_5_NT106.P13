@@ -25,7 +25,8 @@ namespace Client
         }
         private void btnAddTrip_Click(object sender, EventArgs e)
         {
-
+            Admin_Add_Trip_Bus admin_Add_Trip_Bus = new Admin_Add_Trip_Bus();
+            admin_Add_Trip_Bus.ShowDialog();
         }
 
         private void btnListCustomer_Click(object sender, EventArgs e)
