@@ -221,7 +221,7 @@
             // 
             // ReturnDate
             // 
-            ReturnDate.CustomFormat = "yyyy-mm-dd";
+            ReturnDate.CustomFormat = "yyyy-MM-dd";
             ReturnDate.Enabled = false;
             ReturnDate.Format = DateTimePickerFormat.Custom;
             ReturnDate.Location = new Point(779, 381);
@@ -255,7 +255,7 @@
             // 
             // DepartDate
             // 
-            DepartDate.CustomFormat = "yyyy-mm-dd";
+            DepartDate.CustomFormat = "yyyy-MM-dd";
             DepartDate.Format = DateTimePickerFormat.Custom;
             DepartDate.Location = new Point(779, 303);
             DepartDate.Name = "DepartDate";
