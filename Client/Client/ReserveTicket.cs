@@ -30,7 +30,7 @@ namespace Client
             
         }
         List<Seat>? seatsList;
-        List<string> items;
+        List<string> items = new List<string>();
         List<string> selectedSeats = [];
         string? plate;
 
@@ -43,31 +43,37 @@ namespace Client
             }
 
             HttpClient client2 = new();
-
             client2.BaseAddress = new Uri($"http://127.0.0.1:8002/");
-
-            HttpResponseMessage response = await client2.GetAsync($"seats?busid={_trip.BusId}&isbook=1");
-
+            HttpResponseMessage response = await client2.GetAsync($"seats?busid={_trip.BusId}&isbook=0");
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+            seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
 
-
-            var seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
-
-
-            foreach (Seat seat in seatsList)
-            {
-                if (seat.SeatName != null && selectedSeats.Contains(seat.SeatName))
-                {
-                    MessageBox.Show($"Someone has chosen this seat [{seat.SeatName}]. Please choose another seat");
-                }
-
-            }
-            
-
+            selectedSeats.Clear();
             foreach (var sel in checkedListBox1.CheckedItems)
             {
                 selectedSeats.Add(sel.ToString());
             }
+
+            items.Clear();
+            foreach (Seat seat in seatsList)
+            {
+                if (seat.SeatName != null) items.Add(seat.SeatName);
+            }
+
+            checkedListBox1.Items.Clear();
+            checkedListBox1.Items.AddRange(items.ToArray());
+
+            foreach (var sel in selectedSeats)
+            {
+                if (!items.Contains(sel))
+                {
+                    MessageBox.Show($"Someone has chosen this seat [{sel}]. Please choose another seat");
+                    return;
+                }
+            }
+            
+
+
             
             Payment pay = new(_trip, _userInfo, _authToken,selectedSeats);
             pay.ShowDialog();
@@ -76,33 +82,19 @@ namespace Client
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
         {
-            items = new List<string>
-            {
-                "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10",
-                "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10",
-                "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"
-            };
             try
             {
                 HttpClient client = new();
-
-
                 client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
-
-                HttpResponseMessage response = await client.GetAsync($"seats?busid={_trip.BusId}&isbook=1");
-
+                HttpResponseMessage response = await client.GetAsync($"seats?busid={_trip.BusId}&isbook=0");
                 string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-
                 seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
-
                 foreach (Seat seat in seatsList)
                 {
-                    if (seat.SeatName != null) items.Remove(seat.SeatName);
+                    if (seat.SeatName != null) items.Add(seat.SeatName);
                 }
-
                 checkedListBox1.Items.Clear();
                 checkedListBox1.Items.AddRange(items.ToArray());
-                
             }
             catch (Exception ex)
             {
