@@ -20,8 +20,6 @@ namespace Client
         private Trips _trip;
         private UserInfo _userInfo;
         private AuthToken _authToken;
-        static FileStream fs = new($"ReserveTicket_{DateTime.Now.ToString("dd-MM-yyyy_hh-MM-ss")}.log", FileMode.CreateNew);
-        static StreamWriter sw = new(fs);
         public ReserveTicket(Trips trip, UserInfo userInfo, AuthToken authToken)
         {
             InitializeComponent();            
@@ -37,19 +35,44 @@ namespace Client
         string? plate;
 
 
-        private void btnPay_Click(object sender, EventArgs e)
+        private async void btnPay_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.CheckedItems.Count == 0) {
                 MessageBox.Show("Please select a seat.","Notice",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
-            foreach (var sel in checkedListBox1.SelectedItems)
+
+            HttpClient client2 = new();
+
+            client2.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+
+            HttpResponseMessage response = await client2.GetAsync($"seats?busid={_trip.BusId}&isbook=1");
+
+
+            string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+
+
+            var seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
+
+
+            foreach (Seat seat in seatsList)
+            {
+                if (seat.SeatName != null && selectedSeats.Contains(seat.SeatName))
+                {
+                    MessageBox.Show($"Someone has chosen this seat [{seat.SeatName}]. Please choose another seat");
+                }
+
+            }
+            
+
+            foreach (var sel in checkedListBox1.CheckedItems)
             {
                 selectedSeats.Add(sel.ToString());
             }
 
             Payment pay = new(_trip, _userInfo, _authToken,selectedSeats);
             pay.ShowDialog();
+            this.Close();
         }
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
@@ -63,37 +86,28 @@ namespace Client
             try
             {
                 HttpClient client = new();
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Create an instance of HttpClient");
+
 
                 client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Assigning BaseAddress: {client.BaseAddress.ToString()}");
 
                 HttpResponseMessage response = await client.GetAsync($"seats?busid={_trip.BusId}&isbook=1");
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Waiting for response from server with busid {_trip.BusId}");
 
                 string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Getting response from server with busid {_trip.BusId}");
 
                 seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Deserialize the response");
 
                 foreach (Seat seat in seatsList)
                 {
                     if (seat.SeatName != null) items.Remove(seat.SeatName);
-                    sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Removed seatname: {seat.SeatName}");
                 }
 
                 checkedListBox1.Items.Clear();
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Cleared the check box");
                 checkedListBox1.Items.AddRange(items.ToArray());
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Adding seat that is not reserved");
-                sw.Close();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Undefined Error: {ex.Message}");
-                sw.WriteLine($"{DateTime.Now:[dd/MM/yyyy hh:MM:ss]} Undefined Error: {ex.Message}");
-                sw.Close();
                 
             }
         }
