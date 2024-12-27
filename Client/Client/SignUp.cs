@@ -1,18 +1,9 @@
-﻿using Client.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MimeKit;
+using Client.Controller;
 using MailKit.Net.Smtp;
-using System.Security.Cryptography;
+using MimeKit;
 
 namespace Client
 {
@@ -20,6 +11,7 @@ namespace Client
     {
         private readonly UserController _userController;
         private readonly HttpClient _httpClient;
+        private static readonly Random _random = new Random();
         public SignUp()
         {
             InitializeComponent();
@@ -59,8 +51,6 @@ namespace Client
             string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|edu\.[a-z]{2})$";
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
-
-        private static readonly Random _random = new Random();
         public static string GenerateOtp(int length = 4)
         {
             const string digits = "0123456789";
@@ -71,8 +61,7 @@ namespace Client
             }
             return new string(otp);
         }
-        public async         Task
-SendEmail(string toEmail, string otp)
+        public async Task SendEmail(string toEmail, string otp)
         {
             string htmlBody = $@"
                             <html>
@@ -203,7 +192,7 @@ SendEmail(string toEmail, string otp)
                 string password = HashPassword(txtPassword.Text);
                 string fullname = txtFullName.Text;
                 string email = txtEmail.Text;
-                int userroleid = 1; // need change afterward
+                int userroleid = 1;
                 var signUpResult = await _userController.SignUpAsync(username, password, fullname, email, userroleid);
                 if (signUpResult.Id == 1)
                 {
@@ -213,8 +202,7 @@ SendEmail(string toEmail, string otp)
                     Authentication authentication = new Authentication(otp);
                     authentication.ShowDialog();
                     MessageBox.Show(signUpResult.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Login login = new Login();
-                    login.Show();
+                    this.Close();
                 }
                 else
                 {

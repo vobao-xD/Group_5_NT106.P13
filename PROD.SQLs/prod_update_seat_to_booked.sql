@@ -5,11 +5,12 @@
 */
 
 CREATE PROCEDURE prod_update_seat_to_booked
-	@seatid INT
+	@seatname varchar(3),
+	@plate varchar(20)
 AS
 BEGIN
 	UPDATE Seat
 	SET IsBook = 1
-	WHERE SeatId = @seatid;
+	WHERE SeatName = @seatname AND LicensePlate = @plate
 	SELECT 1 as Id, 'Update Successfully' as Message;
 END;

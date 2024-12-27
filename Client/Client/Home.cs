@@ -61,23 +61,26 @@ namespace Client
 
         private void chkboxRoundtrip_CheckedChanged(object sender, EventArgs e)
         {
-            ReturnDate.Enabled = true;
-            ReturnTime.Enabled = true;
-            if (chkboxRoundtrip.Checked == false) { ReturnDate.Enabled = false; ReturnTime.Enabled = false; }
+            
         }
         public static string? response;
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
+                if (cmbBoxDeparture.Text == cmbBoxDestination.Text)
+                {
+                    MessageBox.Show("Điểm đi và điểm đến không được trùng nhau.");
+                    return;
+                }
+                
                 string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
                 string fromtime = $"&fromTime={DepartDate.Text}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
-                string totime = $"&toTime={ReturnDate.Text}%20{HttpUtility.UrlEncode(ReturnTime.Text)}";
-                string param = $"&isReturn={chkboxRoundtrip.Checked}&ticketCount=1";
+                
+                string param = $"&isReturn=0&ticketCount=1";
                 string encode;
-                if (chkboxRoundtrip.Checked == true) encode = "/trips?" + request + fromtime + totime + param;
-                else encode = "/trips?" + request + fromtime + param;
-                //MessageBox.Show(encode);
+                
+                encode = "/trips?" + request + fromtime + param;
 
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8002");
@@ -86,7 +89,6 @@ namespace Client
                 HttpResponseMessage res = await client.GetAsync(encode);
 
                 response = await res.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
-
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
@@ -95,53 +97,17 @@ namespace Client
             try
             {
                 List<Trips>? list = JsonConvert.DeserializeObject<List<Trips>>(response);
+                
                 if (list == null)
                 {
                     MessageBox.Show("Không tìm thấy chuyến xe phù hợp");
                     return;
                 }
-
-
-                if (chkboxRoundtrip.Checked == true)
-                {
-                    if (list.Count == 1)
-                    {
-                        if (list[0].DepartLocation == cmbBoxDeparture.Text)
-                        {
-                            MessageBox.Show("Không tìm thấy chuyến về");
-                            return;
-                        }
-                        else if (list[0].DepartLocation == cmbBoxDestination.Text)
-                        {
-                            MessageBox.Show("Không tìm thấy chuyến đi");
-                            return;
-                        }
-                    }
-                    else if (list.Count == 2)
-                    {
-
-                        MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
-                        int ListId1 = list[0].TripId;
-                        ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
-                        ins1.ShowDialog();
-
-                        MessageBox.Show("Mời bạn đặt vé cho chuyến về:");
-                        int ListId2 = list[1].TripId;
-
-                        ReserveTicket ins2 = new(list[1], _userInfo, _authToken);
-                        ins2.ShowDialog();
-
-                    }
-                    else { MessageBox.Show("How???"); }
-                }
-                else
-                {
-                    MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
-                    int ListId = list[0].TripId;
-                    ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
-                    ins1.ShowDialog();
-                }
-
+                MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
+                int ListId = list[0].TripId;
+                ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
+                ins1.ShowDialog();
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
