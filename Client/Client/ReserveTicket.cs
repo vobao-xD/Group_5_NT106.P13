@@ -43,11 +43,11 @@ namespace Client
                 MessageBox.Show("Please select a seat.","Notice",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
-            foreach (var sel in checkedListBox1.SelectedItems)
+            foreach (var sel in checkedListBox1.CheckedItems)
             {
                 selectedSeats.Add(sel.ToString());
             }
-
+            
             Payment pay = new(_trip, _userInfo, _authToken,selectedSeats);
             pay.ShowDialog();
         }

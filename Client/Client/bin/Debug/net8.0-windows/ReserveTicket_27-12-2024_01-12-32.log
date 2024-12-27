@@ -1,0 +1,10 @@
+[27/12/2024 01:12:32] Create an instance of HttpClient
+[27/12/2024 01:12:32] Assigning BaseAddress: http://127.0.0.1:8002/
+[27/12/2024 01:12:32] Waiting for response from server with busid 1
+[27/12/2024 01:12:32] Getting response from server with busid 1
+[27/12/2024 01:12:32] Deserialize the response
+[27/12/2024 01:12:32] Removed seatname: A1
+[27/12/2024 01:12:32] Removed seatname: A2
+[27/12/2024 01:12:32] Removed seatname: A3
+[27/12/2024 01:12:32] Cleared the check box
+[27/12/2024 01:12:32] Adding seat that is not reserved
