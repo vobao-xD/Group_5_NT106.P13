@@ -56,6 +56,7 @@ namespace Client
             {
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://127.0.0.1:8002/");
+                int i = 0;
                 foreach (string seat in selectedSeats)
                 {
                     SelSeat s = new(seat, _trip.Plate);
@@ -65,9 +66,18 @@ namespace Client
                     res.EnsureSuccessStatusCode();
                     var jsonResponse = await res.Content.ReadAsStringAsync();
                     var response = JsonConvert.DeserializeObject<Response>(jsonResponse);
-                    MessageBox.Show(response?.Message);
-                    this.Close(); //Continue payment here
+                    ++i;
+                    
                 }
+                if (i == selectedSeats.Count)
+                {
+                    MessageBox.Show("Mời bạn đến phần thanh toán");
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong");
+                }
+                this.Close(); //Continue payment here
             }
             catch (Exception ex) 
             {

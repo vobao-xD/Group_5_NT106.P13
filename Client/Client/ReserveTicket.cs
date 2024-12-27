@@ -48,7 +48,6 @@ namespace Client
 
             HttpResponseMessage response = await client2.GetAsync($"seats?busid={_trip.BusId}&isbook=1");
 
-
             string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
 
 

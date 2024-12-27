@@ -38,17 +38,13 @@
             btnContact = new Button();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
-            chkboxRoundtrip = new CheckBox();
             label2 = new Label();
             label3 = new Label();
             cmbBoxDeparture = new ComboBox();
             cmbBoxDestination = new ComboBox();
             label4 = new Label();
-            ReturnDate = new DateTimePicker();
             btnSearch = new Button();
-            label6 = new Label();
             DepartDate = new DateTimePicker();
-            ReturnTime = new ComboBox();
             DepartTime = new ComboBox();
             statusStrip1 = new StatusStrip();
             labelUsername = new ToolStripStatusLabel();
@@ -151,19 +147,6 @@
             pictureBox4.TabIndex = 9;
             pictureBox4.TabStop = false;
             // 
-            // chkboxRoundtrip
-            // 
-            chkboxRoundtrip.AutoSize = true;
-            chkboxRoundtrip.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkboxRoundtrip.ForeColor = Color.Black;
-            chkboxRoundtrip.Location = new Point(237, 268);
-            chkboxRoundtrip.Name = "chkboxRoundtrip";
-            chkboxRoundtrip.Size = new Size(102, 32);
-            chkboxRoundtrip.TabIndex = 11;
-            chkboxRoundtrip.Text = "Khứ hồi";
-            chkboxRoundtrip.UseVisualStyleBackColor = true;
-            chkboxRoundtrip.CheckedChanged += chkboxRoundtrip_CheckedChanged;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -213,21 +196,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(779, 277);
+            label4.Location = new Point(779, 316);
             label4.Name = "label4";
             label4.Size = new Size(69, 23);
             label4.TabIndex = 16;
             label4.Text = "Ngày đi";
-            // 
-            // ReturnDate
-            // 
-            ReturnDate.CustomFormat = "yyyy-MM-dd";
-            ReturnDate.Enabled = false;
-            ReturnDate.Format = DateTimePickerFormat.Custom;
-            ReturnDate.Location = new Point(779, 381);
-            ReturnDate.Name = "ReturnDate";
-            ReturnDate.Size = new Size(111, 27);
-            ReturnDate.TabIndex = 17;
             // 
             // btnSearch
             // 
@@ -242,41 +215,20 @@
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(779, 355);
-            label6.Name = "label6";
-            label6.Size = new Size(72, 23);
-            label6.TabIndex = 16;
-            label6.Text = "Ngày về";
-            // 
             // DepartDate
             // 
             DepartDate.CustomFormat = "yyyy-MM-dd";
             DepartDate.Format = DateTimePickerFormat.Custom;
-            DepartDate.Location = new Point(779, 303);
+            DepartDate.Location = new Point(779, 342);
             DepartDate.Name = "DepartDate";
             DepartDate.Size = new Size(111, 27);
             DepartDate.TabIndex = 17;
-            // 
-            // ReturnTime
-            // 
-            ReturnTime.Enabled = false;
-            ReturnTime.FormattingEnabled = true;
-            ReturnTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00" });
-            ReturnTime.Location = new Point(896, 380);
-            ReturnTime.Name = "ReturnTime";
-            ReturnTime.Size = new Size(133, 28);
-            ReturnTime.TabIndex = 21;
             // 
             // DepartTime
             // 
             DepartTime.FormattingEnabled = true;
             DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00" });
-            DepartTime.Location = new Point(896, 302);
+            DepartTime.Location = new Point(896, 341);
             DepartTime.Name = "DepartTime";
             DepartTime.Size = new Size(133, 28);
             DepartTime.TabIndex = 22;
@@ -312,17 +264,13 @@
             ClientSize = new Size(1440, 723);
             Controls.Add(statusStrip1);
             Controls.Add(DepartTime);
-            Controls.Add(ReturnTime);
             Controls.Add(btnSearch);
             Controls.Add(DepartDate);
-            Controls.Add(ReturnDate);
-            Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(cmbBoxDestination);
             Controls.Add(cmbBoxDeparture);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(chkboxRoundtrip);
             Controls.Add(pictureBox4);
             Controls.Add(btnContact);
             Controls.Add(btnTicketSearch);
@@ -359,17 +307,13 @@
         private Button btnContact;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private CheckBox chkboxRoundtrip;
         private Label label2;
         private Label label3;
         private ComboBox cmbBoxDeparture;
         private ComboBox cmbBoxDestination;
         private Label label4;
-        private DateTimePicker ReturnDate;
         private Button btnSearch;
-        private Label label6;
         private DateTimePicker DepartDate;
-        private ComboBox ReturnTime;
         private ComboBox DepartTime;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel labelUsername;
