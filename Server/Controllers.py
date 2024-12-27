@@ -12,8 +12,53 @@ import logging
 import pyodbc
 import secrets
 import json
+import requests
+import hmac
+import uuid
+import hashlib
 
 app = FastAPI()
+
+@app.post("/create_payment/")
+async def create_payment(order_id: str, client_amount: int):
+    endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
+    partnerCode = "MOMO"
+    accessKey = "F8BBA842ECF85"
+    secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz"
+    orderInfo = "pay with MoMo"
+    redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b"
+    ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b"
+    amount = "50000"
+    orderId = str(uuid.uuid4())
+    requestId = str(uuid.uuid4())
+    requestType = "captureWallet"
+    extraData = ""  # pass empty value or Encode base64 JsonString
+
+    payload = {
+        'partnerCode': partnerCode,
+        'partnerName': "Test",
+        'storeId': "MomoTestStore",
+        'requestId': requestId,
+        'amount': amount,
+        'orderId': orderId,
+        'orderInfo': orderInfo,
+        'redirectUrl': redirectUrl,
+        'ipnUrl': ipnUrl,
+        'lang': "vi",
+        'extraData': extraData,
+        'requestType': requestType,
+        'signature': signature
+    } 
+
+    rawSignature = "accessKey=" + accessKey + "&amount=" + amount + "&extraData=" + extraData + "&ipnUrl=" + ipnUrl + "&orderId=" + orderId + "&orderInfo=" + orderInfo + "&partnerCode=" + partnerCode + "&redirectUrl=" + redirectUrl + "&requestId=" + requestId + "&requestType=" + requestType
+    h = hmac.new(bytes(secretKey, 'ascii'), bytes(rawSignature, 'ascii'), hashlib.sha256)
+    signature = h.hexdigest()
+
+    response = requests.post(endpoint, json=payload)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise HTTPException(status_code=500, detail="Payment API failed")
 
 def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
         listTrips = []
