@@ -26,6 +26,7 @@ namespace Client
             InitializeComponent();
             _httpClient = new HttpClient();
             _userController = new UserController(_httpClient);
+            txtPassword.UseSystemPasswordChar = true;
         }
 
         private static string HashPassword(string password)
@@ -100,6 +101,18 @@ namespace Client
         {
             SignUp signUp = new SignUp();
             signUp.ShowDialog();
+        }
+
+        private void checkBoxRevealPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxRevealPass.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }

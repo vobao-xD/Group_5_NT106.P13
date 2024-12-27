@@ -155,6 +155,12 @@ namespace Client
         {
 
         }
+
+        private void btnTicketSearch_Click(object sender, EventArgs e)
+        {
+            TicketInfor ticketInfor = new TicketInfor();
+            ticketInfor.ShowDialog();
+        }
     }
 
     public class Trips

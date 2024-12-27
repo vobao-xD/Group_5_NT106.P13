@@ -35,9 +35,9 @@ namespace Client
                 
                 foreach (var trip in list)
                 {
-                    string[] tripinfo = { trip.TripId.ToString(), trip.TripName, trip.DepartLocation, trip.ArrivalLocation, trip.DepartureDate, trip.Status.ToString(), trip.Plate.ToString() };
-                    ListViewItem item = new ListViewItem(tripinfo);
-                    ListViewItem a = listView1.Items.Add(item);
+             //       string[] tripinfo = { trip.TripId.ToString(), trip.TripName, trip.DepartLocation, trip.ArrivalLocation, trip.DepartureDate, trip.Status.ToString(), trip.Plate.ToString() };
+             //       ListViewItem item = new ListViewItem(tripinfo);
+             //       ListViewItem a = listView1.Items.Add(item);
 
                 }
 
@@ -57,7 +57,7 @@ namespace Client
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-            ReserveTicket ins = new();
+      //      ReserveTicket ins = new();
         }
     }
 

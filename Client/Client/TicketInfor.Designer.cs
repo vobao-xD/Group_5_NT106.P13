@@ -38,9 +38,9 @@
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label2 = new Label();
-            txtLoginName = new TextBox();
             txtTicketCode = new TextBox();
             btnSearch = new Button();
+            flowLayoutPanel_TicketInfo = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -141,45 +141,44 @@
             label2.TabIndex = 17;
             label2.Text = "TRA CỨU THÔNG TIN ĐẶT VÉ";
             // 
-            // txtLoginName
-            // 
-            txtLoginName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLoginName.Location = new Point(506, 308);
-            txtLoginName.Name = "txtLoginName";
-            txtLoginName.Size = new Size(419, 38);
-            txtLoginName.TabIndex = 18;
-            txtLoginName.Text = "Tên đăng nhập...";
-            // 
             // txtTicketCode
             // 
             txtTicketCode.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTicketCode.Location = new Point(506, 375);
+            txtTicketCode.Location = new Point(506, 326);
             txtTicketCode.Name = "txtTicketCode";
             txtTicketCode.Size = new Size(419, 38);
             txtTicketCode.TabIndex = 19;
-            txtTicketCode.Text = "Mã vé...";
             // 
             // btnSearch
             // 
             btnSearch.BackColor = Color.Chocolate;
             btnSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.Snow;
-            btnSearch.Location = new Point(636, 459);
+            btnSearch.Location = new Point(634, 413);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(137, 49);
             btnSearch.TabIndex = 20;
             btnSearch.Text = "Tra cứu";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // TicketSearch
+            // flowLayoutPanel_TicketInfo
+            // 
+            flowLayoutPanel_TicketInfo.AutoScroll = true;
+            flowLayoutPanel_TicketInfo.Location = new Point(467, 524);
+            flowLayoutPanel_TicketInfo.Name = "flowLayoutPanel_TicketInfo";
+            flowLayoutPanel_TicketInfo.Size = new Size(479, 352);
+            flowLayoutPanel_TicketInfo.TabIndex = 21;
+            // 
+            // TicketInfor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1430, 599);
+            ClientSize = new Size(1430, 918);
+            Controls.Add(flowLayoutPanel_TicketInfo);
             Controls.Add(btnSearch);
             Controls.Add(txtTicketCode);
-            Controls.Add(txtLoginName);
             Controls.Add(label2);
             Controls.Add(btnContact);
             Controls.Add(btnTicketSearch);
@@ -189,7 +188,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox3);
-            Name = "TicketSearch";
+            Name = "TicketInfor";
             Text = "TicketSearch";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -209,8 +208,8 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label2;
-        private TextBox txtLoginName;
         private TextBox txtTicketCode;
         private Button btnSearch;
+        private FlowLayoutPanel flowLayoutPanel_TicketInfo;
     }
 }

@@ -400,39 +400,41 @@ def user_info(req: UpdateVIPReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/ticketinfo/", tags=['users'])
+
+@app.post("/ticket_info/", tags=['users'])
 def user_info(ticketinfo: TicketInfoReq):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-
         cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticketId)
-        row = cursor.fetchone()
+        rows = cursor.fetchall()
         conn.commit()
         cursor.close()
         conn.close()
-
-        if row:
-            if row[0] == -1:
-                return {"Status": -1, "Message": row[1]}
-
-            trip_id = row[0]
-            trip_name = row[1]
-            plate_number = row[2]
-            return {
-                "TripId": trip_id,
-                "TripName": trip_name,
-                "PlateNumber": plate_number
+        if rows:
+            if rows[0][0] == -1:
+                return {"Status": -1, "Message": rows[0][1]}
+            ticket_info = {
+                "TicketId": rows[0][0],
+                "TripId": rows[0][1],
+                "PlateNumber": rows[0][2],
+                "DepartLocation": rows[0][3],
+                "ArriveLocation": rows[0][4],
+                "DepartTime": rows[0][5],
+                "UserFullName": rows[0][6]
             }
-        else:
-            raise HTTPException(status_code=401, detail="Invalid username or password")
+            seat_ids = [row[7] for row in rows if row[7] is not None]
+            ticket_info["SeatIds"] = seat_ids
+            return ticket_info
 
+        raise HTTPException(status_code=404, detail="Ticket not found")
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
 
 
 def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:

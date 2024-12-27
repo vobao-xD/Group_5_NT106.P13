@@ -120,6 +120,7 @@
             btnTicketSearch.TabIndex = 6;
             btnTicketSearch.Text = "Tra cứu vé";
             btnTicketSearch.UseVisualStyleBackColor = true;
+            btnTicketSearch.Click += btnTicketSearch_Click;
             // 
             // btnContact
             // 

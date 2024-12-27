@@ -37,6 +37,7 @@
             btnLogin = new Button();
             label3 = new Label();
             btnSignUp = new Button();
+            checkBoxRevealPass = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -85,10 +86,8 @@
             // 
             txtPassword.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPassword.Location = new Point(310, 237);
-            txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(350, 41);
+            txtPassword.Size = new Size(350, 38);
             txtPassword.TabIndex = 3;
             // 
             // btnLogin
@@ -123,12 +122,25 @@
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
             // 
+            // checkBoxRevealPass
+            // 
+            checkBoxRevealPass.AutoSize = true;
+            checkBoxRevealPass.ForeColor = SystemColors.ActiveCaptionText;
+            checkBoxRevealPass.Location = new Point(694, 254);
+            checkBoxRevealPass.Name = "checkBoxRevealPass";
+            checkBoxRevealPass.Size = new Size(127, 24);
+            checkBoxRevealPass.TabIndex = 15;
+            checkBoxRevealPass.Text = "Hiện mật khẩu";
+            checkBoxRevealPass.UseVisualStyleBackColor = true;
+            checkBoxRevealPass.CheckedChanged += checkBoxRevealPass_CheckedChanged;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(862, 482);
+            Controls.Add(checkBoxRevealPass);
             Controls.Add(btnSignUp);
             Controls.Add(label3);
             Controls.Add(btnLogin);
@@ -155,5 +167,6 @@
         private Button btnLogin;
         private Label label3;
         private Button btnSignUp;
+        private CheckBox checkBoxRevealPass;
     }
 }
