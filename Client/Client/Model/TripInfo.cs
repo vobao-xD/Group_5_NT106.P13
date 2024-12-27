@@ -14,7 +14,7 @@ namespace Client.Model
         public string DepartLocation { get; set; }
         public string ArriveLocation { get; set; }
         public DateTime DepartTime { get; set; }
-        public int TripStatusId { get; set; }
+        public int? TripStatusId { get; set; }
         public string TripStatusName { get; set; }
     }
 }

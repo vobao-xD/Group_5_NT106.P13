@@ -73,14 +73,33 @@ def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-<<<<<<< HEAD
 @app.post("/forget_password", tags=['users'])
-def update_password(req: ForgetPasswordReq):
+def forget_password(req: ForgetPasswordReq):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
         cursor.execute("EXEC prod_forget_password ?, ?", req.email, req.password)
-=======
+
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+        logging.info(f"Stored procedure executed successfully: {row}")
+
+        if row:
+            logging.info(f"Result: {row[0]}")
+            return {"Id": row[0], "Message": row[1]}  # JSON string returned by SQL Server
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(status_code=400, detail="No result returned from the stored procedure.")
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+
 @app.post("/create_trip/", tags=['trips'])
 def create_trip(trip: Trip):
     try:
@@ -100,12 +119,10 @@ def create_trip(trip: Trip):
             1,
         )
 
->>>>>>> e81d7094efa2d6f4d92c4d2518241a1521bba1b0
         row = cursor.fetchone()
         conn.commit()
         cursor.close()
         conn.close()
-<<<<<<< HEAD
         logging.info(f"Stored procedure executed successfully: {row}")
 
         if row:
@@ -143,7 +160,6 @@ def update_password_v(req: UpdatePasswordReq, token: dict = Depends(verify_token
         else:
             logging.warning("No result returned from the stored procedure.")
             raise HTTPException(status_code=400, detail="No result returned from the stored procedure.")
-=======
 
         logging.info(f"Stored procedure executed successfully: {row}")
         if row:
@@ -153,7 +169,6 @@ def update_password_v(req: UpdatePasswordReq, token: dict = Depends(verify_token
             raise HTTPException(
                 status_code=400, detail="No result returned from the stored procedure."
             )
->>>>>>> e81d7094efa2d6f4d92c4d2518241a1521bba1b0
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")
         raise HTTPException(status_code=500, detail=f"Database error: {e}")

@@ -38,6 +38,7 @@
             label3 = new Label();
             btnSignUp = new Button();
             lblForgetPassword = new LinkLabel();
+            checkBoxPassword = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -135,12 +136,25 @@
             lblForgetPassword.Text = "Quên mật khẩu?";
             lblForgetPassword.LinkClicked += lblForgetPassword_LinkClicked;
             // 
+            // checkBoxPassword
+            // 
+            checkBoxPassword.AutoSize = true;
+            checkBoxPassword.ForeColor = SystemColors.ActiveCaptionText;
+            checkBoxPassword.Location = new Point(666, 254);
+            checkBoxPassword.Name = "checkBoxPassword";
+            checkBoxPassword.Size = new Size(127, 24);
+            checkBoxPassword.TabIndex = 9;
+            checkBoxPassword.Text = "Hiện mật khẩu";
+            checkBoxPassword.UseVisualStyleBackColor = true;
+            checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(862, 482);
+            Controls.Add(checkBoxPassword);
             Controls.Add(lblForgetPassword);
             Controls.Add(btnSignUp);
             Controls.Add(label3);
@@ -169,5 +183,6 @@
         private Label label3;
         private Button btnSignUp;
         private LinkLabel lblForgetPassword;
+        private CheckBox checkBoxPassword;
     }
 }

@@ -44,9 +44,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-320, -1);
+            pictureBox1.Location = new Point(-280, -1);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1441, 77);
+            pictureBox1.Size = new Size(1261, 58);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -55,19 +56,21 @@
             // 
             CheckedBooked.Controls.Add(HaveBooked);
             CheckedBooked.Controls.Add(HaventBooked);
-            CheckedBooked.Location = new Point(12, 82);
+            CheckedBooked.Location = new Point(10, 62);
+            CheckedBooked.Margin = new Padding(3, 2, 3, 2);
             CheckedBooked.Name = "CheckedBooked";
             CheckedBooked.SelectedIndex = 0;
-            CheckedBooked.Size = new Size(566, 477);
+            CheckedBooked.Size = new Size(563, 479);
             CheckedBooked.TabIndex = 5;
             // 
             // HaveBooked
             // 
             HaveBooked.Controls.Add(flowLayoutPanelBooked);
-            HaveBooked.Location = new Point(4, 29);
+            HaveBooked.Location = new Point(4, 24);
+            HaveBooked.Margin = new Padding(3, 2, 3, 2);
             HaveBooked.Name = "HaveBooked";
-            HaveBooked.Padding = new Padding(3);
-            HaveBooked.Size = new Size(558, 444);
+            HaveBooked.Padding = new Padding(3, 2, 3, 2);
+            HaveBooked.Size = new Size(555, 451);
             HaveBooked.TabIndex = 0;
             HaveBooked.Text = "Ghế đã đặt";
             HaveBooked.UseVisualStyleBackColor = true;
@@ -75,18 +78,20 @@
             // flowLayoutPanelBooked
             // 
             flowLayoutPanelBooked.AutoScroll = true;
-            flowLayoutPanelBooked.Location = new Point(6, 6);
+            flowLayoutPanelBooked.Location = new Point(5, 4);
+            flowLayoutPanelBooked.Margin = new Padding(3, 2, 3, 2);
             flowLayoutPanelBooked.Name = "flowLayoutPanelBooked";
-            flowLayoutPanelBooked.Size = new Size(546, 432);
+            flowLayoutPanelBooked.Size = new Size(544, 443);
             flowLayoutPanelBooked.TabIndex = 0;
             // 
             // HaventBooked
             // 
             HaventBooked.Controls.Add(flowLayoutPanelNotBook);
-            HaventBooked.Location = new Point(4, 29);
+            HaventBooked.Location = new Point(4, 24);
+            HaventBooked.Margin = new Padding(3, 2, 3, 2);
             HaventBooked.Name = "HaventBooked";
-            HaventBooked.Padding = new Padding(3);
-            HaventBooked.Size = new Size(558, 444);
+            HaventBooked.Padding = new Padding(3, 2, 3, 2);
+            HaventBooked.Size = new Size(524, 451);
             HaventBooked.TabIndex = 1;
             HaventBooked.Text = "Ghế còn trống";
             HaventBooked.UseVisualStyleBackColor = true;
@@ -94,18 +99,20 @@
             // flowLayoutPanelNotBook
             // 
             flowLayoutPanelNotBook.AutoScroll = true;
-            flowLayoutPanelNotBook.Location = new Point(6, 6);
+            flowLayoutPanelNotBook.Location = new Point(5, 4);
+            flowLayoutPanelNotBook.Margin = new Padding(3, 2, 3, 2);
             flowLayoutPanelNotBook.Name = "flowLayoutPanelNotBook";
-            flowLayoutPanelNotBook.Size = new Size(546, 432);
+            flowLayoutPanelNotBook.Size = new Size(513, 443);
             flowLayoutPanelNotBook.TabIndex = 0;
             // 
             // Admin_SeeSeatBooked
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(791, 571);
+            ClientSize = new Size(692, 552);
             Controls.Add(CheckedBooked);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Admin_SeeSeatBooked";
             Text = "Admin_SeeSeatBooked";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

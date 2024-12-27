@@ -99,7 +99,7 @@
             btnReserve.TabIndex = 1;
             btnReserve.Text = "Đặt vé";
             btnReserve.UseVisualStyleBackColor = true;
-            btnReserve.Click += btnReserve_Click;
+      //      btnReserve.Click += btnReserve_Click;
             // 
             // ListTrip
             // 

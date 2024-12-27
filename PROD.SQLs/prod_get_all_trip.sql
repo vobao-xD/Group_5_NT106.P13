@@ -18,3 +18,10 @@ BEGIN
     LEFT JOIN 
         TripStatus ts ON t.TripStatusId = ts.TripStatusId
 END;
+
+UPDATE Trip
+
+SET TripStatusId = 1
+
+insert into TripStatus (TripStatusName)
+values ('Depart')

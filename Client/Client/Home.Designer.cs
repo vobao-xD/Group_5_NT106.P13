@@ -315,6 +315,7 @@
             toolStripStatusLabel1.Size = new Size(59, 20);
             toolStripStatusLabel1.Text = "Logout";
             toolStripStatusLabel1.VisitedLinkColor = Color.FromArgb(255, 192, 192);
+            toolStripStatusLabel1.Click += toolStripStatusLabel1_Click;
             // 
             // lblChangePassword
             // 

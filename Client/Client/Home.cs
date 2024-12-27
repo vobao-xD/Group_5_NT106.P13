@@ -153,16 +153,22 @@ namespace Client
 
         }
 
-<<<<<<< HEAD
         private void lblChangePassword_Click(object sender, EventArgs e)
         {
             ChangePassword changePassword = new ChangePassword(_username, _authToken);
             changePassword.Show();
-=======
+        }
         private void DepartDate_ValueChanged(object sender, EventArgs e)
         {
 
->>>>>>> e81d7094efa2d6f4d92c4d2518241a1521bba1b0
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Logged Out!");
+            this.Close();
+            Login login = new Login();
+            login.ShowDialog();
         }
     }
 

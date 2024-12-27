@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
+using Client.Model;
 
 namespace Client
 {
@@ -20,6 +22,8 @@ namespace Client
     {
         private readonly UserController _userController;
         private readonly HttpClient _httpClient;
+
+        private AuthToken _authToken;
 
         public Login()
         {
@@ -56,6 +60,7 @@ namespace Client
                 }
 
                 var loginResult = await _userController.LoginAsync(username, password);
+                _authToken = loginResult;
                 var userInfo = await _userController.UserInfoAsync(username, password, loginResult);
 
                 if (loginResult == null || loginResult.Message.Contains("Error"))
@@ -106,6 +111,18 @@ namespace Client
         {
             ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
             forgetPasswordForm.ShowDialog();
+        }
+
+        private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPassword.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
         }
     }
 }

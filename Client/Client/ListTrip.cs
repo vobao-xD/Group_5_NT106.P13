@@ -32,14 +32,14 @@ namespace Client
             {
                 List<Trips>? list = JsonConvert.DeserializeObject<List<Trips>>(response);
                 if (list == null) { return; }
-                
-                foreach (var trip in list)
+
+                /*foreach (var trip in list)
                 {
                     string[] tripinfo = { trip.TripId.ToString(), trip.TripName, trip.DepartLocation, trip.ArrivalLocation, trip.DepartureDate, trip.Status.ToString(), trip.Plate.ToString() };
                     ListViewItem item = new ListViewItem(tripinfo);
                     ListViewItem a = listView1.Items.Add(item);
 
-                }
+                }*/
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -55,13 +55,13 @@ namespace Client
             MessageBox.Show(listView1.SelectedItems.Count.ToString());
         }
 
-        private void btnReserve_Click(object sender, EventArgs e)
+       /* private void btnReserve_Click(object sender, EventArgs e)
         {
             ReserveTicket ins = new();
-        }
+        }*/
     }
 
 
 
-    
+
 }
