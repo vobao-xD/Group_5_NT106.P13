@@ -8,6 +8,7 @@ CREATE TABLE UserRole (
     UserRoleId INT PRIMARY KEY IDENTITY(1,1),
     UserRoleName NVARCHAR(100) NOT NULL UNIQUE
 );
+GO
 
 CREATE TABLE [User] (
     UserId INT PRIMARY KEY IDENTITY(1,1),
@@ -18,11 +19,13 @@ CREATE TABLE [User] (
     UserRoleId INT NOT NULL,
     FOREIGN KEY (UserRoleId) REFERENCES UserRole(UserRoleId)
 );
+GO
 
 CREATE TABLE BusStatus (
     BusStatusId INT PRIMARY KEY IDENTITY(1,1),
     BusStatusName NVARCHAR(50) NOT NULL
 );
+GO
 
 CREATE TABLE Bus (
     BusId INT PRIMARY KEY IDENTITY(1,1),
@@ -31,6 +34,7 @@ CREATE TABLE Bus (
 	BusStatusId INT,
 	FOREIGN KEY (BusStatusId) REFERENCES BusStatus(BusStatusId)
 );
+GO
 
 CREATE TABLE Seat (
     LicensePlate NVARCHAR(50) NOT NULL,
@@ -40,11 +44,13 @@ CREATE TABLE Seat (
     PRIMARY KEY (LicensePlate, SeatId),
     FOREIGN KEY (LicensePlate) REFERENCES Bus(LicensePlate)
 );
+GO
 
 CREATE TABLE TripStatus (
     TripStatusId INT PRIMARY KEY IDENTITY(1,1),
     TripStatusName NVARCHAR(50) NOT NULL
 );
+GO
 
 CREATE TABLE Trip (
     TripId INT PRIMARY KEY IDENTITY(1,1),
@@ -56,6 +62,7 @@ CREATE TABLE Trip (
     FOREIGN KEY (Plate) REFERENCES Bus(LicensePlate),
 	FOREIGN KEY (TripStatusId) REFERENCES TripStatus(TripStatusId)
 );
+GO
 
 CREATE TABLE Ticket (
     TicketId INT PRIMARY KEY IDENTITY(1,1),
@@ -67,6 +74,7 @@ CREATE TABLE Ticket (
     FOREIGN KEY (TripId) REFERENCES Trip(TripId),
     FOREIGN KEY (UserId) REFERENCES [User](UserId)
 );
+GO
 
 CREATE TABLE TicketDetail (
     TicketDetailId INT PRIMARY KEY IDENTITY(1,1),
@@ -74,3 +82,4 @@ CREATE TABLE TicketDetail (
     SeatId INT NOT NULL,
     FOREIGN KEY (TicketId) REFERENCES Ticket(TicketId)
 );
+GO
