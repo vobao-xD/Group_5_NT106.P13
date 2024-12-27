@@ -308,13 +308,14 @@ def user_info(req: UpdateVIPReq):
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
 @app.post("/updateSeatToBooked", tags=['Bus'])
-def update_seat_to_booked(req: UpdateSeatToBookedReq):
+def update_seat_to_booked(req: SelSeat):
     try:
 
         conn = connect_to_sql_server()
         cursor = conn.cursor()
 
-        cursor.execute("EXEC prod_update_seat_to_booked ?", req.seatid)
+        
+        cursor.execute("EXEC prod_update_seat_to_booked ?, ? ", req.seat, req.plate)
         cursor.nextset()
 
         row = cursor.fetchone()
@@ -326,7 +327,7 @@ def update_seat_to_booked(req: UpdateSeatToBookedReq):
         if row:
             return { "Id": row[0], "Message": row[1] }
         else:
-            return { "Id": -1, "Message": "Invalid SeatId" }
+            return { "Id": -1, "Message": "Invalid Seat or Seat already reserved" }
 
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")

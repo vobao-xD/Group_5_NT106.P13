@@ -33,8 +33,9 @@ class LoginRequest(BaseModel):
 class UpdateVIPReq(BaseModel):
     userid: int
 
-class UpdateSeatToBookedReq(BaseModel):
-    seatid: int
+class SelSeat(BaseModel):
+    seat: str
+    plate: str
 
 
 class Trip(BaseModel):

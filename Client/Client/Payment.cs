@@ -9,7 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Principal;
 
 namespace Client
 {
@@ -47,6 +50,32 @@ namespace Client
             
         }
 
+        private async Task PostSelectedSeat()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://127.0.0.1:8002/");
+                foreach (string seat in selectedSeats)
+                {
+                    SelSeat s = new(seat, _trip.Plate);
+                    string req = JsonConvert.SerializeObject(s, Formatting.Indented);
+                    StringContent content = new(req, Encoding.UTF8, "application/json");
+                    HttpResponseMessage res = await client.PostAsync("updateSeatToBooked", content);
+                    res.EnsureSuccessStatusCode();
+                    var jsonResponse = await res.Content.ReadAsStringAsync();
+                    var response = JsonConvert.DeserializeObject<Response>(jsonResponse);
+                    MessageBox.Show(response?.Message);
+                    this.Close(); //Continue payment here
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+        }
+
         private void PopulateInfo()
         {
             try
@@ -64,7 +93,6 @@ namespace Client
 
                 busNode.Nodes.Add(tripNode);
 
-                MessageBox.Show("Please remember this information");
                 
                 txtInfo.Nodes.Add(busNode);
 
@@ -78,11 +106,26 @@ namespace Client
             }
         }
 
-        private void btnPay_Click(object sender, EventArgs e)
+        private async void btnPay_Click(object sender, EventArgs e)
         {
-            //Đoạn này hơi khó rồi các ông giáo ạ
-            //Momo cho doanh nghiệp cần nhiều thông tin lạ vãi chưởng
-            //Có cái nào khác Momo ko anh em?
+            await PostSelectedSeat();
         }
+    }
+
+    class SelSeat
+    {
+        public string? seat;
+        public string? plate;
+        public SelSeat(string? seat, string? plate)
+        {
+            this.seat = seat;
+            this.plate = plate;
+        }
+    }
+
+    class Response
+    {
+        public string? Id;
+        public string? Message;
     }
 }
