@@ -83,8 +83,10 @@ namespace Client
                     if (userInfo.UserRoleId == 3)
                     {
                         // change to customer
-                        Home home = new Home(userInfo, loginResult);
-                        home.Show();
+                        //Home home = new Home(userInfo, loginResult);
+                        //home.Show();
+                        UserDashboard ds = new UserDashboard(userInfo, loginResult);
+                        ds.Show();
                         this.Hide();
                     }
 
