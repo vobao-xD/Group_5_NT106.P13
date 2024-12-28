@@ -161,6 +161,18 @@ namespace Client
             TicketInfor ticketInfor = new TicketInfor();
             ticketInfor.ShowDialog();
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            Schedule schedule = new Schedule();
+            schedule.ShowDialog();
+        }
+
+        private void btnContact_Click_1(object sender, EventArgs e)
+        {
+            Support support = new Support(_userInfo);
+            support.ShowDialog();
+        }
     }
 
     public class Trips

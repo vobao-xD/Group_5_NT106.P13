@@ -173,5 +173,53 @@ namespace Client.Controller
                 throw new Exception($"An error occurred: {ex.Message}");
             }
         }
+        public async Task<List<TripInfo>> GetTripByLocationAsync(string departLocation, string arriveLocation)
+        {
+            var tripByLocationURL = baseURL + "/getTripByLocation";
+            var requestData = new
+            {
+                depart_location = departLocation,
+                arrive_location = arriveLocation
+            };
+
+            try
+            {
+                var content = new StringContent(JsonSerializer.Serialize(requestData), Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _httpClient.PostAsync(tripByLocationURL, content);
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    throw new HttpRequestException($"Error: {response.StatusCode} - {errorContent}");
+                }
+
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                if (string.IsNullOrWhiteSpace(responseContent))
+                {
+                    throw new Exception("Received empty response from the server.");
+                }
+
+                var trips = JsonSerializer.Deserialize<List<TripInfo>>(responseContent);
+
+                if (trips == null || !trips.Any())
+                {
+                    throw new Exception("Deserialization failed or no trips found.");
+                }
+
+                return trips;
+            }
+            catch (HttpRequestException httpEx)
+            {
+                throw new Exception($"HTTP Request failed: {httpEx.Message}");
+            }
+            catch (JsonException jsonEx)
+            {
+                throw new Exception($"JSON Deserialization failed: {jsonEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

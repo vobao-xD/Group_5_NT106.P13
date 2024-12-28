@@ -43,9 +43,9 @@ namespace Client
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-186, -1);
+            pictureBox1.Location = new Point(-4, -2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1441, 77);
+            pictureBox1.Size = new Size(1106, 77);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -59,6 +59,7 @@ namespace Client
             btnContact.TabIndex = 12;
             btnContact.Text = "Đọc hỗ trợ";
             btnContact.UseVisualStyleBackColor = true;
+            btnContact.Click += btnContact_Click;
             // 
             // btnAddTrip
             // 
@@ -108,7 +109,7 @@ namespace Client
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1101, 548);
+            ClientSize = new Size(1101, 584);
             Controls.Add(btnContact);
             Controls.Add(btnAddTrip);
             Controls.Add(btnAnalyse);

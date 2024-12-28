@@ -277,6 +277,44 @@ def get_all_trip():
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+@app.post("/getTripByLocation", tags=['trip'])
+async def get_trip_by_location(login: TripLocationRequest):
+    try:
+        depart_location = login.depart_location
+        arrive_location = login.arrive_location
+
+        if not depart_location or not arrive_location:
+            raise HTTPException(status_code=400, detail="Both 'depart_location' and 'arrive_location' are required.")
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+        cursor.execute("EXEC prod_get_trip_by_location_and_status @DepartLocation = ?, @ArriveLocation = ?",
+                       (depart_location, arrive_location))
+        rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
+
+        trips = []
+        for row in rows:
+            trip = {
+                "TripId": row[0],
+                "Plate": row[1],
+                "DepartLocation": row[2],
+                "ArriveLocation": row[3],
+                "DepartTime": row[4],
+                "TripStatusId": row[5],
+                "TripStatusName": row[6]
+            }
+            trips.append(trip)
+        return trips
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail="Database error occurred.")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail="An unexpected error occurred.")
+
+
 @app.post("/userinfo/", tags=['users'])
 def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
     try:

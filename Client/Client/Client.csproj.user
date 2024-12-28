@@ -10,10 +10,19 @@
     <Compile Update="Admin\Admin_BusAnalyse.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Admin\Admin_Email_Support.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Admin\Admin_ListCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Admin\Admin_ReadMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Admin\Admin_SeeSeatBooked.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Admin\Admin_Send_Email.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Authentication.cs">

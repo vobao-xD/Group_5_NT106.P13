@@ -206,7 +206,7 @@
             // txtFullName
             // 
             txtFullName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFullName.ForeColor = Color.LightGray;
+            txtFullName.ForeColor = Color.Black;
             txtFullName.Location = new Point(637, 265);
             txtFullName.Name = "txtFullName";
             txtFullName.PlaceholderText = "Nhập họ và tên";
@@ -216,7 +216,7 @@
             // txtSubject
             // 
             txtSubject.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSubject.ForeColor = Color.LightGray;
+            txtSubject.ForeColor = Color.Black;
             txtSubject.Location = new Point(637, 342);
             txtSubject.Name = "txtSubject";
             txtSubject.PlaceholderText = "Nhập tiêu đề";
@@ -226,7 +226,7 @@
             // txtContent
             // 
             txtContent.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContent.ForeColor = Color.LightGray;
+            txtContent.ForeColor = Color.Black;
             txtContent.Location = new Point(637, 402);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";

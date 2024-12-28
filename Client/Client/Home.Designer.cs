@@ -110,6 +110,7 @@
             btnSchedule.TabIndex = 5;
             btnSchedule.Text = "Lịch trình";
             btnSchedule.UseVisualStyleBackColor = true;
+            btnSchedule.Click += btnSchedule_Click;
             // 
             // btnTicketSearch
             // 
@@ -131,6 +132,7 @@
             btnContact.TabIndex = 7;
             btnContact.Text = "Hỗ trợ";
             btnContact.UseVisualStyleBackColor = true;
+            btnContact.Click += btnContact_Click_1;
             // 
             // pictureBox3
             // 

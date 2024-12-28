@@ -167,7 +167,7 @@
             flowLayoutPanel_TicketInfo.AutoScroll = true;
             flowLayoutPanel_TicketInfo.Location = new Point(467, 524);
             flowLayoutPanel_TicketInfo.Name = "flowLayoutPanel_TicketInfo";
-            flowLayoutPanel_TicketInfo.Size = new Size(479, 352);
+            flowLayoutPanel_TicketInfo.Size = new Size(500, 352);
             flowLayoutPanel_TicketInfo.TabIndex = 21;
             // 
             // TicketInfor

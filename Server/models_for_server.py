@@ -19,6 +19,7 @@ class LoginRequest(BaseModel):
     username: str
     password: str
 
+
 class UpdateVIPReq(BaseModel):
     userid: int
 
@@ -34,3 +35,6 @@ class Trip(BaseModel):
     depart_time: str  # ISO 8601 format (e.g., "2024-12-25T15:00:00")
     trip_status_id: int
 
+class TripLocationRequest(BaseModel):
+    depart_location: str
+    arrive_location: str

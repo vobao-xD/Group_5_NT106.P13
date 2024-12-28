@@ -40,5 +40,11 @@ namespace Client
             Admin_BusAnalyse admin_BusAnalyse = new Admin_BusAnalyse();
             admin_BusAnalyse.Show();
         }
+
+        private void btnContact_Click(object sender, EventArgs e)
+        {
+            Admin_Email_Support support = new Admin_Email_Support();
+            support.ShowDialog();
+        }
     }
 }

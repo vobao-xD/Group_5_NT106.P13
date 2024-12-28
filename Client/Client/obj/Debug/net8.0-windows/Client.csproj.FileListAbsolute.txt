@@ -135,3 +135,15 @@ D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.S
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.Up2Date
 D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_Add_Trip_Bus.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.xml
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_Email_Support.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_ReadMail.resources
+D:\NT106-P13-1\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin.Admin_Send_Email.resources

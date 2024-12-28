@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[4.9.0, )"
             },
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.2903.40, )"
+            },
             "MimeKit": {
               "target": "Package",
               "version": "[4.9.0, )"

@@ -42,6 +42,7 @@
             cmbBoxDeparture = new ComboBox();
             label3 = new Label();
             label4 = new Label();
+            flowLayoutPanel_Trips = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -136,19 +137,20 @@
             btnSearch.BackColor = Color.Chocolate;
             btnSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(891, 257);
+            btnSearch.Location = new Point(919, 257);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(207, 50);
             btnSearch.TabIndex = 23;
             btnSearch.Text = "Tìm chuyến xe";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // cmbBoxDestination
             // 
             cmbBoxDestination.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbBoxDestination.FormattingEnabled = true;
-            cmbBoxDestination.Items.AddRange(new object[] { "An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "TP. Hồ Chí Minh", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên - Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" });
-            cmbBoxDestination.Location = new Point(597, 266);
+            cmbBoxDestination.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
+            cmbBoxDestination.Location = new Point(611, 266);
             cmbBoxDestination.Name = "cmbBoxDestination";
             cmbBoxDestination.Size = new Size(251, 36);
             cmbBoxDestination.TabIndex = 22;
@@ -157,7 +159,7 @@
             // 
             cmbBoxDeparture.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbBoxDeparture.FormattingEnabled = true;
-            cmbBoxDeparture.Items.AddRange(new object[] { "An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "TP. Hồ Chí Minh", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên - Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái" });
+            cmbBoxDeparture.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
             cmbBoxDeparture.Location = new Point(291, 266);
             cmbBoxDeparture.Name = "cmbBoxDeparture";
             cmbBoxDeparture.Size = new Size(251, 36);
@@ -168,7 +170,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(597, 243);
+            label3.Location = new Point(611, 243);
             label3.Name = "label3";
             label3.Size = new Size(84, 23);
             label3.TabIndex = 20;
@@ -185,12 +187,20 @@
             label4.TabIndex = 19;
             label4.Text = "Điểm đi";
             // 
+            // flowLayoutPanel_Trips
+            // 
+            flowLayoutPanel_Trips.Location = new Point(291, 359);
+            flowLayoutPanel_Trips.Name = "flowLayoutPanel_Trips";
+            flowLayoutPanel_Trips.Size = new Size(824, 506);
+            flowLayoutPanel_Trips.TabIndex = 24;
+            // 
             // Schedule
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1433, 648);
+            ClientSize = new Size(1433, 903);
+            Controls.Add(flowLayoutPanel_Trips);
             Controls.Add(btnSearch);
             Controls.Add(cmbBoxDestination);
             Controls.Add(cmbBoxDeparture);
@@ -228,5 +238,6 @@
         private ComboBox cmbBoxDeparture;
         private Label label3;
         private Label label4;
+        private FlowLayoutPanel flowLayoutPanel_Trips;
     }
 }

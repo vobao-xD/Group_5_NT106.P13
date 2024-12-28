@@ -4,7 +4,6 @@ CREATE DATABASE Bus_server_prod
 GO
 USE Bus_server_prod
 GO
-
 CREATE TABLE [User] (
     UserId INT PRIMARY KEY IDENTITY(1,1),
     UserName NVARCHAR(100) NOT NULL,
