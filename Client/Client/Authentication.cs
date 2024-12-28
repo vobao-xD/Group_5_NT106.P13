@@ -24,6 +24,8 @@ namespace Client
             {
                 MessageBox.Show($"User Authenticated. Please Sign in to continue.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                SignUp._formCloseTaskSource?.SetResult(true);
+                AuthenticationDashboard.ad_ins?.btnLoginForm_Click(null, null);
             }
             else
             {

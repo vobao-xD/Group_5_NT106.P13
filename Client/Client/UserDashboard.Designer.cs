@@ -160,6 +160,7 @@
             IsMdiContainer = true;
             Name = "UserDashboard";
             Text = "Dashboard";
+            FormClosed += UserDashboard_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             statusStrip1.ResumeLayout(false);

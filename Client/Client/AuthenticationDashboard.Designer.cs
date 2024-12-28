@@ -41,7 +41,7 @@
             btnLoginForm.ForeColor = Color.Chocolate;
             btnLoginForm.Location = new Point(0, 0);
             btnLoginForm.Name = "btnLoginForm";
-            btnLoginForm.Size = new Size(391, 75);
+            btnLoginForm.Size = new Size(391, 50);
             btnLoginForm.TabIndex = 0;
             btnLoginForm.Text = "Have an account?";
             btnLoginForm.UseVisualStyleBackColor = true;
@@ -54,7 +54,7 @@
             btnSignupform.ForeColor = Color.Chocolate;
             btnSignupform.Location = new Point(491, 0);
             btnSignupform.Name = "btnSignupform";
-            btnSignupform.Size = new Size(391, 75);
+            btnSignupform.Size = new Size(391, 50);
             btnSignupform.TabIndex = 1;
             btnSignupform.Text = "Don't have an account?";
             btnSignupform.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@
             panel1.Controls.Add(btnLoginForm);
             panel1.Controls.Add(btnSignupform);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 528);
+            panel1.Location = new Point(0, 553);
             panel1.Name = "panel1";
-            panel1.Size = new Size(882, 75);
+            panel1.Size = new Size(882, 50);
             panel1.TabIndex = 2;
             // 
             // AuthenticationDashboard
@@ -79,6 +79,7 @@
             IsMdiContainer = true;
             Name = "AuthenticationDashboard";
             Text = "AuthenticationDashboard";
+            FormClosed += AuthenticationDashboard_FormClosed;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

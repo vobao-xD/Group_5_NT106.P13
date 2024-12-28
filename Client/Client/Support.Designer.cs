@@ -129,6 +129,7 @@
             txtContent.PlaceholderText = "Nhập nội dung";
             txtContent.Size = new Size(600, 246);
             txtContent.TabIndex = 42;
+            txtContent.TabStop = false;
             // 
             // txtSubject
             // 
@@ -139,6 +140,7 @@
             txtSubject.PlaceholderText = "Nhập tiêu đề";
             txtSubject.Size = new Size(600, 34);
             txtSubject.TabIndex = 41;
+            txtSubject.TabStop = false;
             // 
             // txtFullName
             // 
@@ -149,6 +151,7 @@
             txtFullName.PlaceholderText = "Nhập họ và tên";
             txtFullName.Size = new Size(600, 34);
             txtFullName.TabIndex = 40;
+            txtFullName.TabStop = false;
             // 
             // pictureBox4
             // 

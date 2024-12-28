@@ -8,14 +8,12 @@ namespace Client
     {
         private readonly UserController _userController;
         private readonly HttpClient _httpClient;
-
         public Login()
         {
             InitializeComponent();
             _httpClient = new HttpClient();
             _userController = new UserController(_httpClient);
         }
-
         private static string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -29,7 +27,6 @@ namespace Client
                 return sb.ToString();
             }
         }
-
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -58,13 +55,13 @@ namespace Client
                     {
                         AdminForm adminForm = new AdminForm(userInfo, loginResult);
                         adminForm.Show();
-                        this.Hide();
+                        AuthenticationDashboard.ad_ins?.Hide();
                     }
-                    else if (userInfo.UserRoleId == 3)
+                    else if (userInfo.UserRoleId == 3 || userInfo.UserRoleId == 4)
                     {
                         UserDashboard ds = new UserDashboard(userInfo, loginResult);
                         ds.Show();
-                        this.Hide();
+                        AuthenticationDashboard.ad_ins?.Hide();
                     }
                 }
             }
@@ -72,12 +69,6 @@ namespace Client
             {
                 MessageBox.Show($"Đăng nhập thất bại: Sai thông tin username hoặc password", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnSignUp_Click(object sender, EventArgs e)
-        {
-            SignUp signUp = new SignUp();
-            signUp.ShowDialog();
         }
     }
 }

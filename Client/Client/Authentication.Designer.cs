@@ -38,10 +38,11 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-365, -1);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1441, 77);
+            pictureBox1.Size = new Size(864, 77);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -49,28 +50,31 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkOrange;
-            label1.Location = new Point(129, 79);
+            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(39, 105);
             label1.Name = "label1";
-            label1.Size = new Size(476, 28);
+            label1.Size = new Size(793, 46);
             label1.TabIndex = 3;
             label1.Text = "Nhập mã xác thực OTP đã gửi đến Email của bạn";
             // 
             // txtOTP
             // 
-            txtOTP.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtOTP.Location = new Point(210, 110);
+            txtOTP.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtOTP.ForeColor = Color.Chocolate;
+            txtOTP.Location = new Point(292, 222);
             txtOTP.Multiline = true;
             txtOTP.Name = "txtOTP";
-            txtOTP.Size = new Size(312, 83);
+            txtOTP.Size = new Size(282, 77);
             txtOTP.TabIndex = 4;
             // 
             // btnAuthen
             // 
-            btnAuthen.Location = new Point(269, 205);
+            btnAuthen.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAuthen.ForeColor = Color.Chocolate;
+            btnAuthen.Location = new Point(292, 381);
             btnAuthen.Name = "btnAuthen";
-            btnAuthen.Size = new Size(203, 27);
+            btnAuthen.Size = new Size(282, 53);
             btnAuthen.TabIndex = 5;
             btnAuthen.Text = "Xác thực";
             btnAuthen.UseVisualStyleBackColor = true;
@@ -80,11 +84,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(741, 244);
+            ClientSize = new Size(864, 506);
             Controls.Add(btnAuthen);
             Controls.Add(txtOTP);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Authentication";
             Text = "Authentication";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

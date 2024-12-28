@@ -15,7 +15,7 @@ namespace Client
     {
         Home? home;
         Support? support;
-        TicketInfor? ticketInfor;
+        TicketInfo? ticketInfor;
 
         private AuthToken _authToken;
         private UserInfo _userInfo;
@@ -50,7 +50,7 @@ namespace Client
                 support = new Support(_userInfo);
                 support.FormClosed += Support_FormClosed;
                 support.MdiParent = this;
-                support.Dock = DockStyle.Fill; 
+                support.Dock = DockStyle.Fill;
                 support.Show();
             }
             else { support.Activate(); }
@@ -78,7 +78,7 @@ namespace Client
         {
             if (ticketInfor == null)
             {
-                ticketInfor = new TicketInfor();
+                ticketInfor = new TicketInfo();
                 ticketInfor.FormClosed += TicketInfor_FormClosed;
                 ticketInfor.MdiParent = this;
                 ticketInfor.Dock = DockStyle.Fill;
@@ -90,6 +90,11 @@ namespace Client
         private void TicketInfor_FormClosed(object? sender, FormClosedEventArgs e)
         {
             ticketInfor = null;
+        }
+
+        private void UserDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

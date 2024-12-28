@@ -92,7 +92,7 @@
             // 
             txtFullName.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtFullName.ForeColor = Color.Chocolate;
-            txtFullName.Location = new Point(310, 236);
+            txtFullName.Location = new Point(310, 229);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(356, 30);
             txtFullName.TabIndex = 6;
@@ -102,7 +102,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label3.ForeColor = Color.Chocolate;
-            label3.Location = new Point(140, 239);
+            label3.Location = new Point(140, 232);
             label3.Name = "label3";
             label3.Size = new Size(135, 23);
             label3.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             txtEmail.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtEmail.ForeColor = Color.Chocolate;
-            txtEmail.Location = new Point(310, 301);
+            txtEmail.Location = new Point(310, 290);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(356, 30);
             txtEmail.TabIndex = 8;
@@ -122,7 +122,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label4.ForeColor = Color.Chocolate;
-            label4.Location = new Point(140, 304);
+            label4.Location = new Point(140, 293);
             label4.Name = "label4";
             label4.Size = new Size(55, 23);
             label4.TabIndex = 7;
@@ -132,7 +132,7 @@
             // 
             txtPassword.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtPassword.ForeColor = Color.Chocolate;
-            txtPassword.Location = new Point(310, 360);
+            txtPassword.Location = new Point(310, 352);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(356, 30);
             txtPassword.TabIndex = 10;
@@ -142,7 +142,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label5.ForeColor = Color.Chocolate;
-            label5.Location = new Point(140, 363);
+            label5.Location = new Point(140, 355);
             label5.Name = "label5";
             label5.Size = new Size(88, 23);
             label5.TabIndex = 9;
@@ -152,7 +152,7 @@
             // 
             txtConfirmPassword.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtConfirmPassword.ForeColor = Color.Chocolate;
-            txtConfirmPassword.Location = new Point(310, 426);
+            txtConfirmPassword.Location = new Point(310, 415);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Size = new Size(356, 30);
             txtConfirmPassword.TabIndex = 12;
@@ -162,7 +162,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label6.ForeColor = Color.Chocolate;
-            label6.Location = new Point(140, 429);
+            label6.Location = new Point(140, 418);
             label6.Name = "label6";
             label6.Size = new Size(164, 23);
             label6.TabIndex = 11;
@@ -172,7 +172,7 @@
             // 
             btnSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSignUp.ForeColor = Color.Chocolate;
-            btnSignUp.Location = new Point(354, 486);
+            btnSignUp.Location = new Point(354, 474);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(179, 43);
             btnSignUp.TabIndex = 13;

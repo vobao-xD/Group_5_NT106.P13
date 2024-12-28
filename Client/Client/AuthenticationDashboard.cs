@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Client
+﻿namespace Client
 {
     public partial class AuthenticationDashboard : Form
     {
         Login? login;
         SignUp? signup;
+        public static AuthenticationDashboard? ad_ins;
         public AuthenticationDashboard()
         {
             InitializeComponent();
@@ -27,6 +17,7 @@ namespace Client
                 login.Show();
             }
             else { login.Activate(); }
+            ad_ins = this;
         }
 
         private void Login_FormClosed(object? sender, FormClosedEventArgs e)
@@ -34,7 +25,7 @@ namespace Client
             login = null;
         }
 
-        private void btnLoginForm_Click(object sender, EventArgs e)
+        public void btnLoginForm_Click(object sender, EventArgs e)
         {
             if (login == null)
             {
@@ -63,6 +54,11 @@ namespace Client
         private void Signup_FormClosed(object? sender, FormClosedEventArgs e)
         {
             signup = null;
+        }
+
+        private void AuthenticationDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
