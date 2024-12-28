@@ -62,6 +62,8 @@
             // checkedListBox1
             // 
             checkedListBox1.ColumnWidth = 60;
+            checkedListBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkedListBox1.ForeColor = Color.Chocolate;
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(110, 119);
             checkedListBox1.MultiColumn = true;
@@ -73,12 +75,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(33, 84);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(24, 81);
             label1.Name = "label1";
-            label1.Size = new Size(89, 25);
+            label1.Size = new Size(183, 28);
             label1.TabIndex = 15;
-            label1.Text = "Chọn ghế";
+            label1.Text = "Vui lòng chọn ghế";
             // 
             // btnPay
             // 

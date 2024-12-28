@@ -13,6 +13,8 @@ using System.Net;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Principal;
+using System.Net.Http.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Client
 {
@@ -27,11 +29,10 @@ namespace Client
         public Payment(Trips trip, UserInfo userInfo, AuthToken authToken, List<string> selectedSeat)
         {
             InitializeComponent();
-            _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
+            _authToken = authToken;
             _userInfo = userInfo;
             _trip = trip;
             selectedSeats = selectedSeat;
-            //Compute the price
             foreach (string seat in selectedSeats)
             {
                 if (_trip.DepartLocation == "Hà Nội" || _trip.ArrivalLocation == "Hà Nội")
@@ -43,8 +44,6 @@ namespace Client
                     price += basePrice[0];
                 }
             }
-            
-
             PopulateInfo();
             
             
@@ -118,24 +117,65 @@ namespace Client
 
         private async void btnPay_Click(object sender, EventArgs e)
         {
-            await PostSelectedSeat();
-        }
-    }
+            try
+            {
+                string apiUrl = "http://127.0.0.1:8002";
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
 
-    class SelSeat
-    {
-        public string? seat;
-        public string? plate;
-        public SelSeat(string? seat, string? plate)
-        {
-            this.seat = seat;
-            this.plate = plate;
-        }
-    }
+                    string requestUri = "create_payment?order_info=ABD&order_amount=10000";
 
-    class Response
-    {
-        public string? Id;
-        public string? Message;
+                    HttpResponseMessage response = await client.PostAsync(requestUri, null);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = JObject.Parse(await response.Content.ReadAsStringAsync());
+
+                        if (json.ContainsKey("payUrl"))
+                        {
+                            string payUrl = json["payUrl"].ToString();
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = payUrl,
+                                UseShellExecute = true
+                            });
+                        }
+                        else
+                        {
+                            MessageBox.Show("Payment response received but no URL was provided.");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thanh toán thất bại!\n" + await response.Content.ReadAsStringAsync());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
+        }
     }
 }
+
+class SelSeat
+{
+    public string? seat;
+    public string? plate;
+    public SelSeat(string? seat, string? plate)
+    {
+        this.seat = seat;
+        this.plate = plate;
+    }
+}
+
+class Response
+{
+    public string? Id;
+    public string? Message;
+}
+
+

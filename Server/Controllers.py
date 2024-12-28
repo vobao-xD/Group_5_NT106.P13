@@ -102,14 +102,12 @@ def save_ticket(request : dict):
         cursor.close()
         conn.close()
 
-def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
+def GetTrip(depart: str, arrive: str, departdate: str) -> list | None:
         listTrips = []
         try:
             Cursor = connect_to_sql_server().cursor()
-            if isreturn == True:               
-                Cursor.execute("EXEC prod_get_trip_return @depart = ?, @arrive = ?, @departtime = ?, @returntime = ?", (unquote(depart), unquote(arrive), unquote(departdate), unquote(returndate)))
-            else:
-                Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
+
+            Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
             
             if Cursor.rowcount == 0:
                 print('Trip not found')
@@ -157,11 +155,9 @@ def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
 async def GetAllTrip(
     from_location: str = Query(..., alias="from", description="Departure location"),
     to_location: str = Query(..., alias="to", description="Arrival location"),
-    from_time: str = Query(..., alias="fromTime", description="Departure time"),
-    to_time: Optional[str] = Query(None, alias="toTime", description="Return time"),
-    is_return: Optional[bool] =  Query(False, alias="isReturn", description="Indicates if the ticket is round-trip"),
+    from_time: str = Query(..., alias="fromTime", description="Departure time")
     ): 
-    return GetTrip(from_location, to_location, from_time, to_time, is_return)
+    return GetTrip(from_location, to_location, from_time)
 
 @app.get("/seats", tags=['items'])
 async def GetUnavailSeat(

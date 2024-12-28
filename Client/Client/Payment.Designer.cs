@@ -37,9 +37,11 @@
             // 
             // btnPay
             // 
-            btnPay.Location = new Point(336, 485);
+            btnPay.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPay.ForeColor = Color.Chocolate;
+            btnPay.Location = new Point(329, 473);
             btnPay.Name = "btnPay";
-            btnPay.Size = new Size(94, 29);
+            btnPay.Size = new Size(133, 41);
             btnPay.TabIndex = 0;
             btnPay.Text = "Thanh toán";
             btnPay.UseVisualStyleBackColor = true;
@@ -57,9 +59,14 @@
             // 
             // txtInfo
             // 
+            txtInfo.BackColor = SystemColors.Control;
+            txtInfo.BorderStyle = BorderStyle.None;
+            txtInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtInfo.ForeColor = Color.Chocolate;
+            txtInfo.LineColor = Color.OrangeRed;
             txtInfo.Location = new Point(12, 81);
             txtInfo.Name = "txtInfo";
-            txtInfo.Size = new Size(750, 398);
+            txtInfo.Size = new Size(750, 386);
             txtInfo.TabIndex = 3;
             // 
             // Payment
