@@ -1,21 +1,19 @@
-from urllib.parse import unquote
-from datetime import datetime, timedelta
 from fastapi import FastAPI, HTTPException, Depends, Query
-from typing import Optional
-from Models import *
-import jwt
+from datetime import datetime, timedelta
 from Ultilities import *
+from Ultilities import *
+from Models import *
 import logging
+import hashlib
 import pyodbc
+import httpx
 import hmac
 import uuid
-import hashlib
-from Ultilities import *
-import httpx
+import jwt
 
 app = FastAPI()
 
-@app.post("/create_payment", tags=['payment'])
+@app.post("/create_payment", tags=['Payment'])
 async def create_payment(order_info : str, order_amount : int):
     endpoint = "https://test-payment.momo.vn/v2/gateway/api/create" 
     accessKey = "F8BBA842ECF85"
@@ -65,7 +63,7 @@ async def create_payment(order_info : str, order_amount : int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Payment API failed: {str(e)}")
 
-@app.get("/payment/success", tags=['payment'])
+@app.get("/payment/success", tags=['Payment'])
 async def payment_redirect(response : MomoResponse):
     params = dict(response.query_params)
     # try:
@@ -78,8 +76,8 @@ async def payment_redirect(response : MomoResponse):
     # except Exception as e:
     #     raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
-@app.post("/payment/success", tags=['payment'])
-def save_ticket(request : dict):
+@app.post("/payment/success", tags=['Payment'])
+async def save_ticket(request : dict):
     conn = connect_to_sql_server()
     cursor = conn.cursor()
 
@@ -102,55 +100,6 @@ def save_ticket(request : dict):
         cursor.close()
         conn.close()
 
-def GetTrip(depart: str, arrive: str, departdate: str) -> list | None:
-        listTrips = []
-        try:
-            Cursor = connect_to_sql_server().cursor()
-
-            Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
-            
-            if Cursor.rowcount == 0:
-                print('Trip not found')
-                return None
-            else:
-                print('Success')
-        except pyodbc.Error as e:
-            logging.error(f"Database error: {e}")
-            raise HTTPException(status_code=500, detail=f"Database error: {e}")
-        except Exception as e:
-            logging.error(f"Unexpected error: {e}")
-            raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-        except Exception as e:
-            print(str(e))
-            return None
-        rows = Cursor.fetchall()
-        if rows:
-            for row in rows:
-                listTrips.append({"TripID": row[0], "BusId": row[1],"Plate": row[5] ,"DepartLocation": row[2], "ArrivalLocation": row[3], "DepartureDate": row[4].strftime('%d/%m/%Y %H:%M:%S') })
-        return listTrips
-
-def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
-        listSeat: list = []
-        try:
-            Cursor = connect_to_sql_server().cursor()
-            Cursor.execute(f"EXEC prod_get_seat_booked @busid = ?, @isbook = ?", busid, isbook)
-            if Cursor.rowcount == 0:
-                print('BusID not found')
-                return listSeat
-            else:
-                print('Success')
-        except pyodbc.Error as e:
-            logging.error(f"Database error: {e}")
-            raise HTTPException(status_code=500, detail=f"Database error: {e}")
-        except Exception as e:
-            logging.error(f"Unexpected error: {e}")
-            raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-        seats = Cursor.fetchall()
-        if len(seats) == 0: print('No seat available.'); return listSeat
-        for seat in seats:
-            listSeat.append({"Plate": seat[0], "SeatName": seat[1], "IsBook": seat[2], "SeatId": seat[3]})
-        return listSeat
-
 @app.get("/trips", tags=['items'])
 async def GetAllTrip(
     from_location: str = Query(..., alias="from", description="Departure location"),
@@ -159,15 +108,15 @@ async def GetAllTrip(
     ): 
     return GetTrip(from_location, to_location, from_time)
 
-@app.get("/seats", tags=['items'])
+@app.get("/seats", tags=['SeatSeat'])
 async def GetUnavailSeat(
     busid: int = Query(..., alias="busid"),
     isbook: int = Query(..., alias="isbook")
     ):
     return GetUnavailableSeat(busid,isbook)
 
-@app.post("/create_user/", tags=['users'])
-def create_user(user: User):
+@app.post("/create_user/", tags=['User'])
+async def create_user(user: User):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
@@ -191,8 +140,8 @@ def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/login/", tags=['users'])
-def login_user(login: LoginRequest):
+@app.post("/login/", tags=['User'])
+async def login_user(login: LoginRequest):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
@@ -230,8 +179,8 @@ def login_user(login: LoginRequest):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
     
-@app.get("/getlistcustomer", tags=['users'])
-def get_list_customer(userroleid: int = Query(..., description="ID of the user role")):
+@app.get("/getlistcustomer", tags=['User'])
+async def get_list_customer(userroleid: int = Query(..., description="ID of the user role")):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
@@ -261,8 +210,8 @@ def get_list_customer(userroleid: int = Query(..., description="ID of the user r
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.get("/getSeatBooked", tags=['bus'])
-def get_list_bus(busid: int = Query(..., description="BusId of that Bus"),
+@app.get("/getSeatBooked", tags=['Bus'])
+async def get_list_bus(busid: int = Query(..., description="BusId of that Bus"),
                 isbook: int = Query(..., description="Booked status of that seat")):
     try:
         conn = connect_to_sql_server()
@@ -293,8 +242,8 @@ def get_list_bus(busid: int = Query(..., description="BusId of that Bus"),
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.get("/getAllBus", tags=['bus'])
-def get_list_customer():
+@app.get("/getAllBus", tags=['Bus'])
+async def get_list_customer():
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
@@ -323,8 +272,8 @@ def get_list_customer():
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/userinfo/", tags=['users'])
-def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
+@app.post("/userinfo/", tags=['User'])
+async def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
     try:
         token_username = token.get("username")
         if token_username != login.username:
@@ -362,8 +311,8 @@ def user_info(login: LoginRequest, token: dict = Depends(verify_token)):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")@app.post("/userinfo/", tags=['users'])
 
-@app.post("/updateVipCustomer", tags=['users'])
-def user_info(req: UpdateVIPReq):
+@app.post("/updateVipCustomer", tags=['User'])
+async def user_info(req: UpdateVIPReq):
     try:
 
         conn = connect_to_sql_server()
@@ -391,7 +340,7 @@ def user_info(req: UpdateVIPReq):
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
 @app.post("/updateSeatToBooked", tags=['Bus'])
-def update_seat_to_booked(req: SelSeat):
+async def update_seat_to_booked(req: SelSeat):
     try:
 
         conn = connect_to_sql_server()
@@ -419,8 +368,8 @@ def update_seat_to_booked(req: SelSeat):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/updateRegularCustomer", tags=['users'])
-def user_info(req: UpdateVIPReq):
+@app.post("/updateRegularCustomer", tags=['Users'])
+async def user_info(req: UpdateVIPReq):
     try:
 
         conn = connect_to_sql_server()
@@ -447,8 +396,8 @@ def user_info(req: UpdateVIPReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/ticketinfo/", tags=['users'])
-def user_info(ticketinfo: TicketInfoReq):
+@app.post("/ticketinfo/", tags=['User'])
+async def user_info(ticketinfo: TicketInfoReq):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
@@ -481,7 +430,7 @@ def user_info(ticketinfo: TicketInfoReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/create_trip/", tags=['trips'])
+@app.post("/create_trip/", tags=['Trip'])
 async def create_trip(trip: Trip):
     try:
         # Kết nối tới SQL Server
@@ -520,3 +469,37 @@ async def create_trip(trip: Trip):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
     
+@app.get("/getAllTrip", tags=['Trip'])
+async def get_all_trip():
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        cursor.execute("EXEC prod_get_all_trip")
+        rows = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        trips = []
+        for row in rows:
+            trip = {
+                "TripId": row[0],
+                "Plate": row[1],
+                "DepartLocation": row[2],
+                "ArriveLocation": row[3],
+                "DepartTime": row[4],
+                "TripStatusId": row[5],
+                "TripStatusName": row[6]
+            }
+            trips.append(trip)
+        return trips
+
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
+

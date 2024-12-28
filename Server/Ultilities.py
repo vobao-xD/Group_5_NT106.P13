@@ -16,7 +16,6 @@ import pyodbc
 import jwt
 import secrets
 
-
 tags_metadata = [
     {
         "name": "users",
@@ -58,20 +57,12 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer(
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Invalid token")
 
-def print_secret_key():
-    oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-    secret_key = generate_secret_key()
-    print(secret_key)
-    return
-
-def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
+def GetTrip(depart: str, arrive: str, departdate: str) -> list | None:
         listTrips = []
         try:
             Cursor = connect_to_sql_server().cursor()
-            if isreturn == True:               
-                Cursor.execute("EXEC prod_get_trip_return @depart = ?, @arrive = ?, @departtime = ?, @returntime = ?", (unquote(depart), unquote(arrive), unquote(departdate), unquote(returndate)))
-            else:
-                Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
+
+            Cursor.execute("EXEC prod_get_trip_noreturn @depart = ?, @arrive = ?, @departtime = ?", (unquote(depart), unquote(arrive), unquote(departdate)))
             
             if Cursor.rowcount == 0:
                 print('Trip not found')
