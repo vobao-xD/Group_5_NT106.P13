@@ -14,6 +14,7 @@ using System.Web;
 using System.Net.Http;
 using Newtonsoft.Json;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Globalization;
 
 namespace Client
 {
@@ -21,6 +22,7 @@ namespace Client
     {
         private AuthToken _authToken;
         private UserInfo _userInfo;
+        private string url = "http://127.0.0.1:8002";
         public Home(UserInfo userInfo, AuthToken authToken)
         {
             InitializeComponent();
@@ -57,7 +59,12 @@ namespace Client
             support.ShowDialog();
         }
 
-
+        private string ConvertDate(string s)
+        {
+            var date = DateTime.ParseExact(s, "dd-MM-yyyy",
+                                   CultureInfo.InvariantCulture);
+            return date.ToString("yyyy-MM-dd");
+        }
 
         private void chkboxRoundtrip_CheckedChanged(object sender, EventArgs e)
         {
@@ -73,17 +80,20 @@ namespace Client
                     MessageBox.Show("Điểm đi và điểm đến không được trùng nhau.");
                     return;
                 }
-                
+                if (DepartTime.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập giờ khởi hành");
+                    return;
+                }
                 string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
-                string fromtime = $"&fromTime={DepartDate.Text}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
+                string fromtime = $"&fromTime={ConvertDate(DepartDate.Text)}%20{HttpUtility.UrlEncode(DepartTime.Text)}";
                 
-                string param = $"&isReturn=0&ticketCount=1";
                 string encode;
-                
-                encode = "/trips?" + request + fromtime + param;
+
+                encode = "/trips?" + request + fromtime;
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://127.0.0.1:8002");
+                client.BaseAddress = new Uri(url);
 
 
                 HttpResponseMessage res = await client.GetAsync(encode);
@@ -115,13 +125,10 @@ namespace Client
 
         private void Home_Load(object sender, EventArgs e)
         {
-
+            label1.Text = _userInfo.FullName;
         }
 
-        private void DepartDate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 
     public class Trips

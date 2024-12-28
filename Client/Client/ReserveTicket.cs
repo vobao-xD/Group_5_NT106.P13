@@ -23,7 +23,7 @@ namespace Client
         public ReserveTicket(Trips trip, UserInfo userInfo, AuthToken authToken)
         {
             InitializeComponent();            
-            this.plate = trip.Plate;
+            plate = trip.Plate;
             _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
             _userInfo = userInfo;
             _trip = trip;
@@ -71,9 +71,6 @@ namespace Client
                     return;
                 }
             }
-            
-
-
             
             Payment pay = new(_trip, _userInfo, _authToken,selectedSeats);
             pay.ShowDialog();
