@@ -44,6 +44,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.FlatStyle = FlatStyle.System;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Chocolate;
             label2.Location = new Point(385, 108);
@@ -55,6 +56,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.FlatStyle = FlatStyle.System;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Chocolate;
             label3.Location = new Point(385, 206);
@@ -66,6 +68,7 @@
             // cmbBoxDeparture
             // 
             cmbBoxDeparture.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDeparture.FlatStyle = FlatStyle.System;
             cmbBoxDeparture.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbBoxDeparture.ForeColor = Color.Chocolate;
             cmbBoxDeparture.FormattingEnabled = true;
@@ -78,6 +81,7 @@
             // cmbBoxDestination
             // 
             cmbBoxDestination.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDestination.FlatStyle = FlatStyle.System;
             cmbBoxDestination.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbBoxDestination.ForeColor = Color.Chocolate;
             cmbBoxDestination.FormattingEnabled = true;
@@ -90,6 +94,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.FlatStyle = FlatStyle.System;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Chocolate;
             label4.Location = new Point(385, 306);
@@ -128,7 +133,9 @@
             // DepartTime
             // 
             DepartTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            DepartTime.FlatStyle = FlatStyle.System;
             DepartTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DepartTime.ForeColor = Color.Chocolate;
             DepartTime.FormattingEnabled = true;
             DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00" });
             DepartTime.Location = new Point(385, 430);
@@ -139,6 +146,7 @@
             // lbDepartTime
             // 
             lbDepartTime.AutoSize = true;
+            lbDepartTime.FlatStyle = FlatStyle.System;
             lbDepartTime.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbDepartTime.ForeColor = Color.Chocolate;
             lbDepartTime.Location = new Point(385, 404);
@@ -150,6 +158,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
             label5.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Chocolate;
             label5.Location = new Point(342, 34);

@@ -13,9 +13,13 @@ namespace Client
             _userinfo = userInfo;
             progressBarEmail.Visible = false;
         }
-
         private async void btnSend_Click(object sender, EventArgs e)
         {
+            if (txtContent.Text == "" || txtFullName.Text == "" || txtSubject.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
             progressBarEmail.Visible = true;
             progressBarEmail.Value = 0;
             try

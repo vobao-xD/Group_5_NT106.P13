@@ -1,18 +1,6 @@
-﻿using Client.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MimeKit;
-using MailKit.Net.Smtp;
-using System.Security.Cryptography;
+using Client.Controller;
 
 namespace Client
 {
@@ -68,28 +56,16 @@ namespace Client
                     MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (userInfo.UserRoleId == 1)
                     {
-                        // change to admin
                         AdminForm adminForm = new AdminForm(userInfo, loginResult);
                         adminForm.Show();
                         this.Hide();
                     }
-                    if (userInfo.UserRoleId == 2)
+                    else if (userInfo.UserRoleId == 3)
                     {
-                        // change to staff
-                        StaffForm staffForm = new StaffForm(userInfo, loginResult);
-                        staffForm.Show();
-                        this.Hide();
-                    }
-                    if (userInfo.UserRoleId == 3)
-                    {
-                        // change to customer
-                        //Home home = new Home(userInfo, loginResult);
-                        //home.Show();
                         UserDashboard ds = new UserDashboard(userInfo, loginResult);
                         ds.Show();
                         this.Hide();
                     }
-
                 }
             }
             catch (Exception ex)

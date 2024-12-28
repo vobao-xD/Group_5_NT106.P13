@@ -148,7 +148,6 @@ C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\n
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ReserveTicket.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Schedule.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
-C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.StaffForm.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Support.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.TicketInfor.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
@@ -174,3 +173,4 @@ C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\n
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.UserDashboard.resources
+C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.AuthenticationDashboard.resources

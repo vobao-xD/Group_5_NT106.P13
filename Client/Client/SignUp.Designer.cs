@@ -48,10 +48,11 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, -3);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(862, 77);
+            pictureBox1.Size = new Size(882, 77);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -59,17 +60,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(147, 184);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(140, 176);
             label1.Name = "label1";
-            label1.Size = new Size(110, 20);
+            label1.Size = new Size(128, 23);
             label1.TabIndex = 2;
             label1.Text = "Tên đăng nhập:";
             // 
             // txtLoginName
             // 
-            txtLoginName.Location = new Point(304, 181);
+            txtLoginName.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtLoginName.ForeColor = Color.Chocolate;
+            txtLoginName.Location = new Point(310, 173);
             txtLoginName.Name = "txtLoginName";
-            txtLoginName.Size = new Size(356, 27);
+            txtLoginName.Size = new Size(356, 30);
             txtLoginName.TabIndex = 3;
             // 
             // label2
@@ -77,90 +82,108 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.DarkOrange;
-            label2.Location = new Point(349, 101);
+            label2.Location = new Point(354, 91);
             label2.Name = "label2";
-            label2.Size = new Size(168, 54);
+            label2.Size = new Size(179, 54);
             label2.TabIndex = 4;
-            label2.Text = "Đăng kí";
+            label2.Text = "Đăng ký";
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(304, 244);
+            txtFullName.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtFullName.ForeColor = Color.Chocolate;
+            txtFullName.Location = new Point(310, 236);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(356, 27);
+            txtFullName.Size = new Size(356, 30);
             txtFullName.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(147, 247);
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label3.ForeColor = Color.Chocolate;
+            label3.Location = new Point(140, 239);
             label3.Name = "label3";
-            label3.Size = new Size(116, 20);
+            label3.Size = new Size(135, 23);
             label3.TabIndex = 5;
             label3.Text = "Tên người dùng:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(304, 309);
+            txtEmail.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtEmail.ForeColor = Color.Chocolate;
+            txtEmail.Location = new Point(310, 301);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(356, 27);
+            txtEmail.Size = new Size(356, 30);
             txtEmail.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(147, 312);
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label4.ForeColor = Color.Chocolate;
+            label4.Location = new Point(140, 304);
             label4.Name = "label4";
-            label4.Size = new Size(49, 20);
+            label4.Size = new Size(55, 23);
             label4.TabIndex = 7;
             label4.Text = "Email:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(304, 368);
+            txtPassword.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtPassword.ForeColor = Color.Chocolate;
+            txtPassword.Location = new Point(310, 360);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(356, 27);
+            txtPassword.Size = new Size(356, 30);
             txtPassword.TabIndex = 10;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(147, 371);
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label5.ForeColor = Color.Chocolate;
+            label5.Location = new Point(140, 363);
             label5.Name = "label5";
-            label5.Size = new Size(73, 20);
+            label5.Size = new Size(88, 23);
             label5.TabIndex = 9;
             label5.Text = "Mật khẩu:";
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(304, 434);
+            txtConfirmPassword.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtConfirmPassword.ForeColor = Color.Chocolate;
+            txtConfirmPassword.Location = new Point(310, 426);
             txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.Size = new Size(356, 27);
+            txtConfirmPassword.Size = new Size(356, 30);
             txtConfirmPassword.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(147, 437);
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label6.ForeColor = Color.Chocolate;
+            label6.Location = new Point(140, 429);
             label6.Name = "label6";
-            label6.Size = new Size(137, 20);
+            label6.Size = new Size(164, 23);
             label6.TabIndex = 11;
             label6.Text = "Xác nhận mật khấu:";
             // 
             // btnSignUp
             // 
-            btnSignUp.Location = new Point(386, 500);
+            btnSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSignUp.ForeColor = Color.Chocolate;
+            btnSignUp.Location = new Point(354, 486);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(94, 29);
+            btnSignUp.Size = new Size(179, 43);
             btnSignUp.TabIndex = 13;
-            btnSignUp.Text = "Đăng kí";
+            btnSignUp.Text = "Đăng ký";
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
             // 
             // checkBoxRevealPass
             // 
             checkBoxRevealPass.AutoSize = true;
-            checkBoxRevealPass.Location = new Point(666, 370);
+            checkBoxRevealPass.Location = new Point(691, 397);
             checkBoxRevealPass.Name = "checkBoxRevealPass";
             checkBoxRevealPass.Size = new Size(127, 24);
             checkBoxRevealPass.TabIndex = 14;
@@ -173,7 +196,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(849, 541);
+            ClientSize = new Size(882, 553);
             Controls.Add(checkBoxRevealPass);
             Controls.Add(btnSignUp);
             Controls.Add(txtConfirmPassword);
@@ -188,6 +211,7 @@
             Controls.Add(txtLoginName);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SignUp";
             Text = "SignUp";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

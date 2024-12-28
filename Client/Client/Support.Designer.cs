@@ -111,7 +111,7 @@
             btnSend.BackColor = Color.Chocolate;
             btnSend.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSend.ForeColor = Color.White;
-            btnSend.Location = new Point(721, 428);
+            btnSend.Location = new Point(721, 441);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(184, 65);
             btnSend.TabIndex = 43;

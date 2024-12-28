@@ -37,15 +37,17 @@
             btnLogin = new Button();
             label3 = new Label();
             btnSignUp = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
+            pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, -3);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(862, 77);
+            pictureBox1.Size = new Size(882, 77);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -54,7 +56,7 @@
             // 
             txtLoginName.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtLoginName.ForeColor = Color.Red;
-            txtLoginName.Location = new Point(310, 166);
+            txtLoginName.Location = new Point(311, 193);
             txtLoginName.Multiline = true;
             txtLoginName.Name = "txtLoginName";
             txtLoginName.Size = new Size(350, 41);
@@ -64,8 +66,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.OrangeRed;
-            label1.Location = new Point(120, 169);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(121, 196);
             label1.Name = "label1";
             label1.Size = new Size(171, 31);
             label1.TabIndex = 2;
@@ -75,8 +77,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.OrangeRed;
-            label2.Location = new Point(120, 240);
+            label2.ForeColor = Color.Chocolate;
+            label2.Location = new Point(121, 292);
             label2.Name = "label2";
             label2.Size = new Size(115, 31);
             label2.TabIndex = 4;
@@ -86,7 +88,7 @@
             // 
             txtPassword.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtPassword.ForeColor = Color.Red;
-            txtPassword.Location = new Point(310, 237);
+            txtPassword.Location = new Point(311, 289);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -96,11 +98,11 @@
             // btnLogin
             // 
             btnLogin.BackColor = Color.Transparent;
-            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogin.ForeColor = Color.OrangeRed;
-            btnLogin.Location = new Point(358, 317);
+            btnLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnLogin.ForeColor = Color.Chocolate;
+            btnLogin.Location = new Point(329, 376);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(147, 40);
+            btnLogin.Size = new Size(230, 40);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = false;
@@ -110,8 +112,8 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(227, 396);
+            label3.ForeColor = Color.Chocolate;
+            label3.Location = new Point(246, 458);
             label3.Name = "label3";
             label3.Size = new Size(207, 31);
             label3.TabIndex = 6;
@@ -120,22 +122,34 @@
             // btnSignUp
             // 
             btnSignUp.BackColor = Color.Transparent;
-            btnSignUp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSignUp.ForeColor = Color.OrangeRed;
-            btnSignUp.Location = new Point(460, 394);
+            btnSignUp.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnSignUp.ForeColor = Color.Chocolate;
+            btnSignUp.Location = new Point(492, 454);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(115, 37);
+            btnSignUp.Size = new Size(132, 42);
             btnSignUp.TabIndex = 7;
             btnSignUp.Text = "Đăng kí";
             btnSignUp.UseVisualStyleBackColor = false;
             btnSignUp.Click += btnSignUp_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.DarkOrange;
+            label4.Location = new Point(329, 99);
+            label4.Name = "label4";
+            label4.Size = new Size(230, 54);
+            label4.TabIndex = 8;
+            label4.Text = "Đăng nhập";
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(862, 482);
+            ClientSize = new Size(882, 553);
+            Controls.Add(label4);
             Controls.Add(btnSignUp);
             Controls.Add(label3);
             Controls.Add(btnLogin);
@@ -145,6 +159,7 @@
             Controls.Add(txtLoginName);
             Controls.Add(pictureBox1);
             ForeColor = SystemColors.ButtonHighlight;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -162,5 +177,6 @@
         private Button btnLogin;
         private Label label3;
         private Button btnSignUp;
+        private Label label4;
     }
 }
