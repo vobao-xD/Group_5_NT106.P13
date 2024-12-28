@@ -52,7 +52,8 @@
             // 
             // txtLoginName
             // 
-            txtLoginName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLoginName.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtLoginName.ForeColor = Color.Red;
             txtLoginName.Location = new Point(310, 166);
             txtLoginName.Multiline = true;
             txtLoginName.Name = "txtLoginName";
@@ -63,7 +64,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Black;
+            label1.ForeColor = Color.OrangeRed;
             label1.Location = new Point(120, 169);
             label1.Name = "label1";
             label1.Size = new Size(171, 31);
@@ -74,7 +75,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Black;
+            label2.ForeColor = Color.OrangeRed;
             label2.Location = new Point(120, 240);
             label2.Name = "label2";
             label2.Size = new Size(115, 31);
@@ -83,7 +84,8 @@
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = Color.Red;
             txtPassword.Location = new Point(310, 237);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
@@ -93,34 +95,39 @@
             // 
             // btnLogin
             // 
-            btnLogin.ForeColor = Color.Black;
-            btnLogin.Location = new Point(416, 318);
+            btnLogin.BackColor = Color.Transparent;
+            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.ForeColor = Color.OrangeRed;
+            btnLogin.Location = new Point(358, 317);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(94, 29);
+            btnLogin.Size = new Size(147, 40);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Đăng nhập";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(310, 400);
+            label3.Location = new Point(227, 396);
             label3.Name = "label3";
-            label3.Size = new Size(135, 20);
+            label3.Size = new Size(207, 31);
             label3.TabIndex = 6;
             label3.Text = "Chưa có tài khoản?";
             // 
             // btnSignUp
             // 
-            btnSignUp.ForeColor = Color.Black;
-            btnSignUp.Location = new Point(469, 396);
+            btnSignUp.BackColor = Color.Transparent;
+            btnSignUp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSignUp.ForeColor = Color.OrangeRed;
+            btnSignUp.Location = new Point(460, 394);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(94, 29);
+            btnSignUp.Size = new Size(115, 37);
             btnSignUp.TabIndex = 7;
             btnSignUp.Text = "Đăng kí";
-            btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.UseVisualStyleBackColor = false;
             btnSignUp.Click += btnSignUp_Click;
             // 
             // Login

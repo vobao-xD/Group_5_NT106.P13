@@ -79,11 +79,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Black;
+            label1.Font = new Font("Segoe UI Variable Small Light", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Sienna;
             label1.Location = new Point(1260, 93);
             label1.Name = "label1";
-            label1.Size = new Size(124, 23);
+            label1.Size = new Size(124, 22);
             label1.TabIndex = 3;
             label1.Text = "Tên đăng nhập";
             // 
@@ -150,55 +150,57 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F);
-            label2.ForeColor = Color.Black;
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Chocolate;
             label2.Location = new Point(237, 316);
             label2.Name = "label2";
-            label2.Size = new Size(69, 23);
+            label2.Size = new Size(74, 23);
             label2.TabIndex = 12;
             label2.Text = "Điểm đi";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(494, 316);
+            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Chocolate;
+            label3.Location = new Point(533, 316);
             label3.Name = "label3";
-            label3.Size = new Size(84, 23);
+            label3.Size = new Size(88, 23);
             label3.TabIndex = 13;
             label3.Text = "Điểm đến";
             // 
             // cmbBoxDeparture
             // 
-            cmbBoxDeparture.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbBoxDeparture.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDeparture.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbBoxDeparture.ForeColor = Color.Chocolate;
             cmbBoxDeparture.FormattingEnabled = true;
             cmbBoxDeparture.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
             cmbBoxDeparture.Location = new Point(237, 342);
             cmbBoxDeparture.Name = "cmbBoxDeparture";
             cmbBoxDeparture.Size = new Size(251, 36);
             cmbBoxDeparture.TabIndex = 14;
-            cmbBoxDeparture.Text = "Hà Nội";
             // 
             // cmbBoxDestination
             // 
-            cmbBoxDestination.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbBoxDestination.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDestination.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbBoxDestination.ForeColor = Color.Chocolate;
             cmbBoxDestination.FormattingEnabled = true;
             cmbBoxDestination.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
-            cmbBoxDestination.Location = new Point(494, 342);
+            cmbBoxDestination.Location = new Point(533, 340);
             cmbBoxDestination.Name = "cmbBoxDestination";
             cmbBoxDestination.Size = new Size(251, 36);
             cmbBoxDestination.TabIndex = 15;
-            cmbBoxDestination.Text = "TP.HCM";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F);
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(779, 316);
+            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Chocolate;
+            label4.Location = new Point(900, 316);
             label4.Name = "label4";
-            label4.Size = new Size(69, 23);
+            label4.Size = new Size(73, 23);
             label4.TabIndex = 16;
             label4.Text = "Ngày đi";
             // 
@@ -207,7 +209,7 @@
             btnSearch.BackColor = Color.Chocolate;
             btnSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(623, 424);
+            btnSearch.Location = new Point(612, 425);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(207, 50);
             btnSearch.TabIndex = 18;
@@ -217,22 +219,28 @@
             // 
             // DepartDate
             // 
-            DepartDate.CustomFormat = "yyyy-MM-dd";
+            DepartDate.CalendarForeColor = Color.Chocolate;
+            DepartDate.CalendarTitleBackColor = Color.PeachPuff;
+            DepartDate.CalendarTitleForeColor = Color.Chocolate;
+            DepartDate.CalendarTrailingForeColor = Color.Peru;
+            DepartDate.CustomFormat = "dd-MM-yyyy";
+            DepartDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DepartDate.Format = DateTimePickerFormat.Custom;
-            DepartDate.Location = new Point(779, 342);
+            DepartDate.Location = new Point(900, 342);
             DepartDate.Name = "DepartDate";
-            DepartDate.Size = new Size(111, 27);
+            DepartDate.Size = new Size(139, 34);
             DepartDate.TabIndex = 17;
             // 
             // DepartTime
             // 
+            DepartTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            DepartTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DepartTime.FormattingEnabled = true;
-            DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00" });
-            DepartTime.Location = new Point(896, 341);
+            DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00" });
+            DepartTime.Location = new Point(1060, 342);
             DepartTime.Name = "DepartTime";
-            DepartTime.Size = new Size(133, 28);
+            DepartTime.Size = new Size(133, 36);
             DepartTime.TabIndex = 22;
-            DepartTime.Text = "17:00";
             // 
             // statusStrip1
             // 
