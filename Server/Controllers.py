@@ -1,64 +1,106 @@
-from sqlalchemy.orm import Session
 from urllib.parse import unquote
 from datetime import datetime, timedelta
 from fastapi import FastAPI, HTTPException, Depends, Query
-from fastapi.security import OAuth2PasswordBearer, HTTPAuthorizationCredentials, HTTPBearer
-from typing import Optional, List
-from pydantic import BaseModel
+from typing import Optional
 from Models import *
 import jwt
 from Ultilities import *
 import logging
 import pyodbc
-import secrets
-import json
-import requests
 import hmac
 import uuid
 import hashlib
+from Ultilities import *
+import httpx
 
 app = FastAPI()
 
-@app.post("/create_payment/")
-async def create_payment(order_id: str, client_amount: int):
-    endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
-    partnerCode = "MOMO"
+@app.post("/create_payment", tags=['payment'])
+async def create_payment(order_info : str, order_amount : int):
+    endpoint = "https://test-payment.momo.vn/v2/gateway/api/create" 
     accessKey = "F8BBA842ECF85"
     secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz"
-    orderInfo = "pay with MoMo"
-    redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b"
-    ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b"
-    amount = "50000"
-    orderId = str(uuid.uuid4())
+    partnerCode = "MOMO"
+    redirectUrl = "http://127.0.0.1:8002/payment/success"
+    ipnUrl = "http://127.0.0.1:8002/payment/success"
+    order_id = str(uuid.uuid4())
+    orderInfo = order_info
+    amount = str(order_amount)
     requestId = str(uuid.uuid4())
-    requestType = "captureWallet"
-    extraData = ""  # pass empty value or Encode base64 JsonString
-
-    payload = {
-        'partnerCode': partnerCode,
-        'partnerName': "Test",
-        'storeId': "MomoTestStore",
-        'requestId': requestId,
-        'amount': amount,
-        'orderId': orderId,
-        'orderInfo': orderInfo,
-        'redirectUrl': redirectUrl,
-        'ipnUrl': ipnUrl,
-        'lang': "vi",
-        'extraData': extraData,
-        'requestType': requestType,
-        'signature': signature
-    } 
-
-    rawSignature = "accessKey=" + accessKey + "&amount=" + amount + "&extraData=" + extraData + "&ipnUrl=" + ipnUrl + "&orderId=" + orderId + "&orderInfo=" + orderInfo + "&partnerCode=" + partnerCode + "&redirectUrl=" + redirectUrl + "&requestId=" + requestId + "&requestType=" + requestType
-    h = hmac.new(bytes(secretKey, 'ascii'), bytes(rawSignature, 'ascii'), hashlib.sha256)
+    extraData = ""
+    partnerName = "MoMo Payment"
+    requestType = "payWithMethod"
+    storeId = "G5 Bus Line"
+    autoCapture = True
+    lang = "vi"
+    rawSignature = f"accessKey={accessKey}&amount={amount}&extraData={extraData}&ipnUrl={ipnUrl}" \
+                   f"&orderId={order_id}&orderInfo={orderInfo}&partnerCode={partnerCode}&redirectUrl={redirectUrl}" \
+                   f"&requestId={requestId}&requestType={requestType}"
+    h = hmac.new(bytes(secretKey, 'utf-8'), bytes(rawSignature, 'utf-8'), hashlib.sha256)
     signature = h.hexdigest()
+    data = {
+        'partnerCode': partnerCode,
+        'orderId': order_id,
+        'partnerName': partnerName,
+        'storeId': storeId,
+        'ipnUrl': ipnUrl,
+        'amount': amount,
+        'lang': lang,
+        'requestType': requestType,
+        'redirectUrl': redirectUrl,
+        'autoCapture': autoCapture,
+        'orderInfo': orderInfo,
+        'requestId': requestId,
+        'extraData': extraData,
+        'signature': signature
+    }
+    clen = len(data)
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(endpoint, json=data,)
+            response.raise_for_status()
+            return response.json()
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(status_code=e.response.status_code, detail=e.response.text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Payment API failed: {str(e)}")
 
-    response = requests.post(endpoint, json=payload)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise HTTPException(status_code=500, detail="Payment API failed")
+@app.get("/payment/success", tags=['payment'])
+async def payment_redirect(response : MomoResponse):
+    params = dict(response.query_params)
+    # try:
+    #     async with httpx.AsyncClient() as client:
+    #         response = await client.post("http://127.0.0.1:8002/payment/success", json=params)
+    #         response.raise_for_status()
+    return {"message": "Redirected and posted successfully"}
+    # except httpx.HTTPStatusError as e:
+    #     raise HTTPException(status_code=e.response.status_code, detail=f"Failed to redirect: {e.response.text}")
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
+@app.post("/payment/success", tags=['payment'])
+def save_ticket(request : dict):
+    conn = connect_to_sql_server()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(
+            "EXEC prod_insert_tickets @NumOfSeat = ?, @TripId = ?, @UserId = ?, @Price = ?, @LicensePlate = ?, @SeatList = ?",
+            request.num_of_seat,
+            request.trip_id,
+            request.user_id,
+            request.price,
+            request.license_plate,
+            request.seat_list
+        )
+        conn.commit()
+        return {"message": "Ticket(s) successfully booked."}
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+    finally:
+        cursor.close()
+        conn.close()
 
 def GetTrip(depart: str, arrive: str, departdate: str, returndate: str, isreturn: bool = True) -> list | None:
         listTrips = []
@@ -191,7 +233,7 @@ def login_user(login: LoginRequest):
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-
+    
 @app.get("/getlistcustomer", tags=['users'])
 def get_list_customer(userroleid: int = Query(..., description="ID of the user role")):
     try:
@@ -443,4 +485,42 @@ def user_info(ticketinfo: TicketInfoReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-        
+@app.post("/create_trip/", tags=['trips'])
+async def create_trip(trip: Trip):
+    try:
+        # Kết nối tới SQL Server
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+
+        # Gọi stored procedure với tham số từ đối tượng trip
+        cursor.execute(
+            "EXEC prod_create_trip ?, ?, ?, ?, ?, ?, ?",
+            trip.plate,
+            trip.seat_num,
+            1,
+            trip.depart_location,
+            trip.arrive_location,
+            trip.depart_time,
+            1,
+        )
+
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        logging.info(f"Stored procedure executed successfully: {row}")
+        if row:
+            return {"Id": row[0], "Message": row[1]}
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(
+                status_code=400, detail="No result returned from the stored procedure."
+            )
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+    
