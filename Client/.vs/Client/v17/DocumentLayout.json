@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\support.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\ticketinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\ticketinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -15,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\client\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -82,7 +90,56 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Support.cs",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
+              "RelativeDocumentMoniker": "Client\\Support.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
+              "RelativeToolTip": "Client\\Support.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAYwCkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T10:43:11.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Support.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Support.cs",
+              "RelativeDocumentMoniker": "Client\\Support.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Support.cs [Design]",
+              "RelativeToolTip": "Client\\Support.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T10:38:46.622Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
+              "RelativeDocumentMoniker": "Client\\Home.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
+              "RelativeToolTip": "Client\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T10:37:57.214Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "TicketInfor.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\TicketInfor.cs",
+              "RelativeDocumentMoniker": "Client\\TicketInfor.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\TicketInfor.cs [Design]",
+              "RelativeToolTip": "Client\\TicketInfor.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-28T10:28:59.38Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserDashboard.cs",
               "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\UserDashboard.cs",
               "RelativeDocumentMoniker": "Client\\UserDashboard.cs",
@@ -95,32 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeDocumentMoniker": "Client\\Home.cs",
-              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeToolTip": "Client\\Home.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAA/wBsAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T10:02:50.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs",
-              "RelativeDocumentMoniker": "Client\\Home.cs",
-              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Home.cs [Design]",
-              "RelativeToolTip": "Client\\Home.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T10:01:22.146Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UserDashboard.cs [Design]",
               "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\UserDashboard.cs",
               "RelativeDocumentMoniker": "Client\\UserDashboard.cs",

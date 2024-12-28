@@ -1,16 +1,6 @@
 ﻿using Client.Model;
 using MailKit.Net.Smtp;
 using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 namespace Client
 {
@@ -30,30 +20,24 @@ namespace Client
             progressBarEmail.Value = 0;
             try
             {
-                // Cập nhật tiến trình khi bắt đầu gửi
                 progressBarEmail.Value = 25;
-
-                // Gửi email
                 await SendEmail();
-
-                // Cập nhật tiến trình khi hoàn thành
                 progressBarEmail.Value = 100;
-
-                // Hiển thị thông báo thành công
                 MessageBox.Show($"Đã gửi yêu cầu hỗ trợ thành công đến Admin!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                // Cập nhật tiến trình khi gặp lỗi
                 progressBarEmail.Value = 0;
                 MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                // Ẩn ProgressBar sau khi hoàn tất
-                await Task.Delay(500); // Thêm một khoảng thời gian để người dùng thấy ProgressBar hoàn thành
+                await Task.Delay(500);
                 progressBarEmail.Visible = false;
             }
+            txtContent.Clear();
+            txtFullName.Clear();
+            txtSubject.Clear();
         }
         public async Task SendEmail()
         {
@@ -125,16 +109,9 @@ namespace Client
             {
                 try
                 {
-                    // Kết nối với máy chủ SMTP
                     await client.ConnectAsync("smtp.gmail.com", 465, true);
-
-                    // Xác thực với máy chủ SMTP
                     await client.AuthenticateAsync("s78776033@gmail.com", "lxgv zeiy gxss yocj");
-
-                    // Gửi email
                     await client.SendAsync(message);
-
-                    // Ngắt kết nối
                     await client.DisconnectAsync(true);
                 }
                 catch (Exception ex)

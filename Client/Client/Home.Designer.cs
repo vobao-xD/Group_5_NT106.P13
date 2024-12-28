@@ -46,7 +46,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Chocolate;
-            label2.Location = new Point(382, 178);
+            label2.Location = new Point(385, 108);
             label2.Name = "label2";
             label2.Size = new Size(74, 23);
             label2.TabIndex = 12;
@@ -57,7 +57,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Chocolate;
-            label3.Location = new Point(382, 285);
+            label3.Location = new Point(385, 206);
             label3.Name = "label3";
             label3.Size = new Size(88, 23);
             label3.TabIndex = 13;
@@ -70,7 +70,7 @@
             cmbBoxDeparture.ForeColor = Color.Chocolate;
             cmbBoxDeparture.FormattingEnabled = true;
             cmbBoxDeparture.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
-            cmbBoxDeparture.Location = new Point(382, 204);
+            cmbBoxDeparture.Location = new Point(385, 134);
             cmbBoxDeparture.Name = "cmbBoxDeparture";
             cmbBoxDeparture.Size = new Size(251, 36);
             cmbBoxDeparture.TabIndex = 14;
@@ -82,7 +82,7 @@
             cmbBoxDestination.ForeColor = Color.Chocolate;
             cmbBoxDestination.FormattingEnabled = true;
             cmbBoxDestination.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
-            cmbBoxDestination.Location = new Point(382, 309);
+            cmbBoxDestination.Location = new Point(385, 230);
             cmbBoxDestination.Name = "cmbBoxDestination";
             cmbBoxDestination.Size = new Size(251, 36);
             cmbBoxDestination.TabIndex = 15;
@@ -92,7 +92,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Chocolate;
-            label4.Location = new Point(382, 387);
+            label4.Location = new Point(385, 306);
             label4.Name = "label4";
             label4.Size = new Size(73, 23);
             label4.TabIndex = 16;
@@ -103,7 +103,7 @@
             btnSearch.BackColor = Color.Chocolate;
             btnSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(382, 598);
+            btnSearch.Location = new Point(385, 496);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(251, 50);
             btnSearch.TabIndex = 18;
@@ -120,7 +120,7 @@
             DepartDate.CustomFormat = "dd-MM-yyyy";
             DepartDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DepartDate.Format = DateTimePickerFormat.Custom;
-            DepartDate.Location = new Point(382, 413);
+            DepartDate.Location = new Point(385, 332);
             DepartDate.Name = "DepartDate";
             DepartDate.Size = new Size(251, 34);
             DepartDate.TabIndex = 17;
@@ -131,7 +131,7 @@
             DepartTime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DepartTime.FormattingEnabled = true;
             DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00" });
-            DepartTime.Location = new Point(382, 511);
+            DepartTime.Location = new Point(385, 430);
             DepartTime.Name = "DepartTime";
             DepartTime.Size = new Size(251, 36);
             DepartTime.TabIndex = 22;
@@ -141,7 +141,7 @@
             lbDepartTime.AutoSize = true;
             lbDepartTime.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbDepartTime.ForeColor = Color.Chocolate;
-            lbDepartTime.Location = new Point(382, 485);
+            lbDepartTime.Location = new Point(385, 404);
             lbDepartTime.Name = "lbDepartTime";
             lbDepartTime.Size = new Size(59, 23);
             lbDepartTime.TabIndex = 23;
@@ -152,18 +152,18 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Chocolate;
-            label5.Location = new Point(351, 83);
+            label5.Location = new Point(342, 34);
             label5.Name = "label5";
-            label5.Size = new Size(306, 46);
+            label5.Size = new Size(364, 46);
             label5.TabIndex = 24;
-            label5.Text = "Tra cứu chuyến xe";
+            label5.Text = "TRA CỨU CHUYẾN XE";
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(982, 703);
+            ClientSize = new Size(1000, 590);
             Controls.Add(label5);
             Controls.Add(lbDepartTime);
             Controls.Add(DepartTime);
