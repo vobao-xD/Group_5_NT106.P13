@@ -561,9 +561,8 @@ def user_info(ticketinfo: TicketInfoReq):
             "UserFullName": rows[0][6]
         }
 
-        # Tập hợp danh sách SeatIds nếu có
-        seat_ids = [row[7] for row in rows if row[7] is not None]
-        ticket_info["SeatIds"] = seat_ids
+        seat_list = [row[7] for row in rows if row[7] is not None]
+        ticket_info["SeatList"] = seat_list
 
         return ticket_info
 

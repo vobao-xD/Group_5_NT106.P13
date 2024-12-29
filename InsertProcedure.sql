@@ -110,10 +110,11 @@ BEGIN
             TR.ArriveLocation,
             TR.DepartTime,
             U.UserFullName,
-            TD.SeatId
+            S.SeatName
         FROM Ticket T
         INNER JOIN Trip TR ON T.TripId = TR.TripId
         LEFT JOIN TicketDetail TD ON T.TicketId = TD.TicketId
+        LEFT JOIN Seat S ON TD.SeatId = S.SeatId
         INNER JOIN [User] U ON T.UserId = U.UserId
         WHERE T.TicketId = @TicketId AND U.Mail = @UserEmail;
     END
