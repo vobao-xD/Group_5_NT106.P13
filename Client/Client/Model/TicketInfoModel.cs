@@ -11,5 +11,8 @@
         public List<int> SeatIds { get; set; }
         public string UserFullName { get; set; }
 
+        public TicketInfoModel() { }
+        public TicketInfoModel(int ticketId) { this.TicketId = ticketId; }
+
     }
 }

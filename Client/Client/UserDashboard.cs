@@ -69,7 +69,7 @@ namespace Client
         {
             if (ticketinfo == null)
             {
-                ticketinfo = new TicketInfo();
+                ticketinfo = new TicketInfo(_userInfo);
                 ticketinfo.FormClosed += Ticketinfo_FormClosed;
                 ticketinfo.MdiParent = this;
                 ticketinfo.Dock = DockStyle.Fill;

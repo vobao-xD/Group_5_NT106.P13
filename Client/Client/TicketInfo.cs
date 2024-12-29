@@ -1,4 +1,5 @@
 ﻿using Client.Model;
+using MimeKit.Cryptography;
 
 namespace Client
 {
@@ -6,15 +7,18 @@ namespace Client
     {
         private readonly UserController _userController;
         private TicketInfoModel _ticketInfo;
+        private UserInfo _userInfo;
 
-        public TicketInfo()
+        public TicketInfo(UserInfo userInfo)
         {
             InitializeComponent();
             _userController = new UserController(new HttpClient());
+            _userInfo = userInfo;
         }
 
         private async void LoadDataAsync()
         {
+            flowLayoutPanel_TicketInfo.Controls.Clear();
             if (string.IsNullOrWhiteSpace(txtTicketCode.Text))
             {
                 MessageBox.Show("Please enter a valid Ticket Code.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -29,12 +33,18 @@ namespace Client
 
             try
             {
-                var response = await _userController.GetTicketInfoAsync(ticketCode);
-
+                var response = await _userController.GetTicketInfoAsync(_userInfo.UserEmail, ticketCode);
                 if (response != null)
                 {
-                    _ticketInfo = response;
-                    DisplayTicketInfo();
+                    if (response.TicketId != -1)
+                    {
+                        _ticketInfo = response;
+                        DisplayTicketInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ticket not found or you don't have permission to access it", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
@@ -77,12 +87,13 @@ namespace Client
         {
             Panel panel = new Panel
             {
-                Size = new Size(500, 200),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10),
-                Padding = new Padding(10),
-                Cursor = Cursors.Hand
+                Size = new Size(347, 245),
+                BackColor = Color.Bisque,
+                BorderStyle = BorderStyle.None,
+                Margin = new Padding(15),
+                Padding = new Padding(20),
+                Cursor = Cursors.Hand,
+
             };
 
             TableLayoutPanel innerPanel = new TableLayoutPanel
@@ -90,11 +101,13 @@ namespace Client
                 Dock = DockStyle.Fill,
                 ColumnCount = 2,
                 RowCount = 8,
-                AutoSize = true
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                BorderStyle = BorderStyle.None,
             };
 
-            innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            //innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            //innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
             Label lblFullName = new Label
             {

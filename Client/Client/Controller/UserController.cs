@@ -130,10 +130,10 @@ namespace Client
             var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
             return result;
         }
-        public async Task<TicketInfoModel> GetTicketInfoAsync(int ticketId)
+        public async Task<TicketInfoModel> GetTicketInfoAsync(string userEmail, int ticketId)
         {
             var ticketInfoURL = baseURL + "/ticket_info/";
-            var requestData = new { ticketId = ticketId };
+            var requestData = new { UserEmail = userEmail, TicketId = ticketId };
             var content = new StringContent(JsonSerializer.Serialize(requestData), Encoding.UTF8, "application/json");
             HttpResponseMessage response;
             try
@@ -148,6 +148,10 @@ namespace Client
                 if (string.IsNullOrEmpty(responseContent))
                 {
                     throw new Exception("Received empty response from the server.");
+                }
+                if (responseContent.Contains("ErrorResponse"))
+                {
+                    return new TicketInfoModel(-1);
                 }
                 var ticket = JsonSerializer.Deserialize<TicketInfoModel>(responseContent);
                 if (ticket == null)
