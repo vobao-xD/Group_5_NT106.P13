@@ -52,7 +52,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 703);
+            panel1.Size = new Size(350, 1033);
             panel1.TabIndex = 0;
             // 
             // btnTicketSearch
@@ -63,7 +63,7 @@
             btnTicketSearch.ForeColor = SystemColors.Control;
             btnTicketSearch.Location = new Point(0, 225);
             btnTicketSearch.Name = "btnTicketSearch";
-            btnTicketSearch.Size = new Size(250, 75);
+            btnTicketSearch.Size = new Size(350, 75);
             btnTicketSearch.TabIndex = 11;
             btnTicketSearch.Text = "Tra cứu vé";
             btnTicketSearch.UseCompatibleTextRendering = true;
@@ -78,7 +78,7 @@
             btnContact.ForeColor = SystemColors.Control;
             btnContact.Location = new Point(0, 150);
             btnContact.Name = "btnContact";
-            btnContact.Size = new Size(250, 75);
+            btnContact.Size = new Size(350, 75);
             btnContact.TabIndex = 10;
             btnContact.Text = "Hỗ trợ";
             btnContact.UseCompatibleTextRendering = true;
@@ -93,7 +93,7 @@
             btnHome.ForeColor = SystemColors.Control;
             btnHome.Location = new Point(0, 75);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(250, 75);
+            btnHome.Size = new Size(350, 75);
             btnHome.TabIndex = 8;
             btnHome.Text = "Trang chủ";
             btnHome.UseCompatibleTextRendering = true;
@@ -111,7 +111,7 @@
             btnMenu.ForeColor = SystemColors.Control;
             btnMenu.Location = new Point(0, 0);
             btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(250, 75);
+            btnMenu.Size = new Size(350, 75);
             btnMenu.TabIndex = 9;
             btnMenu.Text = "Menu";
             btnMenu.UseVisualStyleBackColor = false;
@@ -120,9 +120,9 @@
             // 
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(250, 0);
+            pictureBox1.Location = new Point(350, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(982, 75);
+            pictureBox1.Size = new Size(1552, 125);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -131,9 +131,9 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { labelUsername, labelUserEmail });
-            statusStrip1.Location = new Point(250, 677);
+            statusStrip1.Location = new Point(350, 1007);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(982, 26);
+            statusStrip1.Size = new Size(1552, 26);
             statusStrip1.TabIndex = 24;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -153,13 +153,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1232, 703);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(statusStrip1);
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "UserDashboard";
             Text = "Dashboard";
+            WindowState = FormWindowState.Maximized;
             FormClosed += UserDashboard_FormClosed;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

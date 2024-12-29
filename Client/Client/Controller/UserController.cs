@@ -130,7 +130,7 @@ namespace Client
             var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
             return result;
         }
-        public async Task<TicketInfoModel> GetTicketInfoAsync(string userEmail, int ticketId)
+        public async Task<TicketInfoModel2> GetTicketInfoAsync(string userEmail, int ticketId)
         {
             var ticketInfoURL = baseURL + "/ticket_info/";
             var requestData = new { UserEmail = userEmail, TicketId = ticketId };
@@ -151,9 +151,9 @@ namespace Client
                 }
                 if (responseContent.Contains("ErrorResponse"))
                 {
-                    return new TicketInfoModel(-1);
+                    return new TicketInfoModel2(-1);
                 }
-                var ticket = JsonSerializer.Deserialize<TicketInfoModel>(responseContent);
+                var ticket = JsonSerializer.Deserialize<TicketInfoModel2>(responseContent);
                 if (ticket == null)
                 {
                     throw new Exception("Deserialization failed or ticket information is missing.");

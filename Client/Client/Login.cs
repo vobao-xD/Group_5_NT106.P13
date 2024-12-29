@@ -84,8 +84,7 @@ namespace Client
 
         private void lblForgetPassword_Click(object sender, EventArgs e)
         {
-            //ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
-            //forgetPasswordForm.ShowDialog();
+            AuthenticationDashboard.ad_ins?.OpenForgetPasswordForm();
         }
     }
 }

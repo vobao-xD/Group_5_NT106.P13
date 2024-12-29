@@ -4,6 +4,7 @@
     {
         Login? login;
         SignUp? signup;
+        ForgetPasswordForm? forgetPasswordForm;
         public static AuthenticationDashboard? ad_ins;
         public AuthenticationDashboard()
         {
@@ -18,6 +19,24 @@
             }
             else { login.Activate(); }
             ad_ins = this;
+        }
+
+        public void OpenForgetPasswordForm()
+        {
+            if (forgetPasswordForm == null)
+            {
+                forgetPasswordForm = new ForgetPasswordForm();
+                forgetPasswordForm.FormClosed += ForgetPasswordForm_FormClosed;
+                forgetPasswordForm.MdiParent = this;
+                forgetPasswordForm.Dock = DockStyle.Fill;
+                forgetPasswordForm.Show();
+            }
+            else { forgetPasswordForm.Activate(); }
+        }
+        
+        private void ForgetPasswordForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            forgetPasswordForm = null;
         }
 
         private void Login_FormClosed(object? sender, FormClosedEventArgs e)
