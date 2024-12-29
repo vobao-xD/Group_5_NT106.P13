@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Client.Model;
+﻿using Client.Model;
 
 namespace Client
 {
@@ -15,7 +6,7 @@ namespace Client
     {
         Home? home;
         Support? support;
-        TicketInfo? ticketInfor;
+        TicketInfo? ticketinfo;
 
         private AuthToken _authToken;
         private UserInfo _userInfo;
@@ -76,20 +67,20 @@ namespace Client
 
         private void btnTicketSearch_Click(object sender, EventArgs e)
         {
-            if (ticketInfor == null)
+            if (ticketinfo == null)
             {
-                ticketInfor = new TicketInfo();
-                ticketInfor.FormClosed += TicketInfor_FormClosed;
-                ticketInfor.MdiParent = this;
-                ticketInfor.Dock = DockStyle.Fill;
-                ticketInfor.Show();
+                ticketinfo = new TicketInfo();
+                ticketinfo.FormClosed += Ticketinfo_FormClosed;
+                ticketinfo.MdiParent = this;
+                ticketinfo.Dock = DockStyle.Fill;
+                ticketinfo.Show();
             }
-            else { ticketInfor.Activate(); }
+            else { ticketinfo.Activate(); }
         }
 
-        private void TicketInfor_FormClosed(object? sender, FormClosedEventArgs e)
+        private void Ticketinfo_FormClosed(object? sender, FormClosedEventArgs e)
         {
-            ticketInfor = null;
+            ticketinfo = null;
         }
 
         private void UserDashboard_FormClosed(object sender, FormClosedEventArgs e)

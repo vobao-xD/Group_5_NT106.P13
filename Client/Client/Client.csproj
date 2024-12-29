@@ -30,4 +30,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Controller\" />
+  </ItemGroup>
+
 </Project>

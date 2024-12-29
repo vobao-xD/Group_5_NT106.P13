@@ -1,6 +1,6 @@
 ﻿namespace Client.Model
 {
-    public class TicketInfo
+    public class TicketInfoModel
     {
         public int TicketId { get; set; }
         public int? TripId { get; set; }
@@ -11,9 +11,5 @@
         public List<int> SeatIds { get; set; }
         public string UserFullName { get; set; }
 
-        public static implicit operator List<object>(TicketInfo v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

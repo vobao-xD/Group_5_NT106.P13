@@ -1,22 +1,13 @@
-﻿using Client.Controller;
-using Client.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Client.Model;
 
-namespace Client.Admin
+namespace Client
 {
     public partial class Admin_BusAnalyse : Form
     {
         private HttpClient _httpClient;
         private BusController _busController;
         private List<BusInfo> _busList;
+        private List<TripInfo> _tripList;
         public Admin_BusAnalyse()
         {
             InitializeComponent();
@@ -28,16 +19,21 @@ namespace Client.Admin
         {
             try
             {
-                if (_busList != null && _busList.Count > 0) { _busList.Clear(); }
+                if (_tripList != null) _tripList.Clear();
+                if (_busList != null) _busList.Clear();
 
-                var resultRegular = _busController.GetAllBusAsync();
-                _busList = await resultRegular;
+                var tripTask = _busController.GetAllTripsAsync();
+                var busTask = _busController.GetAllBusAsync();
 
+                _tripList = await tripTask;
+                _busList = await busTask;
+
+                DisplayTripList();
                 DisplayBusList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private Panel CreateBusPanel(BusInfo busInfo)
@@ -54,7 +50,6 @@ namespace Client.Admin
                 var result = MessageBox.Show($"Bạn có muốn xem thông tin ghế của: {busInfo.LicensePlate} hay không?", "Analyse Number of Seats is booked", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    // Code to upgrade customer to regular
                     AnalyseNumOfSeat(busInfo.BusId);
                 }
             };
@@ -87,6 +82,83 @@ namespace Client.Admin
 
             return panel;
         }
+
+        private Panel CreateTripPanel(TripInfo tripInfo)
+        {
+            Panel panel = new Panel
+            {
+                Size = new Size(500, 200), 
+                BackColor = Color.White,
+                BorderStyle = BorderStyle.FixedSingle,
+                Margin = new Padding(10),
+                Padding = new Padding(10),
+                Cursor = Cursors.Hand
+            };
+
+            Label lblTripId = new Label
+            {
+                Text = "Trip ID: " + tripInfo.TripId,
+                Location = new Point(10, 10),
+                AutoSize = true,
+                ForeColor = Color.MidnightBlue, 
+                Font = new Font("Arial", 10, FontStyle.Bold)
+            };
+            panel.Controls.Add(lblTripId);
+
+            Label lblDepartLocation = new Label
+            {
+                Text = "Depart Location: " + tripInfo.DepartLocation,
+                Location = new Point(10, 40),
+                AutoSize = true,
+                ForeColor = Color.DarkSlateGray,
+                Font = new Font("Arial", 9)
+            };
+            panel.Controls.Add(lblDepartLocation);
+
+            Label lblArriveLocation = new Label
+            {
+                Text = "Arrive Location: " + tripInfo.ArriveLocation,
+                Location = new Point(10, 70),
+                AutoSize = true,
+                ForeColor = Color.Teal,
+                Font = new Font("Arial", 9)
+            };
+            panel.Controls.Add(lblArriveLocation);
+
+            Label lblDepartTime = new Label
+            {
+                Text = "Depart Time: " + tripInfo.DepartTime.ToString("yyyy-MM-dd HH:mm"),
+                Location = new Point(10, 100),
+                AutoSize = true,
+                ForeColor = Color.DarkGreen,
+                Font = new Font("Arial", 9)
+            };
+            panel.Controls.Add(lblDepartTime);
+
+            Label lblTripStatusId = new Label
+            {
+                Text = "Trip Status ID: " + tripInfo.TripStatusId,
+                Location = new Point(10, 130),
+                AutoSize = true,
+                ForeColor = Color.Indigo,
+                Font = new Font("Arial", 9)
+            };
+            panel.Controls.Add(lblTripStatusId);
+
+            Label lblTripStatusName = new Label
+            {
+                Text = "Trip Status Name: " + tripInfo.TripStatusName,
+                Location = new Point(10, 160),
+                AutoSize = true,
+                ForeColor = Color.SteelBlue,
+                Font = new Font("Arial", 9)
+            };
+            panel.Controls.Add(lblTripStatusName);
+
+            return panel;
+        }
+
+
 
         private void AnalyseNumOfSeat(int busId)
         {
@@ -123,6 +195,29 @@ namespace Client.Admin
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+        private void DisplayTripList()
+        {
+            flowLayoutPanelTrip.Controls.Clear();
+
+            if (_tripList != null && _tripList.Count > 0)
+            {
+                foreach (var trip in _tripList)
+                {
+                    var panel = CreateTripPanel(trip);
+                    flowLayoutPanelTrip.Controls.Add(panel);
+                }
+            }
+            else
+            {
+                var lblNoData = new Label
+                {
+                    Text = "No trips found.",
+                    AutoSize = true,
+                    ForeColor = Color.Red
+                };
+                flowLayoutPanelTrip.Controls.Add(lblNoData);
             }
         }
     }

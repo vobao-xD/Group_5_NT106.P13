@@ -1,4 +1,4 @@
-﻿namespace Client.Admin
+﻿namespace Client
 {
     partial class Admin_ListCustomer
     {

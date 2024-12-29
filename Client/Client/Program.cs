@@ -1,5 +1,3 @@
-using Client.Admin;
-
 namespace Client
 {
     internal static class Program

@@ -40,7 +40,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Chocolate;
-            label2.Location = new Point(248, 66);
+            label2.Location = new Point(248, 27);
             label2.Name = "label2";
             label2.Size = new Size(495, 46);
             label2.TabIndex = 17;
@@ -55,6 +55,7 @@
             txtLoginName.PlaceholderText = "Tên đăng nhập...";
             txtLoginName.Size = new Size(330, 38);
             txtLoginName.TabIndex = 18;
+            txtLoginName.TabStop = false;
             // 
             // txtTicketCode
             // 
@@ -65,6 +66,7 @@
             txtTicketCode.PlaceholderText = "Mã vé...";
             txtTicketCode.Size = new Size(330, 38);
             txtTicketCode.TabIndex = 19;
+            txtTicketCode.TabStop = false;
             // 
             // btnSearch
             // 
@@ -77,13 +79,13 @@
             btnSearch.TabIndex = 20;
             btnSearch.Text = "Tra cứu";
             btnSearch.UseVisualStyleBackColor = false;
-            btnSearch.Click += btnSearch_Click_1;
+            btnSearch.Click += btnSearch_Click;
             // 
             // flowLayoutPanel_TicketInfo
             // 
-            flowLayoutPanel_TicketInfo.Location = new Point(81, 191);
+            flowLayoutPanel_TicketInfo.Location = new Point(248, 76);
             flowLayoutPanel_TicketInfo.Name = "flowLayoutPanel_TicketInfo";
-            flowLayoutPanel_TicketInfo.Size = new Size(250, 125);
+            flowLayoutPanel_TicketInfo.Size = new Size(495, 455);
             flowLayoutPanel_TicketInfo.TabIndex = 21;
             // 
             // TicketInfo
@@ -92,11 +94,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(982, 543);
-            Controls.Add(flowLayoutPanel_TicketInfo);
             Controls.Add(btnSearch);
             Controls.Add(txtTicketCode);
             Controls.Add(txtLoginName);
             Controls.Add(label2);
+            Controls.Add(flowLayoutPanel_TicketInfo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "TicketInfo";
             Text = "TicketSearch";

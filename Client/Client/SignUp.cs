@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using Client.Controller;
 using MailKit.Net.Smtp;
 using MimeKit;
 

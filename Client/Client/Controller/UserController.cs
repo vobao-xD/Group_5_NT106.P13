@@ -1,13 +1,9 @@
-﻿using Client.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+using Client.Model;
 
-namespace Client.Controller
+namespace Client
 {
     public class UserController
     {
@@ -133,6 +129,45 @@ namespace Client.Controller
             var responseContent = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<ReturnMessage>(responseContent);
             return result;
+        }
+        public async Task<TicketInfoModel> GetTicketInfoAsync(int ticketId)
+        {
+            var ticketInfoURL = baseURL + "/ticket_info/";
+            var requestData = new { ticketId = ticketId };
+            var content = new StringContent(JsonSerializer.Serialize(requestData), Encoding.UTF8, "application/json");
+            HttpResponseMessage response;
+            try
+            {
+                response = await _httpClient.PostAsync(ticketInfoURL, content);
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    throw new HttpRequestException($"Error: {response.StatusCode} - {errorContent}");
+                }
+                var responseContent = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrEmpty(responseContent))
+                {
+                    throw new Exception("Received empty response from the server.");
+                }
+                var ticket = JsonSerializer.Deserialize<TicketInfoModel>(responseContent);
+                if (ticket == null)
+                {
+                    throw new Exception("Deserialization failed or ticket information is missing.");
+                }
+                return ticket;
+            }
+            catch (HttpRequestException httpEx)
+            {
+                throw new Exception($"HTTP Request failed: {httpEx.Message}");
+            }
+            catch (JsonException jsonEx)
+            {
+                throw new Exception($"JSON Deserialization failed: {jsonEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred: {ex.Message}");
+            }
         }
     }
 }

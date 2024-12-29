@@ -1,19 +1,7 @@
-﻿using Client.Model;
-using System;
-using System.Globalization;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Net;
+using Client.Model;
 using Newtonsoft.Json;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Security.Principal;
-using System.Net.Http.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Client
@@ -45,8 +33,6 @@ namespace Client
                 }
             }
             PopulateInfo();
-            
-            
         }
 
         private async Task PostSelectedSeat()

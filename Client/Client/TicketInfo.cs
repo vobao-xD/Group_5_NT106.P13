@@ -1,18 +1,11 @@
-﻿using Client.Controller;
-using Client.Model;
-using System;
-using System.Drawing;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Client.Model;
 
 namespace Client
 {
     public partial class TicketInfo : Form
     {
         private readonly UserController _userController;
-        private TicketInfo _ticketInfo;
+        private TicketInfoModel _ticketInfo;
 
         public TicketInfo()
         {
@@ -36,11 +29,11 @@ namespace Client
 
             try
             {
-                var ticketInfo = await _userController.GetTicketInfoAsync(ticketCode);
+                var response = await _userController.GetTicketInfoAsync(ticketCode);
 
-                if (ticketInfo != null)
+                if (response != null)
                 {
-                    _ticketInfo = ticketInfo;
+                    _ticketInfo = response;
                     DisplayTicketInfo();
                 }
                 else
@@ -52,6 +45,11 @@ namespace Client
             {
                 MessageBox.Show($"An error occurred while loading ticket data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadDataAsync();
         }
 
         private void DisplayTicketInfo()
@@ -75,7 +73,7 @@ namespace Client
             }
         }
 
-        private Panel AddInfoPanel(TicketInfo ticket)
+        private Panel AddInfoPanel(TicketInfoModel ticket)
         {
             Panel panel = new Panel
             {
@@ -185,11 +183,6 @@ namespace Client
             flowLayoutPanel_TicketInfo.Controls.Add(panel);
 
             return panel;
-        }
-
-        private void btnSearch_Click_1(object sender, EventArgs e)
-        {
-            LoadDataAsync();
         }
     }
 }

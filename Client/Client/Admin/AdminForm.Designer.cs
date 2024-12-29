@@ -1,5 +1,4 @@
-﻿
-namespace Client
+﻿namespace Client
 {
     partial class AdminForm
     {
@@ -107,6 +106,7 @@ namespace Client
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1101, 548);
             Controls.Add(btnContact);
             Controls.Add(btnAddTrip);
