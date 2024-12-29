@@ -39,7 +39,7 @@ namespace Client
         private Panel CreateBusPanel(BusInfo busInfo)
         {
             Panel panel = new Panel();
-            panel.Size = new Size(500, 100);
+            panel.Size = new Size(575, 125);
             panel.BackColor = Color.White;
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Margin = new Padding(10, 10, 10, 10);
@@ -87,7 +87,7 @@ namespace Client
         {
             Panel panel = new Panel
             {
-                Size = new Size(500, 200), 
+                Size = new Size(575, 160), 
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(10),
@@ -158,14 +158,11 @@ namespace Client
             return panel;
         }
 
-
-
         private void AnalyseNumOfSeat(int busId)
         {
-            Admin_SeeSeatBooked admin_SeeSeatBooked = new Admin_SeeSeatBooked(busId);
-            admin_SeeSeatBooked.Show();
+            Admin_SeeSeatBooked assb = new Admin_SeeSeatBooked(busId);
+            assb.ShowDialog();
         }
-
         private void DisplayBusList()
         {
             try

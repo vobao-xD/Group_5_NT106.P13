@@ -13,6 +13,11 @@
 
         private async void btnAddTrip_Click(object sender, EventArgs e)
         {
+            if (cmbBoxDestination.Text == cmbBoxDestination.Text)
+            {
+                MessageBox.Show("Điểm đi và điểm đến không được trùng nhau!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 string plate = txtPlate.Text.Trim();
@@ -60,12 +65,6 @@
             {
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

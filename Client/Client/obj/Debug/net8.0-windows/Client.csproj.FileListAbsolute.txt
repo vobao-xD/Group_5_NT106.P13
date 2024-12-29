@@ -140,7 +140,6 @@ C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\n
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Authentication.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Home.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Login.resources
-C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Payment.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.ReserveTicket.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.SignUp.resources
@@ -157,7 +156,6 @@ C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\n
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.pdb
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\ref\Client.dll
-C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.BrowserForPayment.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\bin\Debug\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll

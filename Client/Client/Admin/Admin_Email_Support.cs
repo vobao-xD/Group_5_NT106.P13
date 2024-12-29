@@ -44,11 +44,11 @@ namespace Client
                     await client.DisconnectAsync(true);
                 }
 
-                MessageBox.Show("Emails retrieved successfully!");
+                MessageBox.Show("Emails retrieved successfully!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to retrieve emails. Error: {ex.Message}");
+                
             }
         }
 
@@ -80,24 +80,16 @@ namespace Client
                             }
                         }
                     }
-
-                    Admin_ReadMail admin_Read = new Admin_ReadMail();
-                    admin_Read.Show();
-                    admin_Read.DisplayEmailContent(
-                        selectedMessage.Subject,
-                        selectedMessage.From.ToString(),
-                        selectedMessage.Date.ToString(),
-                        selectedMessage.HtmlBody ?? selectedMessage.TextBody ?? string.Empty,
-                        !string.IsNullOrEmpty(selectedMessage.HtmlBody)
-                    );
+                    AdminForm.adf.OpenReadMailForm(selectedMessage.Subject, selectedMessage.From.ToString(), selectedMessage.To.ToString(), 
+                            selectedMessage.HtmlBody ?? selectedMessage.TextBody ?? string.Empty, !string.IsNullOrEmpty(selectedMessage.HtmlBody));
                 }
             }
         }
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
-            Admin_Send_Email admin_Send_Email = new Admin_Send_Email();
-            admin_Send_Email.Show();
+            this.Close();
+            AdminForm.adf?.OpenSendMailForm();
         }
     }
 }

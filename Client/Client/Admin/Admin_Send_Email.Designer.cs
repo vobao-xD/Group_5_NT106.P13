@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_Send_Email));
-            pictureBox1 = new PictureBox();
             progressBarEmail = new ProgressBar();
             btnSend = new Button();
             txtContent = new TextBox();
@@ -39,23 +38,13 @@
             btnBrowse = new Button();
             txtPicturePath = new TextBox();
             label5 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-4, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(927, 77);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
             // progressBarEmail
             // 
-            progressBarEmail.Location = new Point(63, 563);
+            progressBarEmail.Location = new Point(420, 746);
             progressBarEmail.Name = "progressBarEmail";
             progressBarEmail.Size = new Size(786, 29);
             progressBarEmail.TabIndex = 43;
@@ -63,10 +52,11 @@
             // btnSend
             // 
             btnSend.BackColor = Color.Chocolate;
+            btnSend.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSend.ForeColor = Color.White;
-            btnSend.Location = new Point(404, 517);
+            btnSend.Location = new Point(672, 796);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(94, 29);
+            btnSend.Size = new Size(248, 63);
             btnSend.TabIndex = 42;
             btnSend.Text = "Gửi";
             btnSend.UseVisualStyleBackColor = false;
@@ -74,49 +64,49 @@
             // 
             // txtContent
             // 
-            txtContent.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtContent.Font = new Font("Segoe UI", 13.8F);
             txtContent.ForeColor = Color.Black;
-            txtContent.Location = new Point(142, 281);
+            txtContent.Location = new Point(440, 375);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
             txtContent.PlaceholderText = "Nhập nội dung";
-            txtContent.Size = new Size(622, 177);
+            txtContent.Size = new Size(739, 217);
             txtContent.TabIndex = 41;
             // 
             // txtSubject
             // 
-            txtSubject.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSubject.Font = new Font("Segoe UI", 13.8F);
             txtSubject.ForeColor = Color.Black;
-            txtSubject.Location = new Point(142, 221);
+            txtSubject.Location = new Point(440, 285);
             txtSubject.Name = "txtSubject";
             txtSubject.PlaceholderText = "Nhập tiêu đề";
-            txtSubject.Size = new Size(622, 34);
+            txtSubject.Size = new Size(739, 38);
             txtSubject.TabIndex = 40;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(63, 128);
+            pictureBox4.Location = new Point(420, 171);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(786, 429);
+            pictureBox4.Size = new Size(786, 559);
             pictureBox4.TabIndex = 39;
             pictureBox4.TabStop = false;
             // 
             // txtMailDestAddress
             // 
-            txtMailDestAddress.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMailDestAddress.Font = new Font("Segoe UI", 13.8F);
             txtMailDestAddress.ForeColor = Color.Black;
-            txtMailDestAddress.Location = new Point(142, 156);
+            txtMailDestAddress.Location = new Point(440, 194);
             txtMailDestAddress.Name = "txtMailDestAddress";
             txtMailDestAddress.PlaceholderText = "Mail người nhận";
-            txtMailDestAddress.Size = new Size(622, 34);
+            txtMailDestAddress.Size = new Size(739, 38);
             txtMailDestAddress.TabIndex = 44;
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new Point(653, 473);
+            btnBrowse.Location = new Point(1031, 625);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new Size(111, 29);
+            btnBrowse.Size = new Size(148, 35);
             btnBrowse.TabIndex = 47;
             btnBrowse.Text = "Browse...";
             btnBrowse.UseVisualStyleBackColor = true;
@@ -124,26 +114,41 @@
             // 
             // txtPicturePath
             // 
-            txtPicturePath.Location = new Point(250, 474);
+            txtPicturePath.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPicturePath.Location = new Point(609, 625);
             txtPicturePath.Name = "txtPicturePath";
-            txtPicturePath.Size = new Size(397, 27);
+            txtPicturePath.Size = new Size(397, 38);
             txtPicturePath.TabIndex = 46;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(142, 477);
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(459, 630);
             label5.Name = "label5";
-            label5.Size = new Size(102, 20);
+            label5.Size = new Size(134, 28);
             label5.TabIndex = 45;
             label5.Text = "Tệp đính kèm:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.FlatStyle = FlatStyle.System;
+            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(510, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(625, 81);
+            label1.TabIndex = 48;
+            label1.Text = "Phản hồi khách hàng";
             // 
             // Admin_Send_Email
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(919, 614);
+            ClientSize = new Size(1552, 882);
+            Controls.Add(label1);
             Controls.Add(btnBrowse);
             Controls.Add(txtPicturePath);
             Controls.Add(label5);
@@ -153,18 +158,15 @@
             Controls.Add(txtContent);
             Controls.Add(txtSubject);
             Controls.Add(pictureBox4);
-            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Admin_Send_Email";
             Text = "Admin_Send_Email";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private ProgressBar progressBarEmail;
         private Button btnSend;
         private TextBox txtContent;
@@ -174,5 +176,6 @@
         private Button btnBrowse;
         private TextBox txtPicturePath;
         private Label label5;
+        private Label label1;
     }
 }

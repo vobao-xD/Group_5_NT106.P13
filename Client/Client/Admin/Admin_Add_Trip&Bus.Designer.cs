@@ -28,196 +28,223 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_Add_Trip_Bus));
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
             cmbBoxDeparture = new ComboBox();
             cmbBoxDestination = new ComboBox();
             DepartTime = new ComboBox();
             DepartDate = new DateTimePicker();
-            label5 = new Label();
             txtPlate = new TextBox();
             txtSeatNum = new TextBox();
             btnAddTrip = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            lbDepartTime = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-3, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1103, 77);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(41, 139);
-            label1.Name = "label1";
-            label1.Size = new Size(69, 23);
-            label1.TabIndex = 4;
-            label1.Text = "Điểm đi";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(377, 139);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 23);
-            label2.TabIndex = 5;
-            label2.Text = "Điểm đến";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(41, 252);
-            label3.Name = "label3";
-            label3.Size = new Size(87, 23);
-            label3.TabIndex = 6;
-            label3.Text = "Biển số xe";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(377, 252);
-            label4.Name = "label4";
-            label4.Size = new Size(101, 23);
-            label4.TabIndex = 7;
-            label4.Text = "Số chỗ ngồi";
             // 
             // cmbBoxDeparture
             // 
-            cmbBoxDeparture.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbBoxDeparture.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDeparture.Font = new Font("Microsoft Sans Serif", 16.2F);
             cmbBoxDeparture.FormattingEnabled = true;
             cmbBoxDeparture.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
-            cmbBoxDeparture.Location = new Point(41, 174);
+            cmbBoxDeparture.Location = new Point(723, 175);
             cmbBoxDeparture.Name = "cmbBoxDeparture";
-            cmbBoxDeparture.Size = new Size(251, 36);
+            cmbBoxDeparture.Size = new Size(389, 39);
             cmbBoxDeparture.TabIndex = 15;
-            cmbBoxDeparture.Text = "Hà Nội";
             // 
             // cmbBoxDestination
             // 
-            cmbBoxDestination.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbBoxDestination.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxDestination.Font = new Font("Microsoft Sans Serif", 16.2F);
             cmbBoxDestination.FormattingEnabled = true;
             cmbBoxDestination.Items.AddRange(new object[] { "TP.HCM", "Hà Nội", "Cần Thơ", "Đà Nẵng", "Huế" });
-            cmbBoxDestination.Location = new Point(377, 174);
+            cmbBoxDestination.Location = new Point(723, 261);
             cmbBoxDestination.Name = "cmbBoxDestination";
-            cmbBoxDestination.Size = new Size(251, 36);
+            cmbBoxDestination.Size = new Size(389, 39);
             cmbBoxDestination.TabIndex = 16;
-            cmbBoxDestination.Text = "TP.HCM";
             // 
             // DepartTime
             // 
+            DepartTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            DepartTime.Font = new Font("Microsoft Sans Serif", 16.2F);
             DepartTime.FormattingEnabled = true;
             DepartTime.Items.AddRange(new object[] { "17:00", "18:00", "19:00", "20:00", "21:00" });
-            DepartTime.Location = new Point(806, 181);
+            DepartTime.Location = new Point(723, 442);
             DepartTime.Name = "DepartTime";
-            DepartTime.Size = new Size(133, 28);
+            DepartTime.Size = new Size(389, 39);
             DepartTime.TabIndex = 25;
-            DepartTime.Text = "17:00";
             // 
             // DepartDate
             // 
-            DepartDate.CustomFormat = "yyyy-mm-dd";
+            DepartDate.CustomFormat = "yyyy-MM-dd";
+            DepartDate.Font = new Font("Microsoft Sans Serif", 16.2F);
             DepartDate.Format = DateTimePickerFormat.Custom;
-            DepartDate.Location = new Point(675, 179);
+            DepartDate.Location = new Point(723, 352);
             DepartDate.Name = "DepartDate";
-            DepartDate.Size = new Size(111, 27);
+            DepartDate.Size = new Size(389, 38);
             DepartDate.TabIndex = 24;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(675, 139);
-            label5.Name = "label5";
-            label5.Size = new Size(69, 23);
-            label5.TabIndex = 23;
-            label5.Text = "Ngày đi";
             // 
             // txtPlate
             // 
-            txtPlate.Location = new Point(41, 292);
+            txtPlate.Font = new Font("Microsoft Sans Serif", 16.2F);
+            txtPlate.Location = new Point(723, 522);
             txtPlate.Multiline = true;
             txtPlate.Name = "txtPlate";
-            txtPlate.Size = new Size(251, 34);
+            txtPlate.Size = new Size(389, 50);
             txtPlate.TabIndex = 26;
             // 
             // txtSeatNum
             // 
-            txtSeatNum.Location = new Point(377, 292);
+            txtSeatNum.Font = new Font("Microsoft Sans Serif", 16.2F);
+            txtSeatNum.Location = new Point(723, 621);
             txtSeatNum.Multiline = true;
             txtSeatNum.Name = "txtSeatNum";
-            txtSeatNum.Size = new Size(251, 34);
+            txtSeatNum.Size = new Size(389, 50);
             txtSeatNum.TabIndex = 27;
             // 
             // btnAddTrip
             // 
             btnAddTrip.BackColor = Color.Chocolate;
-            btnAddTrip.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddTrip.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddTrip.ForeColor = Color.White;
-            btnAddTrip.Location = new Point(457, 393);
+            btnAddTrip.Location = new Point(1252, 352);
             btnAddTrip.Name = "btnAddTrip";
-            btnAddTrip.Size = new Size(207, 50);
+            btnAddTrip.Size = new Size(157, 129);
             btnAddTrip.TabIndex = 29;
             btnAddTrip.Text = "Thêm";
             btnAddTrip.UseVisualStyleBackColor = false;
             btnAddTrip.Click += btnAddTrip_Click;
+            // 
+            // lbDepartTime
+            // 
+            lbDepartTime.AutoSize = true;
+            lbDepartTime.FlatStyle = FlatStyle.System;
+            lbDepartTime.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            lbDepartTime.ForeColor = Color.Chocolate;
+            lbDepartTime.Location = new Point(538, 431);
+            lbDepartTime.Name = "lbDepartTime";
+            lbDepartTime.Size = new Size(124, 50);
+            lbDepartTime.TabIndex = 33;
+            lbDepartTime.Text = "Giờ đi";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.FlatStyle = FlatStyle.System;
+            label6.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            label6.ForeColor = Color.Chocolate;
+            label6.Location = new Point(509, 344);
+            label6.Name = "label6";
+            label6.Size = new Size(153, 50);
+            label6.TabIndex = 32;
+            label6.Text = "Ngày đi";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.FlatStyle = FlatStyle.System;
+            label7.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            label7.ForeColor = Color.Chocolate;
+            label7.Location = new Point(475, 250);
+            label7.Name = "label7";
+            label7.Size = new Size(187, 50);
+            label7.TabIndex = 31;
+            label7.Text = "Điểm đến";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.FlatStyle = FlatStyle.System;
+            label8.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            label8.ForeColor = Color.Chocolate;
+            label8.Location = new Point(507, 164);
+            label8.Name = "label8";
+            label8.Size = new Size(155, 50);
+            label8.TabIndex = 30;
+            label8.Text = "Điểm đi";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.FlatStyle = FlatStyle.System;
+            label9.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Chocolate;
+            label9.Location = new Point(568, 38);
+            label9.Name = "label9";
+            label9.Size = new Size(492, 81);
+            label9.TabIndex = 34;
+            label9.Text = "Thêm chuyến xe";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.FlatStyle = FlatStyle.System;
+            label10.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            label10.ForeColor = Color.Chocolate;
+            label10.Location = new Point(469, 522);
+            label10.Name = "label10";
+            label10.Size = new Size(193, 50);
+            label10.TabIndex = 35;
+            label10.Text = "Biển số xe";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.FlatStyle = FlatStyle.System;
+            label1.Font = new Font("Segoe UI Semibold", 22.2F, FontStyle.Bold);
+            label1.ForeColor = Color.Chocolate;
+            label1.Location = new Point(441, 621);
+            label1.Name = "label1";
+            label1.Size = new Size(221, 50);
+            label1.TabIndex = 36;
+            label1.Text = "Số chỗ ngồi";
             // 
             // Admin_Add_Trip_Bus
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1097, 469);
+            ClientSize = new Size(1552, 882);
+            Controls.Add(label1);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(lbDepartTime);
+            Controls.Add(label6);
+            Controls.Add(label7);
+            Controls.Add(label8);
             Controls.Add(btnAddTrip);
             Controls.Add(txtSeatNum);
             Controls.Add(txtPlate);
             Controls.Add(DepartTime);
             Controls.Add(DepartDate);
-            Controls.Add(label5);
             Controls.Add(cmbBoxDestination);
             Controls.Add(cmbBoxDeparture);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Admin_Add_Trip_Bus";
             Text = "Admin_Add_Trip_Bus";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
         private ComboBox cmbBoxDeparture;
         private ComboBox cmbBoxDestination;
         private ComboBox DepartTime;
         private DateTimePicker DepartDate;
-        private Label label5;
         private TextBox txtPlate;
         private TextBox txtSeatNum;
         private Button btnAddTrip;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label lbDepartTime;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label1;
     }
 }

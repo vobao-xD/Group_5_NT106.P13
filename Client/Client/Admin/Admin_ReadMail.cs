@@ -17,22 +17,22 @@ namespace Client
     public partial class Admin_ReadMail : Form
     {
         private SplitContainer splitContainer;
-        private WebView2 webView;
         private ListView emailListView;
-        public Admin_ReadMail()
+        public Admin_ReadMail(string subject, string from, string to, string body, bool isHtml )
         {
             InitializeComponent();
-            InitializeWebView2();
+            DisplayEmailContent(subject, from, to, body, isHtml);  
+            //InitializeWebView2();
         }
-        private void InitializeWebView2()
-        {
-            webView = new WebView2
-            {
-                Dock = DockStyle.Fill,
-                Name = "webViewContent"
-            };
-            Controls.Add(webView);
-        }
+        //private void InitializeWebView2()
+        //{
+        //    webView = new WebView2
+        //    {
+        //        Dock = DockStyle.Fill,
+        //        Name = "webViewContent"
+        //    };
+        //    Controls.Add(webView);
+        //}
 
         public async void DisplayEmailContent(string subject, string from, string date, string body, bool isHtml)
         {
@@ -48,8 +48,8 @@ namespace Client
                           $"<p>Date: {System.Net.WebUtility.HtmlEncode(date)}</p>" +
                           $"{body}</body></html>";
 
-            await webView.EnsureCoreWebView2Async();
-            webView.CoreWebView2.NavigateToString(htmlContent);
+            await webView21.EnsureCoreWebView2Async();
+            webView21.CoreWebView2.NavigateToString(htmlContent);
         }
     }
 }

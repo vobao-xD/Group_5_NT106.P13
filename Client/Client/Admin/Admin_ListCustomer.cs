@@ -37,7 +37,7 @@ namespace Client
         private Panel CreateCustomerPanelVIP(CustomerInfo customerInfo)
         {
             Panel panel = new Panel();
-            panel.Size = new Size(500, 100);
+            panel.Size = new Size(500, 125);
             panel.BackColor = Color.White;
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Margin = new Padding(10, 10, 10, 10);
@@ -84,19 +84,19 @@ namespace Client
             var result = await _userController.UpdateCustomerRegularAsync(userId);
             if (result.Id == 1)
             {
-                MessageBox.Show("Nâng cấp khách hàng thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Chuyển đổi thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadDataAsync();
             }
             else
             {
-                MessageBox.Show("Nâng cấp khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chuyển đổi thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private Panel CreateCustomerPanelRegular(CustomerInfo customerInfo)
         {
             Panel panel = new Panel();
-            panel.Size = new Size(500, 100);
+            panel.Size = new Size(500, 125);
             panel.BackColor = Color.White;
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Margin = new Padding(10, 10, 10, 10);

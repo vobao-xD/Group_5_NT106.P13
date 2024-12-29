@@ -87,13 +87,12 @@ namespace Client
         {
             Panel panel = new Panel
             {
-                Size = new Size(347, 245),
+                Size = new Size(447, 345),
                 BackColor = Color.Bisque,
                 BorderStyle = BorderStyle.None,
-                Margin = new Padding(15),
-                Padding = new Padding(20),
-                Cursor = Cursors.Hand,
-
+                Margin = new Padding(75),
+                Padding = new Padding(0),
+                Cursor = Cursors.Hand
             };
 
             TableLayoutPanel innerPanel = new TableLayoutPanel
@@ -114,7 +113,7 @@ namespace Client
                 Text = "User Fullname: " + ticket.UserFullName,
                 AutoSize = true,
                 ForeColor = Color.Blue,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblFullName, 0, 0);
@@ -124,7 +123,7 @@ namespace Client
                 Text = "Ticket ID: " + ticket.TicketId,
                 AutoSize = true,
                 ForeColor = Color.Orange,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblTicketId, 0, 1);
@@ -134,7 +133,7 @@ namespace Client
                 Text = "Trip ID: " + ticket.TripId,
                 AutoSize = true,
                 ForeColor = Color.Green,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblTripId, 0, 2);
@@ -144,7 +143,7 @@ namespace Client
                 Text = "Plate Number: " + ticket.PlateNumber,
                 AutoSize = true,
                 ForeColor = Color.Purple,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblPlateNumber, 0, 3);
@@ -154,7 +153,7 @@ namespace Client
                 Text = "Depart Location: " + ticket.DepartLocation,
                 AutoSize = true,
                 ForeColor = Color.DarkRed,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblDepartLocation, 0, 4);
@@ -164,7 +163,7 @@ namespace Client
                 Text = "Arrive Location: " + ticket.ArriveLocation,
                 AutoSize = true,
                 ForeColor = Color.Brown,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblArriveLocation, 0, 5);
@@ -174,7 +173,7 @@ namespace Client
                 Text = "Depart Time: " + ticket.DepartTime.ToString("g"),
                 AutoSize = true,
                 ForeColor = Color.DarkMagenta,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblDepartTime, 0, 6);
@@ -187,7 +186,7 @@ namespace Client
                 Text = "Seat IDs: " + seatIds,
                 AutoSize = true,
                 ForeColor = Color.Teal,
-                Font = new Font("Arial", 10, FontStyle.Bold),
+                Font = new Font("Arial", 12, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleLeft
             };
             innerPanel.Controls.Add(lblSeatIds, 0, 7);

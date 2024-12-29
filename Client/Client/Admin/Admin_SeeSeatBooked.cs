@@ -100,14 +100,6 @@ namespace Client
             panel.Margin = new Padding(10, 10, 10, 10);
             panel.Padding = new Padding(10, 10, 10, 10);
             panel.Cursor = Cursors.Hand;
-            panel.Click += (sender, e) =>
-            {
-                var result = MessageBox.Show($"Bạn có muốn xem thông tin vé của: {getSeatBookedModel.SeatName} của xe {getSeatBookedModel.LicensePlate} hay không?", "Watch Ticket", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    MessageBox.Show("Coming soon");
-                }
-            };
             Label lblLicensePlate = new Label
             {
                 Text = "License Plate: " + getSeatBookedModel.LicensePlate,
@@ -145,14 +137,6 @@ namespace Client
             panel.Margin = new Padding(10, 10, 10, 10);
             panel.Padding = new Padding(10, 10, 10, 10);
             panel.Cursor = Cursors.Hand;
-            panel.Click += (sender, e) =>
-            {
-                var result = MessageBox.Show($"Bạn có muốn khóa ghế: {getSeatBookedModel.SeatName} của xe {getSeatBookedModel.LicensePlate} hay không?", "Lock Seat?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    UpdateSeatToBooked(getSeatBookedModel.SeatId);
-                }
-            };
             Label lblLicensePlate = new Label
             {
                 Text = "License Plate: " + getSeatBookedModel.LicensePlate,
@@ -180,21 +164,6 @@ namespace Client
             panel.Controls.Add(lblIsBooked);
 
             return panel;
-        }
-
-        private async void UpdateSeatToBooked(int seatId)
-        {
-            var result = await _busController.UpdateSeatToBookedAsync(seatId);
-            if (result.Id == 1)
-            {
-                MessageBox.Show("Khóa ghế thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataAsync();
-            }
-            else
-            {
-                MessageBox.Show("Khóa ghế thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoadDataAsync();
-            }
         }
     }
 }

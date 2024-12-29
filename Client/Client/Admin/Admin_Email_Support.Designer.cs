@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_Email_Support));
-            pictureBox1 = new PictureBox();
             dataGridViewEmails = new DataGridView();
             NumOrder = new DataGridViewTextBoxColumn();
             Subject = new DataGridViewTextBoxColumn();
@@ -37,19 +35,9 @@
             Date = new DataGridViewTextBoxColumn();
             btnRefresh = new Button();
             btnSendEmail = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmails).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1077, 77);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
             // 
             // dataGridViewEmails
             // 
@@ -61,7 +49,7 @@
             dataGridViewEmails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEmails.Columns.AddRange(new DataGridViewColumn[] { NumOrder, Subject, From, Date });
             dataGridViewEmails.GridColor = Color.White;
-            dataGridViewEmails.Location = new Point(12, 83);
+            dataGridViewEmails.Location = new Point(254, 235);
             dataGridViewEmails.Name = "dataGridViewEmails";
             dataGridViewEmails.ReadOnly = true;
             dataGridViewEmails.RowHeadersVisible = false;
@@ -104,11 +92,11 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btnRefresh.ForeColor = Color.Chocolate;
-            btnRefresh.Location = new Point(12, 464);
+            btnRefresh.Location = new Point(254, 696);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(118, 39);
+            btnRefresh.Size = new Size(183, 66);
             btnRefresh.TabIndex = 24;
             btnRefresh.Text = "Làm mới";
             btnRefresh.UseVisualStyleBackColor = true;
@@ -116,36 +104,47 @@
             // 
             // btnSendEmail
             // 
-            btnSendEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSendEmail.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             btnSendEmail.ForeColor = Color.Chocolate;
-            btnSendEmail.Location = new Point(947, 464);
+            btnSendEmail.Location = new Point(1125, 696);
             btnSendEmail.Name = "btnSendEmail";
-            btnSendEmail.Size = new Size(118, 39);
+            btnSendEmail.Size = new Size(183, 66);
             btnSendEmail.TabIndex = 25;
             btnSendEmail.Text = "Gửi mail";
             btnSendEmail.UseVisualStyleBackColor = true;
             btnSendEmail.Click += btnSendEmail_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Chocolate;
+            label5.Location = new Point(530, 78);
+            label5.Name = "label5";
+            label5.Size = new Size(562, 81);
+            label5.TabIndex = 26;
+            label5.Text = "Hỗ trợ khách hàng";
             // 
             // Admin_Email_Support
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1078, 538);
+            ClientSize = new Size(1534, 835);
+            Controls.Add(label5);
             Controls.Add(btnSendEmail);
             Controls.Add(btnRefresh);
             Controls.Add(dataGridViewEmails);
-            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Admin_Email_Support";
             Text = "Admin_Email_Support";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmails).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private DataGridView dataGridViewEmails;
         private Button btnRefresh;
         private Button btnSendEmail;
@@ -153,5 +152,6 @@
         private DataGridViewTextBoxColumn Subject;
         private DataGridViewTextBoxColumn From;
         private DataGridViewTextBoxColumn Date;
+        private Label label5;
     }
 }

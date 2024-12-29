@@ -161,11 +161,11 @@
             label5.FlatStyle = FlatStyle.System;
             label5.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Chocolate;
-            label5.Location = new Point(476, 117);
+            label5.Location = new Point(506, 113);
             label5.Name = "label5";
-            label5.Size = new Size(641, 81);
+            label5.Size = new Size(542, 81);
             label5.TabIndex = 24;
-            label5.Text = "TRA CỨU CHUYẾN XE";
+            label5.Text = "Tra cứu chuyến xe";
             // 
             // Home
             // 

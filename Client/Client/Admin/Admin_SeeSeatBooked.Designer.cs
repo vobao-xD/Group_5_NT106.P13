@@ -28,34 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_SeeSeatBooked));
-            pictureBox1 = new PictureBox();
             CheckedBooked = new TabControl();
             HaveBooked = new TabPage();
             flowLayoutPanelBooked = new FlowLayoutPanel();
             HaventBooked = new TabPage();
             flowLayoutPanelNotBook = new FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label5 = new Label();
             CheckedBooked.SuspendLayout();
             HaveBooked.SuspendLayout();
             HaventBooked.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-320, -1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1441, 77);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
             // CheckedBooked
             // 
             CheckedBooked.Controls.Add(HaveBooked);
             CheckedBooked.Controls.Add(HaventBooked);
-            CheckedBooked.Location = new Point(12, 82);
+            CheckedBooked.Location = new Point(12, 103);
             CheckedBooked.Name = "CheckedBooked";
             CheckedBooked.SelectedIndex = 0;
             CheckedBooked.Size = new Size(566, 477);
@@ -99,29 +87,41 @@
             flowLayoutPanelNotBook.Size = new Size(546, 432);
             flowLayoutPanelNotBook.TabIndex = 0;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Chocolate;
+            label5.Location = new Point(160, 23);
+            label5.Name = "label5";
+            label5.Size = new Size(285, 62);
+            label5.TabIndex = 25;
+            label5.Text = "Tra cứu ghế";
+            // 
             // Admin_SeeSeatBooked
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(791, 571);
+            ClientSize = new Size(586, 586);
+            Controls.Add(label5);
             Controls.Add(CheckedBooked);
-            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Admin_SeeSeatBooked";
             Text = "Admin_SeeSeatBooked";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             CheckedBooked.ResumeLayout(false);
             HaveBooked.ResumeLayout(false);
             HaventBooked.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private TabControl CheckedBooked;
         private TabPage HaveBooked;
         private TabPage HaventBooked;
         private FlowLayoutPanel flowLayoutPanelBooked;
         private FlowLayoutPanel flowLayoutPanelNotBook;
+        private Label label5;
     }
 }

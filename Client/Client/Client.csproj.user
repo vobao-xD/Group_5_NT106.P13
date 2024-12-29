@@ -31,9 +31,6 @@
     <Compile Update="AuthenticationDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="BrowserForPayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="ForgetPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -47,9 +44,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Payment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ReserveTicket.cs">

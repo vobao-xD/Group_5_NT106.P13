@@ -61,7 +61,7 @@
             btnTicketSearch.Dock = DockStyle.Top;
             btnTicketSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTicketSearch.ForeColor = SystemColors.Control;
-            btnTicketSearch.Location = new Point(0, 225);
+            btnTicketSearch.Location = new Point(0, 275);
             btnTicketSearch.Name = "btnTicketSearch";
             btnTicketSearch.Size = new Size(350, 75);
             btnTicketSearch.TabIndex = 11;
@@ -76,7 +76,7 @@
             btnContact.Dock = DockStyle.Top;
             btnContact.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnContact.ForeColor = SystemColors.Control;
-            btnContact.Location = new Point(0, 150);
+            btnContact.Location = new Point(0, 200);
             btnContact.Name = "btnContact";
             btnContact.Size = new Size(350, 75);
             btnContact.TabIndex = 10;
@@ -91,7 +91,7 @@
             btnHome.Dock = DockStyle.Top;
             btnHome.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHome.ForeColor = SystemColors.Control;
-            btnHome.Location = new Point(0, 75);
+            btnHome.Location = new Point(0, 125);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(350, 75);
             btnHome.TabIndex = 8;
@@ -111,7 +111,7 @@
             btnMenu.ForeColor = SystemColors.Control;
             btnMenu.Location = new Point(0, 0);
             btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(350, 75);
+            btnMenu.Size = new Size(350, 125);
             btnMenu.TabIndex = 9;
             btnMenu.Text = "Menu";
             btnMenu.UseVisualStyleBackColor = false;

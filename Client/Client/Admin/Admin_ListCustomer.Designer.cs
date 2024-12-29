@@ -28,34 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_ListCustomer));
-            pictureBox1 = new PictureBox();
             ListCustomer = new TabControl();
             tabRegularCustomer = new TabPage();
             flowLayoutPanelRegular = new FlowLayoutPanel();
             VIPCustomer = new TabPage();
             flowLayoutPanelVIP = new FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label5 = new Label();
             ListCustomer.SuspendLayout();
             tabRegularCustomer.SuspendLayout();
             VIPCustomer.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-317, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1441, 77);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
             // ListCustomer
             // 
             ListCustomer.Controls.Add(tabRegularCustomer);
             ListCustomer.Controls.Add(VIPCustomer);
-            ListCustomer.Location = new Point(12, 85);
+            ListCustomer.Location = new Point(514, 197);
             ListCustomer.Name = "ListCustomer";
             ListCustomer.SelectedIndex = 0;
             ListCustomer.Size = new Size(564, 599);
@@ -99,29 +87,41 @@
             flowLayoutPanelVIP.Size = new Size(544, 554);
             flowLayoutPanelVIP.TabIndex = 1;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.System;
+            label5.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Chocolate;
+            label5.Location = new Point(514, 73);
+            label5.Name = "label5";
+            label5.Size = new Size(592, 81);
+            label5.TabIndex = 26;
+            label5.Text = "Quản lý khách hàng";
+            // 
             // Admin_ListCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(826, 696);
+            ClientSize = new Size(1534, 835);
+            Controls.Add(label5);
             Controls.Add(ListCustomer);
-            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Admin_ListCustomer";
             Text = "Admin_ListCustomer";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ListCustomer.ResumeLayout(false);
             tabRegularCustomer.ResumeLayout(false);
             VIPCustomer.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private TabControl ListCustomer;
         private TabPage tabRegularCustomer;
         private TabPage VIPCustomer;
         private FlowLayoutPanel flowLayoutPanelRegular;
         private FlowLayoutPanel flowLayoutPanelVIP;
+        private Label label5;
     }
 }
