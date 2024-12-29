@@ -5,15 +5,16 @@ from fastapi import HTTPException, Depends
 from fastapi import Depends, HTTPException
 from email.mime.text import MIMEText
 from urllib.parse import unquote
-from typing import List
 from Ultilities import *
 from Models import *
 import logging
 import secrets
 import smtplib
+import socket
 import pyodbc
-import json
 import jwt
+
+ServerIP = socket.gethostbyname(socket.gethostname())
 
 TripPrice: dict[str, int] = {
     "TP.HCM - Hà Nội" : 1000000, "Hà Nội - TP.HCM" : 1000000, 
@@ -191,5 +192,3 @@ def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
         for seat in seats:
             listSeat.append({"Plate": seat[0], "SeatName": seat[1], "IsBook": seat[2], "SeatId": seat[3]})
         return listSeat
-
-

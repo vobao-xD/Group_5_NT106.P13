@@ -64,3 +64,6 @@ class MomoRequest(BaseModel):
     license_plate : str
     email : str
 
+class ForgetPasswordReq(BaseModel):
+    email: str
+    password: str

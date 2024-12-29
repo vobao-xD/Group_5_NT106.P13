@@ -18,8 +18,8 @@ app = FastAPI()
 async def create_payment(request : MomoRequest):
     # Khai bao cac thong so can thiet
     endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
-    redirectUrl = "http://127.0.0.1:8002/payment/redirect"
-    ipnUrl = "http://127.0.0.1:8002/payment/redirect"
+    redirectUrl = f"http://{ServerIP}:8002/payment/redirect"
+    ipnUrl = f"http://{ServerIP}:8002/payment/redirect"
     secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz"
     accessKey = "F8BBA842ECF85"
     partnerCode = "MOMO"
@@ -82,7 +82,7 @@ async def payment_redirect(partnerCode: str, orderId: str, requestId: str, amoun
     email = parts[5].strip()
     number_of_seat = len(parts[1].strip().split(" "))
     price = TripPrice[trip_name] * number_of_seat
-    endpoint = "http://127.0.0.1:8002/payment/success"
+    endpoint = f"http://{ServerIP}:8002/payment/success"
     
     # Data send to other API
     request = {
@@ -573,11 +573,8 @@ def user_info(ticketinfo: TicketInfoReq):
 @app.post("/create_trip/", tags=['Trip'])
 async def create_trip(trip: Trip):
     try:
-        # Kết nối tới SQL Server
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-
-        # Gọi stored procedure với tham số từ đối tượng trip
         cursor.execute(
             "EXEC prod_create_trip ?, ?, ?, ?, ?, ?, ?",
             trip.plate,
@@ -642,3 +639,28 @@ async def get_all_trip():
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+@app.post("/forget_password", tags=['users'])
+def forget_password(req: ForgetPasswordReq):
+    try:
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+        cursor.execute("EXEC prod_forget_password ?, ?", req.email, req.password)
+
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+        logging.info(f"Stored procedure executed successfully: {row}")
+
+        if row:
+            logging.info(f"Result: {row[0]}")
+            return {"Id": row[0], "Message": row[1]}  # JSON string returned by SQL Server
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(status_code=400, detail="No result returned from the stored procedure.")
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
