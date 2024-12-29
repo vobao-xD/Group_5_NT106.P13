@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends, Query
+from fastapi.responses import HTMLResponse
 from datetime import datetime, timedelta
 from Ultilities import *
 from Ultilities import *
@@ -14,17 +15,19 @@ import jwt
 app = FastAPI()
 
 @app.post("/create_payment", tags=['Payment'])
-async def create_payment(order_info : str, order_amount : int):
-    endpoint = "https://test-payment.momo.vn/v2/gateway/api/create" 
-    accessKey = "F8BBA842ECF85"
+async def create_payment(request : MomoRequest):
+    # Khai bao cac thong so can thiet
+    endpoint = "https://test-payment.momo.vn/v2/gateway/api/create"
+    redirectUrl = "http://127.0.0.1:8002/payment/redirect"
+    ipnUrl = "http://127.0.0.1:8002/payment/redirect"
     secretKey = "K951B6PE1waDMi640xX08PD3vg6EkVlz"
+    accessKey = "F8BBA842ECF85"
     partnerCode = "MOMO"
-    redirectUrl = "http://127.0.0.1:8002/payment/success"
-    ipnUrl = "http://127.0.0.1:8002/payment/success"
     order_id = str(uuid.uuid4())
-    orderInfo = order_info
-    amount = str(order_amount)
     requestId = str(uuid.uuid4())
+    orderInfo = request.trip_name + " ; " + request.booked_seat + " ; " + str(request.trip_id) + " ; " + str(request.user_id) + " ; " + request.license_plate + " ; " + request.email
+    list_seat = request.booked_seat.strip().split(" ")
+    amount = str(int(TripPrice[request.trip_name]) * len(list_seat))
     extraData = ""
     partnerName = "MoMo Payment"
     requestType = "payWithMethod"
@@ -36,6 +39,8 @@ async def create_payment(order_info : str, order_amount : int):
                    f"&requestId={requestId}&requestType={requestType}"
     h = hmac.new(bytes(secretKey, 'utf-8'), bytes(rawSignature, 'utf-8'), hashlib.sha256)
     signature = h.hexdigest()
+
+    # Data send to momo
     data = {
         'partnerCode': partnerCode,
         'orderId': order_id,
@@ -52,35 +57,135 @@ async def create_payment(order_info : str, order_amount : int):
         'extraData': extraData,
         'signature': signature
     }
-    clen = len(data)
+
     try:
         async with httpx.AsyncClient() as client:
-            response = await client.post(endpoint, json=data,)
+            response = await client.post(endpoint, json=data)
             response.raise_for_status()
             return response.json()
     except httpx.HTTPStatusError as e:
-        raise HTTPException(status_code=e.response.status_code, detail=e.response.text)
+        raise HTTPException(status_code=e.response.status_code, detail=f"Fail to get payment link: {e.response.text}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Payment API failed: {str(e)}")
 
-@app.get("/payment/success", tags=['Payment'])
-async def payment_redirect(response : MomoResponse):
-    params = dict(response.query_params)
-    # try:
-    #     async with httpx.AsyncClient() as client:
-    #         response = await client.post("http://127.0.0.1:8002/payment/success", json=params)
-    #         response.raise_for_status()
-    return {"message": "Redirected and posted successfully"}
-    # except httpx.HTTPStatusError as e:
-    #     raise HTTPException(status_code=e.response.status_code, detail=f"Failed to redirect: {e.response.text}")
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+@app.get("/payment/redirect", tags=['Payment'], response_class = HTMLResponse)
+async def payment_redirect(partnerCode: str, orderId: str, requestId: str, amount: str, orderInfo: str, 
+        orderType: str, transId: str, resultCode: str, message: str, payType: str,
+        responseTime: str, extraData: str, signature: str):
+    # Phan tich du lieu
+    parts = orderInfo.split(";")
+    trip_name = parts[0].strip()
+    booked_seat = parts[1].strip()
+    trip_id = int(parts[2].strip())
+    user_id = int(parts[3])
+    license_plate = parts[4].strip()
+    email = parts[5].strip()
+    number_of_seat = len(parts[1].strip().split(" "))
+    price = TripPrice[trip_name] * number_of_seat
+    endpoint = "http://127.0.0.1:8002/payment/success"
+    
+    # Data send to other API
+    request = {
+        "num_of_seat" : number_of_seat,
+        "trip_id" : trip_id,
+        "user_id" : user_id,
+        "price" : price,
+        "license_plate" : license_plate,
+        "seat_list" : booked_seat,
+        "trip_name" : trip_name,
+        "email" : email
+    }
+
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(endpoint, json=request)
+            response.raise_for_status()
+        return """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #4caf50, #81c784);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        .container p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .details p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4caf50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Successful!</h1>
+        <p>Thank you for booking with us. Check your email for your ticket infomation!</p>
+    </div>
+</body>
+</html>
+"""
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(status_code=e.response.status_code, detail=f"Failed to redirect: {e.response.text}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
 
 @app.post("/payment/success", tags=['Payment'])
-async def save_ticket(request : dict):
+async def save_ticket(request : PaymentRequest):
     conn = connect_to_sql_server()
     cursor = conn.cursor()
-
     try:
         cursor.execute(
             "EXEC prod_insert_tickets @NumOfSeat = ?, @TripId = ?, @UserId = ?, @Price = ?, @LicensePlate = ?, @SeatList = ?",
@@ -99,6 +204,29 @@ async def save_ticket(request : dict):
     finally:
         cursor.close()
         conn.close()
+        email_subject = "Xác nhận đặt vé thành công"
+        email_content = f"""
+            <html>
+            <body>
+                <div style="font-family: Arial, sans-serif; line-height: 1.5; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+                    <h2 style="color: #4CAF50; text-align: center;">Xác nhận đặt vé thành công</h2>
+                    <p>Xin chào,</p>
+                    <p>Bạn đã đặt vé thành công với thông tin như sau:</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Chuyến đi:</strong> {request.trip_name}</li>
+                        <li><strong>Số ghế:</strong> {request.seat_list}</li>
+                        <li><strong>Biển số xe:</strong> {request.license_plate}</li>
+                        <li><strong>Giá vé:</strong> {request.price:.2f} VND</li>
+                        <li><strong>Số lượng ghế:</strong> {request.num_of_seat}</li>
+                    </ul>
+                    <p style="margin-top: 20px;">Cảm ơn bạn đã sử dụng dịch vụ của Bus G5!</p>
+                    <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="text-align: center; color: #888;">Bus Ticket Booking System</p>
+                </div>
+            </body>
+            </html>
+            """
+        send_email(request.email, email_subject, email_content)
 
 @app.get("/trips", tags=['items'])
 async def GetAllTrip(
@@ -396,39 +524,54 @@ async def user_info(req: UpdateVIPReq):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
-@app.post("/ticketinfo/", tags=['User'])
-async def user_info(ticketinfo: TicketInfoReq):
+@app.post("/ticket_info/", tags=['Users'])
+def user_info(ticketinfo: TicketInfoReq):
     try:
         conn = connect_to_sql_server()
         cursor = conn.cursor()
-
-        cursor.execute("EXEC prod_get_ticket_by_id ?", ticketinfo.ticketId)
-        row = cursor.fetchone()
+        cursor.execute(
+            "EXEC prod_get_ticket_by_id @UserEmail = ?, @TicketId = ?", 
+            ticketinfo.UserEmail, 
+            ticketinfo.TicketId
+        )
+        rows = cursor.fetchall()
         conn.commit()
-        cursor.close()
-        conn.close()
-
-        if row:
-            if row[0] == -1:
-                return {"Status": -1, "Message": row[1]}
-
-            trip_id = row[0]
-            trip_name = row[1]
-            plate_number = row[2]
-            return {
-                "TripId": trip_id,
-                "TripName": trip_name,
-                "PlateNumber": plate_number
-            }
-        else:
-            raise HTTPException(status_code=401, detail="Invalid username or password")
 
     except pyodbc.Error as e:
         logging.error(f"Database error: {e}")
-        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+        raise HTTPException(status_code=500, detail="Database error occurred.")
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
-        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail="Unexpected server error.")
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
+
+    if rows:
+        if rows[0][0] == -1:
+            return {"ErrorResponse" : -1}
+
+        # Tạo dictionary chứa thông tin vé
+        ticket_info = {
+            "TicketId": rows[0][0],
+            "TripId": rows[0][1],
+            "PlateNumber": rows[0][2],
+            "DepartLocation": rows[0][3],
+            "ArriveLocation": rows[0][4],
+            "DepartTime": rows[0][5],
+            "UserFullName": rows[0][6]
+        }
+
+        # Tập hợp danh sách SeatIds nếu có
+        seat_ids = [row[7] for row in rows if row[7] is not None]
+        ticket_info["SeatIds"] = seat_ids
+
+        return ticket_info
+
+    # Nếu rows rỗng, trả về lỗi 404
+    raise HTTPException(status_code=404, detail="Ticket not found or you don't have permission to access it.")
 
 @app.post("/create_trip/", tags=['Trip'])
 async def create_trip(trip: Trip):

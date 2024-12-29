@@ -17,7 +17,8 @@ class User(BaseModel):
     userroleid: int
 
 class TicketInfoReq(BaseModel):
-    ticketId: int
+    UserEmail: str
+    TicketId: int
 
 class LoginRequest(BaseModel):
     username: str
@@ -52,18 +53,14 @@ class PaymentRequest(BaseModel):
     price: float
     license_plate: str
     seat_list: str
+    trip_name: str
+    email: str
 
-class MomoResponse(BaseModel):
-    partnerCode: str
-    orderId: str
-    requestId: str
-    amount: str
-    orderInfo: str
-    orderType: str
-    transId: str
-    resultCode: str
-    message: str
-    payType: str
-    responseTime: str
-    extraData: str
-    signature: str
+class MomoRequest(BaseModel):
+    trip_name : str
+    booked_seat : str
+    trip_id : int
+    user_id : int
+    license_plate : str
+    email : str
+
