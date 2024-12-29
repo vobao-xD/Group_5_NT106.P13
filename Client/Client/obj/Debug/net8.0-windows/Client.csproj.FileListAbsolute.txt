@@ -174,3 +174,6 @@ C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\n
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_BusAnalyse.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_ListCustomer.resources
 C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_SeeSeatBooked.resources
+C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_Email_Support.resources
+C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_ReadMail.resources
+C:\Users\vobao\source\repos\vobao-xD\Group_5_NT106.P13\Client\Client\obj\Debug\net8.0-windows\Client.Admin_Send_Email.resources

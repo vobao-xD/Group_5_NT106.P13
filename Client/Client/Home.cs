@@ -60,7 +60,7 @@ namespace Client
                     MessageBox.Show("Không tìm thấy chuyến xe phù hợp");
                     return;
                 }
-                MessageBox.Show("Mời bạn đặt vé cho chuyến đi:");
+                MessageBox.Show("Tìm thấy chuyến xe! Mời bạn đặt vé cho chuyến đi!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 int ListId = list[0].TripId;
                 ReserveTicket ins1 = new(list[0], _userInfo, _authToken);
                 ins1.ShowDialog();
