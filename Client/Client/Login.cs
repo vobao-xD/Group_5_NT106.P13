@@ -1,18 +1,5 @@
-﻿using Client.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MimeKit;
-using MailKit.Net.Smtp;
-using System.Security.Cryptography;
 
 namespace Client
 {
@@ -20,14 +7,12 @@ namespace Client
     {
         private readonly UserController _userController;
         private readonly HttpClient _httpClient;
-
         public Login()
         {
             InitializeComponent();
             _httpClient = new HttpClient();
             _userController = new UserController(_httpClient);
         }
-
         private static string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -41,7 +26,6 @@ namespace Client
                 return sb.ToString();
             }
         }
-
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -68,38 +52,22 @@ namespace Client
                     MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (userInfo.UserRoleId == 1)
                     {
-                        // change to admin
                         AdminForm adminForm = new AdminForm(userInfo, loginResult);
                         adminForm.Show();
-                        this.Hide();
+                        AuthenticationDashboard.ad_ins?.Hide();
                     }
-                    if (userInfo.UserRoleId == 2)
+                    else if (userInfo.UserRoleId == 3 || userInfo.UserRoleId == 4)
                     {
-                        // change to staff
-                        StaffForm staffForm = new StaffForm(userInfo, loginResult);
-                        staffForm.Show();
-                        this.Hide();
+                        UserDashboard ds = new UserDashboard(userInfo, loginResult);
+                        ds.Show();
+                        AuthenticationDashboard.ad_ins?.Hide();
                     }
-                    if (userInfo.UserRoleId == 3)
-                    {
-                        // change to customer
-                        Home home = new Home(userInfo, loginResult);
-                        home.Show();
-                        this.Hide();
-                    }
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Đăng nhập thất bại: Sai thông tin username hoặc password", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnSignUp_Click(object sender, EventArgs e)
-        {
-            SignUp signUp = new SignUp();
-            signUp.ShowDialog();
         }
     }
 }

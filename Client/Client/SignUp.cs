@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using Client.Controller;
 using MailKit.Net.Smtp;
 using MimeKit;
 
@@ -12,6 +11,7 @@ namespace Client
         private readonly UserController _userController;
         private readonly HttpClient _httpClient;
         private static readonly Random _random = new Random();
+        Authentication? auth;
         public SignUp()
         {
             InitializeComponent();
@@ -199,10 +199,10 @@ namespace Client
                     MessageBox.Show("You need to authenticate your Email first.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string otp = GenerateOtp();
                     await SendEmail(email, otp);
-                    Authentication authentication = new Authentication(otp);
-                    authentication.ShowDialog();
+                    await OpenAuthenticationFormAsync(otp);
                     MessageBox.Show(signUpResult.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    AuthenticationDashboard.ad_ins?.btnLoginForm_Click(null, null);
                 }
                 else
                 {
@@ -213,6 +213,34 @@ namespace Client
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public static TaskCompletionSource<bool>? _formCloseTaskSource;
+
+        private async Task<bool> OpenAuthenticationFormAsync(string otp)
+        {
+            if (auth == null)
+            {
+                _formCloseTaskSource = new TaskCompletionSource<bool>();
+
+                auth = new Authentication(otp);
+                auth.FormClosed += Auth_FormClosed;
+                auth.MdiParent = AuthenticationDashboard.ad_ins;
+                auth.Dock = DockStyle.Fill;
+                auth.Show();
+                await _formCloseTaskSource.Task;
+            }
+            else
+            {
+                auth.Activate();
+            }
+
+            return true;
+        }
+
+        private void Auth_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            auth = null;
         }
     }
 }

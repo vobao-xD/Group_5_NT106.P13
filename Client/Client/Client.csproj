@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.9.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
     <PackageReference Include="MimeKit" Version="4.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
@@ -27,6 +28,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
 
 </Project>

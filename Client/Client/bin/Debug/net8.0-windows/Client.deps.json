@@ -9,8 +9,12 @@
       "Client/1.0.0": {
         "dependencies": {
           "MailKit": "4.9.0",
+          "Microsoft.Web.WebView2": "1.0.2903.40",
           "MimeKit": "4.9.0",
-          "Newtonsoft.Json": "13.0.3"
+          "Newtonsoft.Json": "13.0.3",
+          "Microsoft.Web.WebView2.Core": "1.0.2903.40",
+          "Microsoft.Web.WebView2.WinForms": "1.0.2903.40",
+          "Microsoft.Web.WebView2.Wpf": "1.0.2903.40"
         },
         "runtime": {
           "Client.dll": {}
@@ -33,6 +37,25 @@
           "lib/net8.0/MailKit.dll": {
             "assemblyVersion": "4.9.0.0",
             "fileVersion": "4.9.0.0"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2/1.0.2903.40": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/WebView2Loader.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.2903.40"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.2903.40"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.2903.40"
           }
         }
       },
@@ -73,6 +96,30 @@
             "fileVersion": "8.0.1024.46610"
           }
         }
+      },
+      "Microsoft.Web.WebView2.Core/1.0.2903.40": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Core.dll": {
+            "assemblyVersion": "1.0.2903.40",
+            "fileVersion": "1.0.2903.40"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.WinForms/1.0.2903.40": {
+        "runtime": {
+          "Microsoft.Web.WebView2.WinForms.dll": {
+            "assemblyVersion": "1.0.2903.40",
+            "fileVersion": "1.0.2903.40"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.Wpf/1.0.2903.40": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Wpf.dll": {
+            "assemblyVersion": "1.0.2903.40",
+            "fileVersion": "1.0.2903.40"
+          }
+        }
       }
     }
   },
@@ -95,6 +142,13 @@
       "sha512": "sha512-wRUVzYXRWbjdUixwtSp7ivVHPhWw17h+BvwIVaouBike68B56Xk9b5+QRT39EK/QN8XF7MtOgt9caHvUaCvhIQ==",
       "path": "mailkit/4.9.0",
       "hashPath": "mailkit.4.9.0.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2/1.0.2903.40": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-THrzYAnJgE3+cNH+9Epr44XjoZoRELdVpXlWGPs6K9C9G6TqyDfVCeVAR/Er8ljLitIUX5gaSkPsy9wRhD1sgQ==",
+      "path": "microsoft.web.webview2/1.0.2903.40",
+      "hashPath": "microsoft.web.webview2.1.0.2903.40.nupkg.sha512"
     },
     "MimeKit/4.9.0": {
       "type": "package",
@@ -123,6 +177,21 @@
       "sha512": "sha512-CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
       "path": "system.security.cryptography.pkcs/8.0.1",
       "hashPath": "system.security.cryptography.pkcs.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2.Core/1.0.2903.40": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.WinForms/1.0.2903.40": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.Wpf/1.0.2903.40": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

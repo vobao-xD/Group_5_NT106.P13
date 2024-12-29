@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Client
+﻿namespace Client
 {
     public partial class Authentication : Form
     {
@@ -24,6 +14,8 @@ namespace Client
             {
                 MessageBox.Show($"User Authenticated. Please Sign in to continue.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                SignUp._formCloseTaskSource?.SetResult(true);
+                AuthenticationDashboard.ad_ins?.btnLoginForm_Click(null, null);
             }
             else
             {
