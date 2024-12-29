@@ -13,7 +13,7 @@
 
         private async void btnAddTrip_Click(object sender, EventArgs e)
         {
-            if (cmbBoxDestination.Text == cmbBoxDestination.Text)
+            if (cmbBoxDestination.Text == cmbBoxDeparture.Text)
             {
                 MessageBox.Show("Điểm đi và điểm đến không được trùng nhau!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

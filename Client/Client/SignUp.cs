@@ -170,22 +170,22 @@ namespace Client
                 string.IsNullOrWhiteSpace(txtPassword.Text) ||
                 string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
                 {
-                    MessageBox.Show("Please fill out all the form.");
+                    MessageBox.Show("Please fill out all the form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (!IsValid(txtEmail.Text))
                 {
-                    MessageBox.Show("Your email is invalid");
+                    MessageBox.Show("Your email is invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (txtPassword.Text.Length < 8)
                 {
-                    MessageBox.Show("Your password is too short, needs to be more than or equal 8 characters.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Your password is too short, needs to be more than or equal 8 characters.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (txtPassword.Text != txtConfirmPassword.Text)
                 {
-                    MessageBox.Show("Your password is not match!");
+                    MessageBox.Show("Your password is not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 string username = txtLoginName.Text;
@@ -196,7 +196,7 @@ namespace Client
                 var signUpResult = await _userController.SignUpAsync(username, password, fullname, email, userroleid);
                 if (signUpResult.Id == 1)
                 {
-                    MessageBox.Show("You need to authenticate your Email first.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Valid information! Please wait for our response", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string otp = GenerateOtp();
                     await SendEmail(email, otp);
                     await OpenAuthenticationFormAsync(otp);

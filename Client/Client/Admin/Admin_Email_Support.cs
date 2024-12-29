@@ -80,8 +80,9 @@ namespace Client
                             }
                         }
                     }
-                    AdminForm.adf.OpenReadMailForm(selectedMessage.Subject, selectedMessage.From.ToString(), selectedMessage.To.ToString(), 
+                    Admin_ReadMail ar = new Admin_ReadMail(selectedMessage.Subject, selectedMessage.From.ToString(), selectedMessage.To.ToString(),
                             selectedMessage.HtmlBody ?? selectedMessage.TextBody ?? string.Empty, !string.IsNullOrEmpty(selectedMessage.HtmlBody));
+                    ar.ShowDialog();
                 }
             }
         }

@@ -37,9 +37,9 @@
             webView21.AllowExternalDrop = true;
             webView21.CreationProperties = null;
             webView21.DefaultBackgroundColor = Color.White;
-            webView21.Location = new Point(12, 12);
+            webView21.Location = new Point(35, 38);
             webView21.Name = "webView21";
-            webView21.Size = new Size(1528, 858);
+            webView21.Size = new Size(1829, 959);
             webView21.TabIndex = 0;
             webView21.ZoomFactor = 1D;
             // 
@@ -48,11 +48,12 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1552, 882);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(webView21);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Admin_ReadMail";
             Text = "Admin_ReadMail";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
         }
