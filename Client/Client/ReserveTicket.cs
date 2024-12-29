@@ -66,7 +66,8 @@ namespace Client
                     booked_seat = BookedSeat,
                     trip_id = _trip.TripId,
                     user_id = _userInfo.UserId,
-                    license_plate = _trip.Plate
+                    license_plate = _trip.Plate,
+                    email = _userInfo.UserEmail
                 };
                 string jsonRequestBody = JsonConvert.SerializeObject(requestBody);
                 var content = new StringContent(jsonRequestBody, System.Text.Encoding.UTF8, "application/json");
@@ -88,12 +89,7 @@ namespace Client
                                 UseShellExecute = true
                             };
                             process.Start();
-
-                            // Chờ trình duyệt đóng
-                            process.WaitForExit();
                         }
-
-                        MessageBox.Show("Thanh toán thành công!");
                     }
                     else
                     {
@@ -150,5 +146,6 @@ namespace Client
         public int? trip_id { get; set; }
         public int? user_id { get; set; }
         public string? license_plate { get; set; }
+        public string? email { get; set; }
     }
 }
