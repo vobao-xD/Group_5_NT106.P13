@@ -6,7 +6,7 @@ namespace Client
     public partial class TicketInfo : Form
     {
         private readonly UserController _userController;
-        private TicketInfoModel _ticketInfo;
+        private TicketInfoModel2 _ticketInfo;
         private UserInfo _userInfo;
 
         public TicketInfo(UserInfo userInfo)
@@ -83,7 +83,7 @@ namespace Client
             }
         }
 
-        private Panel AddInfoPanel(TicketInfoModel ticket)
+        private Panel AddInfoPanel(TicketInfoModel2 ticket)
         {
             Panel panel = new Panel
             {
@@ -179,8 +179,8 @@ namespace Client
             };
             innerPanel.Controls.Add(lblDepartTime, 0, 6);
 
-            string seatIds = ticket.SeatIds != null && ticket.SeatIds.Count > 0
-                ? string.Join(", ", ticket.SeatIds)
+            string seatIds = ticket.SeatList != null && ticket.SeatList.Count > 0
+                ? string.Join(", ", ticket.SeatList)
                 : "N/A";
             Label lblSeatIds = new Label
             {

@@ -37,11 +37,11 @@
             // btnLoginForm
             // 
             btnLoginForm.Dock = DockStyle.Left;
-            btnLoginForm.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btnLoginForm.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
             btnLoginForm.ForeColor = Color.Chocolate;
             btnLoginForm.Location = new Point(0, 0);
             btnLoginForm.Name = "btnLoginForm";
-            btnLoginForm.Size = new Size(391, 50);
+            btnLoginForm.Size = new Size(500, 80);
             btnLoginForm.TabIndex = 0;
             btnLoginForm.Text = "Have an account?";
             btnLoginForm.UseVisualStyleBackColor = true;
@@ -50,11 +50,11 @@
             // btnSignupform
             // 
             btnSignupform.Dock = DockStyle.Right;
-            btnSignupform.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btnSignupform.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
             btnSignupform.ForeColor = Color.Chocolate;
-            btnSignupform.Location = new Point(491, 0);
+            btnSignupform.Location = new Point(1402, 0);
             btnSignupform.Name = "btnSignupform";
-            btnSignupform.Size = new Size(391, 50);
+            btnSignupform.Size = new Size(500, 80);
             btnSignupform.TabIndex = 1;
             btnSignupform.Text = "Don't have an account?";
             btnSignupform.UseVisualStyleBackColor = true;
@@ -65,20 +65,21 @@
             panel1.Controls.Add(btnLoginForm);
             panel1.Controls.Add(btnSignupform);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 553);
+            panel1.Location = new Point(0, 953);
             panel1.Name = "panel1";
-            panel1.Size = new Size(882, 50);
+            panel1.Size = new Size(1902, 80);
             panel1.TabIndex = 2;
             // 
             // AuthenticationDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(882, 603);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "AuthenticationDashboard";
             Text = "AuthenticationDashboard";
+            WindowState = FormWindowState.Maximized;
             FormClosed += AuthenticationDashboard_FormClosed;
             panel1.ResumeLayout(false);
             ResumeLayout(false);

@@ -32,12 +32,12 @@ namespace Client
             {
                 if (cmbBoxDeparture.Text == cmbBoxDestination.Text)
                 {
-                    MessageBox.Show("Điểm đi và điểm đến không được trùng nhau.");
+                    MessageBox.Show("Điểm đi và điểm đến không được trùng nhau.", "Error",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 if (DepartTime.Text == "")
                 {
-                    MessageBox.Show("Vui lòng nhập giờ khởi hành");
+                    MessageBox.Show("Vui lòng nhập giờ khởi hành", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 string request = $"from={HttpUtility.UrlEncode(cmbBoxDeparture.Text)}&to={HttpUtility.UrlEncode(cmbBoxDestination.Text)}";
@@ -57,7 +57,7 @@ namespace Client
                 List<Trips>? list = JsonConvert.DeserializeObject<List<Trips>>(response);
                 if (list == null)
                 {
-                    MessageBox.Show("Không tìm thấy chuyến xe phù hợp");
+                    MessageBox.Show("Không tìm thấy chuyến xe phù hợp", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 MessageBox.Show("Tìm thấy chuyến xe! Mời bạn đặt vé cho chuyến đi!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
