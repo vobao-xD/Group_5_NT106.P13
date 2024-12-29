@@ -1,7 +1,8 @@
 ﻿Insert Into UserRole Values
 	('Admin'),
 	('Staff'),
-	('Customer')
+	('Customer'),
+	('VipCustomer')
 
 Insert Into TripStatus Values
 	('Availible'),

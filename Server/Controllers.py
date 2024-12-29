@@ -100,83 +100,7 @@ async def payment_redirect(partnerCode: str, orderId: str, requestId: str, amoun
         async with httpx.AsyncClient() as client:
             response = await client.post(endpoint, json=request)
             response.raise_for_status()
-        return """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Success</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #4caf50, #81c784);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-        }
-
-        .container h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #4caf50;
-        }
-
-        .container p {
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .details {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-
-        .details p {
-            margin: 5px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #4caf50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #388e3c;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Booking Successful!</h1>
-        <p>Thank you for booking with us. Check your email for your ticket infomation!</p>
-    </div>
-</body>
-</html>
-"""
+        return successHTML
     except httpx.HTTPStatusError as e:
         raise HTTPException(status_code=e.response.status_code, detail=f"Failed to redirect: {e.response.text}")
     except Exception as e:
@@ -187,15 +111,22 @@ async def save_ticket(request : PaymentRequest):
     conn = connect_to_sql_server()
     cursor = conn.cursor()
     try:
+        cursor.execute("""
+        EXEC prod_insert_tickets 
+            @NumOfSeat = ?, 
+            @TripId = ?, 
+            @UserId = ?, 
+            @Price = ?, 
+            @LicensePlate = ?, 
+            @SeatList = ?
+        """, 
+        (request.num_of_seat, request.trip_id, request.user_id, request.price, request.license_plate, request.seat_list))
+        conn.commit()
         cursor.execute(
-            "EXEC prod_insert_tickets @NumOfSeat = ?, @TripId = ?, @UserId = ?, @Price = ?, @LicensePlate = ?, @SeatList = ?",
-            request.num_of_seat,
-            request.trip_id,
-            request.user_id,
-            request.price,
-            request.license_plate,
-            request.seat_list
+            "SELECT TicketID FROM Ticket WHERE NumOfSeat = ? AND TripId = ? AND UserId = ? AND Price = ?", 
+            (request.num_of_seat, request.trip_id, request.user_id, request.price)
         )
+        ticket_id = cursor.fetchone()[0]
         conn.commit()
         return {"message": "Ticket(s) successfully booked."}
     except Exception as e:
@@ -206,26 +137,92 @@ async def save_ticket(request : PaymentRequest):
         conn.close()
         email_subject = "Xác nhận đặt vé thành công"
         email_content = f"""
-            <html>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Xác nhận đặt vé thành công</title>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        background-color: #f3f4f6;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .email-container {{
+                        max-width: 600px;
+                        margin: 40px auto;
+                        background: #ffffff;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 12px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }}
+                    .email-header {{
+                        background: #4CAF50;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 20px;
+                    }}
+                    .email-header h2 {{
+                        margin: 0;
+                        font-size: 24px;
+                    }}
+                    .email-body {{
+                        padding: 20px;
+                        color: #333333;
+                        line-height: 1.6;
+                    }}
+                    .email-body p {{
+                        margin: 10px 0;
+                    }}
+                    .email-body ul {{
+                        list-style: none;
+                        padding: 0;
+                        margin: 10px 0;
+                    }}
+                    .email-body ul li {{
+                        margin: 8px 0;
+                        font-size: 16px;
+                    }}
+                    .email-body ul li strong {{
+                        color: #4CAF50;
+                    }}
+                    .email-footer {{
+                        text-align: center;
+                        padding: 15px;
+                        background: #f9fafb;
+                        color: #666666;
+                        font-size: 14px;
+                        border-top: 1px solid #e5e7eb;
+                    }}
+                </style>
+            </head>
             <body>
-                <div style="font-family: Arial, sans-serif; line-height: 1.5; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
-                    <h2 style="color: #4CAF50; text-align: center;">Xác nhận đặt vé thành công</h2>
-                    <p>Xin chào,</p>
-                    <p>Bạn đã đặt vé thành công với thông tin như sau:</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><strong>Chuyến đi:</strong> {request.trip_name}</li>
-                        <li><strong>Số ghế:</strong> {request.seat_list}</li>
-                        <li><strong>Biển số xe:</strong> {request.license_plate}</li>
-                        <li><strong>Giá vé:</strong> {request.price:.2f} VND</li>
-                        <li><strong>Số lượng ghế:</strong> {request.num_of_seat}</li>
-                    </ul>
-                    <p style="margin-top: 20px;">Cảm ơn bạn đã sử dụng dịch vụ của Bus G5!</p>
-                    <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-                    <p style="text-align: center; color: #888;">Bus Ticket Booking System</p>
+                <div class="email-container">
+                    <div class="email-header">
+                        <h2>Xác nhận đặt vé thành công</h2>
+                    </div>
+                    <div class="email-body">
+                        <p><li><strong>Xin chào,</strong></li></p>
+                        <p><li><strong>Bạn đã đặt vé thành công với thông tin như sau:</strong></li></p>
+                        <ul>
+                            <li><strong>Mã vé: {ticket_id}</strong></li>
+                            <li><strong>Chuyến đi: {request.trip_name}</strong></li>
+                            <li><strong>Số ghế: {request.seat_list}</strong></li>
+                            <li><strong>Biển số xe: {request.license_plate}</strong></li>
+                            <li><strong>Giá vé: {request.price:.2f} VND</strong></li>
+                            <li><strong>Số lượng ghế: {request.num_of_seat}</strong></li>
+                        </ul>
+                        <p><li><strong>Cảm ơn bạn đã sử dụng dịch vụ của Bus G5!</strong></li></p>
+                    </div>
+                    <div class="email-footer">
+                        <p>Bus Ticket Booking System</p>
+                    </div>
                 </div>
             </body>
-            </html>
-            """
+            </html>"""
         send_email(request.email, email_subject, email_content)
 
 @app.get("/trips", tags=['items'])
@@ -644,5 +641,4 @@ async def get_all_trip():
     except Exception as e:
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
-
 

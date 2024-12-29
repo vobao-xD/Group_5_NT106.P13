@@ -1,99 +1,31 @@
-import secrets
-import pyodbc
-import json
-from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials, OAuth2PasswordBearer
-import jwt
-from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, HTTPAuthorizationCredentials, HTTPBearer
+from email.mime.multipart import MIMEMultipart
+from fastapi import HTTPException, Depends
+from fastapi import Depends, HTTPException
+from email.mime.text import MIMEText
+from urllib.parse import unquote
 from typing import List
 from Ultilities import *
-from urllib.parse import unquote
-from pydantic import BaseModel
 from Models import *
 import logging
-import pyodbc
-import jwt
 import secrets
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 import pyodbc
+import json
+import jwt
 
-tags_metadata = [
-    {
-        "name": "users",
-        "description": "Operations with users. The **login** logic is also here.",
-    },
-    {
-        "name": "items",
-        "description": "Manage items. So _fancy_ they have their own docs.",
-        "externalDocs": {
-            "description": "Items external docs",
-            "url": "https://fastapi.tiangolo.com/",
-        },
-    },
-]
-
-TripPrice: dict[str, int] = {"TP.HCM - Hà Nội" : 1000000, "Hà Nội - TP.HCM" : 1000000, 
-                             "TP.HCM - Cần Thơ" : 500000, "Cần Thơ - TP.HCM" : 500000,
-                             "TP.HCM - Đà Nẵng" : 750000, "Đà Nẵng - TP.HCM" : 750000,
-                             "Hà Nội - Cần Thơ" : 1250000, "Cần Thơ - Hà Nội": 1250000,
-                             "Hà Nội - Đà Nẵng" : 750000, "Đà Nẵng - Hà Nội" : 750000,
-                             "Hà Nội - Huế" : 600000, "Huế - Hà Nội" : 600000,
-                             "Cần Thơ - Đà Nẵng" : 500000, "Đà Nẵng - Cần Thơ" : 500000,
-                             "Cần Thơ - Huế" : 600000, "Huế - Cần Thơ" : 600000,
-                             "Đà Nẵng - Huế" : 250000, "Huế - Đà Nẵng" : 250000 
-                             }
-
-def send_email(to_email: str, subject: str, html_content: str):
-    sender_email = "khoibaochien@gmail.com"
-    sender_password = "krti dtle hdjb exew"
-    message = MIMEMultipart()
-    message["From"] = sender_email
-    message["To"] = to_email
-    message["Subject"] = subject
-    message.attach(MIMEText(html_content, "html"))
-    try:
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
-            server.starttls()
-            server.login(sender_email, sender_password) 
-            server.sendmail(sender_email, to_email, message.as_string())
-            print("Email sent successfully.")
-    except Exception as e:
-        print(f"Failed to send email: {e}")
-        raise HTTPException(status_code=500, detail="Failed to send email.")
-
-def GetTicket(self, username: str, ticketid: int) -> list:
-    listTickets = []
-    try:
-        Cursor = self.Connector.cursor()
-        Cursor.execute(f"""SELECT TicketId, UserFullName, Trips.TripName, DepartTime, SeatNumber, TicketTypeName, TotalPrice FROM Tickets
-                            INNER JOIN Trips ON Trips.TripId = Tickets.TripId
-                            INNER JOIN TicketType ON TicketType.TicketTypeId = Tickets.TicketTypeId
-                            INNER JOIN Users ON Users.UserId = Tickets.UserID
-                            WHERE UserName = '{username}' AND Tickets.TicketId = {ticketid}""")
-        if Cursor.rowcount == 0:
-            print('Ticket or user not found')
-            return []
-        else:
-            print('Success')
-    except Exception as e:
-        print(str(e))
-        return []
-    rows = Cursor.fetchall()
-    if rows:
-        for row in rows:
-            listTickets.append({"TicketID": row[0], "FullName": row[1], "TripName": row[2], "DepartTime": row[3].strftime('%d/%m/%Y %H:%M:%S'), "SeatNumber": row[4], "TicketType": row[5], "TotalPrice": int(row[6])})
-    return listTickets
-
-def generate_secret_key():
-    return secrets.token_hex(32)
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-secret_key = generate_secret_key()
+TripPrice: dict[str, int] = {
+    "TP.HCM - Hà Nội" : 1000000, "Hà Nội - TP.HCM" : 1000000, 
+    "TP.HCM - Cần Thơ" : 500000, "Cần Thơ - TP.HCM" : 500000,
+    "TP.HCM - Đà Nẵng" : 750000, "Đà Nẵng - TP.HCM" : 750000,
+    "Hà Nội - Cần Thơ" : 1250000, "Cần Thơ - Hà Nội": 1250000,
+    "Hà Nội - Đà Nẵng" : 750000, "Đà Nẵng - Hà Nội" : 750000,
+    "Hà Nội - Huế" : 600000, "Huế - Hà Nội" : 600000,
+    "Cần Thơ - Đà Nẵng" : 500000, "Đà Nẵng - Cần Thơ" : 500000,
+    "Cần Thơ - Huế" : 600000, "Huế - Cần Thơ" : 600000,
+    "Đà Nẵng - Huế" : 250000, "Huế - Đà Nẵng" : 250000 
+}
 
 successHTML = """
 <!DOCTYPE html>
@@ -167,21 +99,33 @@ successHTML = """
 <body>
     <div class="container">
         <h1>Booking Successful!</h1>
-        <p>Thank you for booking with us. Your ticket details are as follows:</p>
-        <div class="details">
-            <p><strong>Ticket ID:</strong> 12345</p>
-            <p><strong>Trip ID:</strong> 67890</p>
-            <p><strong>Departure:</strong> Hanoi</p>
-            <p><strong>Arrival:</strong> Ho Chi Minh City</p>
-            <p><strong>Departure Time:</strong> 16th Dec 2024, 6:00 PM</p>
-            <p><strong>Seat Numbers:</strong> 12A, 12B</p>
-        </div>
-        <a href="/" class="btn">Go to Homepage</a>
+        <p>Thank you for booking with us. Check your email for your ticket infomation!</p>
     </div>
 </body>
 </html>
-
 """
+
+def send_email(to_email: str, subject: str, html_content: str):
+    sender_email = "khoibaochien@gmail.com"
+    sender_password = "krti dtle hdjb exew"
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = to_email
+    message["Subject"] = subject
+    message.attach(MIMEText(html_content, "html"))
+    try:
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()
+            server.login(sender_email, sender_password) 
+            server.sendmail(sender_email, to_email, message.as_string())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Failed to send email.")
+
+def generate_secret_key():
+    return secrets.token_hex(32)
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+secret_key = generate_secret_key()
 
 def connect_to_sql_server():
     conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
@@ -189,10 +133,6 @@ def connect_to_sql_server():
                           'DATABASE=Bus_server_prod;'
                           'Trusted_Connection=yes;')
     return conn
-
-def JSONOutput(jsondata) -> str:
-    output: str = json.dumps(jsondata, indent=3)
-    return output
 
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
     try:
@@ -251,19 +191,5 @@ def GetUnavailableSeat(busid: int, isbook: int) -> list | None:
         for seat in seats:
             listSeat.append({"Plate": seat[0], "SeatName": seat[1], "IsBook": seat[2], "SeatId": seat[3]})
         return listSeat
-    
-def PostReserve(self, userid: int, tripid: int, plate: str, seatid: List):
-        try:
-            Cursor = self.Connector.cursor()
-            Cursor.execute(f"EXEC AddSeats @userid = ?,@tripid = ? , @plate = ?,@seatid=?", unquote(userid), tripid, plate, seatid)
-            if Cursor.rowcount == 0:
-                print('Unable to execute command')
-                return 
-            else:
-                print('Execute complete')
-        except pyodbc.Error as e:
-            print(str(e))
-        except Exception as e:
-            print(str(e))
-            return
-    
+
+
