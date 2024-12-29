@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\reserveticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|c:\\users\\vobao\\source\\repos\\vobao-xd\\group_5_nt106.p13\\client\\client\\admin\\admin_readmail.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7680A-5CA2-4840-A2AE-F68B8D16F7E7}|Client\\Client.csproj|solutionrelative:client\\admin\\admin_readmail.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,19 +24,6 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 14,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Payment.cs",
-              "RelativeDocumentMoniker": "Client\\Payment.cs",
-              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Payment.cs",
-              "RelativeToolTip": "Client\\Payment.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAYwGMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T09:34:41.462Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -87,15 +78,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReserveTicket.cs",
-              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\ReserveTicket.cs",
-              "RelativeDocumentMoniker": "Client\\ReserveTicket.cs",
-              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\ReserveTicket.cs",
-              "RelativeToolTip": "Client\\ReserveTicket.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwEMAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AdminForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\AdminForm.cs",
+              "RelativeDocumentMoniker": "Client\\Admin\\AdminForm.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\AdminForm.cs [Design]",
+              "RelativeToolTip": "Client\\Admin\\AdminForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T09:36:34.091Z",
+              "WhenOpened": "2024-12-29T12:49:34.09Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminForm.cs",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\AdminForm.cs",
+              "RelativeDocumentMoniker": "Client\\Admin\\AdminForm.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\AdminForm.cs",
+              "RelativeToolTip": "Client\\Admin\\AdminForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T12:48:59.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Admin_ReadMail.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\Admin_ReadMail.Designer.cs",
+              "RelativeDocumentMoniker": "Client\\Admin\\Admin_ReadMail.Designer.cs",
+              "ToolTip": "C:\\Users\\vobao\\source\\repos\\vobao-xD\\Group_5_NT106.P13\\Client\\Client\\Admin\\Admin_ReadMail.Designer.cs",
+              "RelativeToolTip": "Client\\Admin\\Admin_ReadMail.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T12:48:18.002Z",
               "EditorCaption": ""
             }
           ]

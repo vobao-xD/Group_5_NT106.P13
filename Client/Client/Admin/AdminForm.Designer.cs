@@ -58,6 +58,7 @@
             btnContact.TabIndex = 12;
             btnContact.Text = "Đọc hỗ trợ";
             btnContact.UseVisualStyleBackColor = true;
+            btnContact.Click += btnContact_Click;
             // 
             // btnAddTrip
             // 

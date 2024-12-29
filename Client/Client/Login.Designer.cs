@@ -36,6 +36,8 @@
             txtPassword = new TextBox();
             btnLogin = new Button();
             label4 = new Label();
+            checkBoxPassword = new CheckBox();
+            lblForgetPassword = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             btnLogin.BackColor = Color.Transparent;
             btnLogin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnLogin.ForeColor = Color.Chocolate;
-            btnLogin.Location = new Point(329, 421);
+            btnLogin.Location = new Point(329, 450);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(230, 40);
             btnLogin.TabIndex = 5;
@@ -117,12 +119,39 @@
             label4.TabIndex = 8;
             label4.Text = "Đăng nhập";
             // 
+            // checkBoxPassword
+            // 
+            checkBoxPassword.AutoSize = true;
+            checkBoxPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            checkBoxPassword.ForeColor = Color.Chocolate;
+            checkBoxPassword.Location = new Point(688, 330);
+            checkBoxPassword.Name = "checkBoxPassword";
+            checkBoxPassword.Size = new Size(149, 29);
+            checkBoxPassword.TabIndex = 9;
+            checkBoxPassword.Text = "Hiện mật khẩu";
+            checkBoxPassword.UseVisualStyleBackColor = true;
+            checkBoxPassword.CheckedChanged += checkBoxPassword_CheckedChanged;
+            // 
+            // lblForgetPassword
+            // 
+            lblForgetPassword.AutoSize = true;
+            lblForgetPassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblForgetPassword.ForeColor = SystemColors.MenuHighlight;
+            lblForgetPassword.Location = new Point(521, 383);
+            lblForgetPassword.Name = "lblForgetPassword";
+            lblForgetPassword.Size = new Size(140, 23);
+            lblForgetPassword.TabIndex = 10;
+            lblForgetPassword.Text = "Quên mật khẩu?";
+            lblForgetPassword.Click += lblForgetPassword_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(882, 553);
+            Controls.Add(lblForgetPassword);
+            Controls.Add(checkBoxPassword);
             Controls.Add(label4);
             Controls.Add(btnLogin);
             Controls.Add(label2);
@@ -148,5 +177,7 @@
         private TextBox txtPassword;
         private Button btnLogin;
         private Label label4;
+        private CheckBox checkBoxPassword;
+        private Label lblForgetPassword;
     }
 }

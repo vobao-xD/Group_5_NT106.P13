@@ -1,4 +1,4 @@
-CREATE PROCEDURE prod_insert_tickets
+﻿CREATE PROCEDURE prod_insert_tickets
     @NumOfSeat INT,
     @TripId INT,
     @UserId INT,
