@@ -69,5 +69,23 @@ namespace Client
                 MessageBox.Show($"Đăng nhập thất bại: Sai thông tin username hoặc password", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void checkBoxPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPassword.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
+        }
+
+        private void lblForgetPassword_Click(object sender, EventArgs e)
+        {
+            //ForgetPasswordForm forgetPasswordForm = new ForgetPasswordForm();
+            //forgetPasswordForm.ShowDialog();
+        }
     }
 }
