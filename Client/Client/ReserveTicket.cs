@@ -1,6 +1,6 @@
 ﻿using Client.Model;
 using Newtonsoft.Json;
-
+using Newtonsoft.Json.Linq;
 namespace Client
 {
     public partial class ReserveTicket : Form
@@ -13,7 +13,7 @@ namespace Client
         {
             InitializeComponent();            
             plate = trip.Plate;
-            _authToken = authToken; // dùng biến auth token này để tiếp tục làm việc
+            _authToken = authToken;
             _userInfo = userInfo;
             _trip = trip;
             
@@ -23,7 +23,6 @@ namespace Client
         List<string> selectedSeats = [];
         string? plate;
 
-
         private async void btnPay_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.CheckedItems.Count == 0) {
@@ -31,27 +30,25 @@ namespace Client
                 return;
             }
 
-            HttpClient client2 = new();
-            client2.BaseAddress = new Uri($"http://127.0.0.1:8002/");
-            HttpResponseMessage response = await client2.GetAsync($"seats?busid={_trip.BusId}&isbook=0");
-            string seats = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+            using HttpClient client = new();
+            client.BaseAddress = new Uri($"http://127.0.0.1:8002/");
+            var seatResponse = await client.GetAsync($"seats?busid={_trip.BusId}&isbook=0");
+            string seats = await seatResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             seatsList = JsonConvert.DeserializeObject<List<Seat>>(seats);
-
             selectedSeats.Clear();
-            foreach (var sel in checkedListBox1.CheckedItems)
+            string BookedSeat = "";
+            foreach (string sel in checkedListBox1.CheckedItems)
             {
                 selectedSeats.Add(sel.ToString());
+                BookedSeat += sel + " ";
             }
-
             items.Clear();
             foreach (Seat seat in seatsList)
             {
                 if (seat.SeatName != null) items.Add(seat.SeatName);
             }
-
             checkedListBox1.Items.Clear();
             checkedListBox1.Items.AddRange(items.ToArray());
-
             foreach (var sel in selectedSeats)
             {
                 if (!items.Contains(sel))
@@ -61,9 +58,58 @@ namespace Client
                 }
             }
             
-            Payment pay = new(_trip, _userInfo, _authToken,selectedSeats);
-            pay.ShowDialog();
-            this.Close();
+            try
+            {
+                var requestBody = new MomoRequest()
+                {
+                    trip_name = _trip.DepartLocation + " - " + _trip.ArrivalLocation,
+                    booked_seat = BookedSeat,
+                    trip_id = _trip.TripId,
+                    user_id = _userInfo.UserId,
+                    license_plate = _trip.Plate
+                };
+                string jsonRequestBody = JsonConvert.SerializeObject(requestBody);
+                var content = new StringContent(jsonRequestBody, System.Text.Encoding.UTF8, "application/json");
+                string requestUri = $"create_payment";
+                var paymentResponse = await client.PostAsync(requestUri, content);
+
+                if (paymentResponse.IsSuccessStatusCode)
+                {
+                    var json = JObject.Parse(await paymentResponse.Content.ReadAsStringAsync());
+
+                    if (json.ContainsKey("payUrl"))
+                    {
+                        string payUrl = json["payUrl"].ToString();
+                        using (var process = new System.Diagnostics.Process())
+                        {
+                            process.StartInfo = new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = payUrl,
+                                UseShellExecute = true
+                            };
+                            process.Start();
+
+                            // Chờ trình duyệt đóng
+                            process.WaitForExit();
+                        }
+
+                        MessageBox.Show("Thanh toán thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Payment response received but no URL was provided.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Thanh toán thất bại!\n" + await paymentResponse.Content.ReadAsStringAsync());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}");
+            }
         }
 
         private async void ReserveTicket_Load(object sender, EventArgs e)
@@ -95,5 +141,14 @@ namespace Client
         public string? SeatName;
         public bool IsBook;
         public int SeatID;
+    }
+
+    class MomoRequest
+    {
+        public string? trip_name { get; set; }
+        public string? booked_seat { get; set; }
+        public int? trip_id { get; set; }
+        public int? user_id { get; set; }
+        public string? license_plate { get; set; }
     }
 }
