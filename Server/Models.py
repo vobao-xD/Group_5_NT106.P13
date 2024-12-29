@@ -1,16 +1,8 @@
 from pydantic import BaseModel
-# from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from typing import List
 
 Base = declarative_base()
-
-# class UserDB(Base):
-#     __tablename__ = "Users"
-#     id = Column(Integer, primary_key=True, index=True)
-#     username = Column(String, unique=True, index=True)
-#     email = Column(String, unique=True, index=True)
-#     password_hash = Column(String)
 
 class UserOut(BaseModel):
     id: int
@@ -25,7 +17,7 @@ class User(BaseModel):
     userroleid: int
 
 class TicketInfoReq(BaseModel):
-    userId: str
+    ticketId: int
 
 class LoginRequest(BaseModel):
     username: str
