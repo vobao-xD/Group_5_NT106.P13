@@ -37,6 +37,9 @@
     <Compile Update="TicketInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UpdatePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

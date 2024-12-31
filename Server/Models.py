@@ -67,3 +67,7 @@ class MomoRequest(BaseModel):
 class ForgetPasswordReq(BaseModel):
     email: str
     password: str
+
+class UpdatePasswordReq(BaseModel):
+    username: str
+    password: str

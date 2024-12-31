@@ -265,6 +265,44 @@ async def create_user(user: User):
         logging.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
 
+@app.post("/update_password", tags=['users'])
+def update_password_v(req: UpdatePasswordReq, token: dict = Depends(verify_token)):
+    try:
+        token_username = token.get("username")
+        if token_username != req.username:
+            raise HTTPException(status_code=403, detail="Token does not match username")
+
+        conn = connect_to_sql_server()
+        cursor = conn.cursor()
+        cursor.execute("EXEC prod_update_password ?, ?", req.username, req.password)
+        row = cursor.fetchone()
+        conn.commit()
+        cursor.close()
+        conn.close()
+        logging.info(f"Stored procedure executed successfully: {row}")
+
+        if row:
+            logging.info(f"Result: {row[0]}")
+            return {"Id": row[0], "Message": row[1]}  # JSON string returned by SQL Server
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(status_code=400, detail="No result returned from the stored procedure.")
+
+        logging.info(f"Stored procedure executed successfully: {row}")
+        if row:
+            return {"Id": row[0], "Message": row[1]}
+        else:
+            logging.warning("No result returned from the stored procedure.")
+            raise HTTPException(
+                status_code=400, detail="No result returned from the stored procedure."
+            )
+    except pyodbc.Error as e:
+        logging.error(f"Database error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
+    except Exception as e:
+        logging.error(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {e}")
+
 @app.post("/login/", tags=['User'])
 async def login_user(login: LoginRequest):
     try:
